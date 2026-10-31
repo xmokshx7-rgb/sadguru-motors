@@ -358,6 +358,24 @@ class InventoryManager {
   }
 
   async syncBackendCars() {
+    // 1. First priority: Supabase Cloud Database
+    if (window.SadguruDB) {
+      try {
+        const cloudCars = await window.SadguruDB.getAllCars();
+        if (Array.isArray(cloudCars) && cloudCars.length > 0) {
+          this.cars = cloudCars;
+          window.SADGURU_CARS = cloudCars;
+          localStorage.setItem('sadguru_inventory', JSON.stringify(cloudCars));
+          this.applyFilters();
+          this.populateTestDriveOptions();
+          return;
+        }
+      } catch (err) {
+        console.warn('Supabase sync skipped, trying API/local fallback:', err);
+      }
+    }
+
+    // 2. Second priority: Local API /api/cars
     try {
       const res = await fetch('/api/cars');
       if (res.ok) {

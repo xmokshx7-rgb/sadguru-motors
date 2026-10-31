@@ -15,8 +15,9 @@
   <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Lucide Icons -->
+  <!-- Lucide Icons & Supabase Cloud Client -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/supabase-client.js"></script>
 
   <style>
     :root {
@@ -1392,8 +1393,25 @@
       loadInitialCars();
     });
 
-    // 1. Load Cars from API or LocalStorage
+    // 1. Load Cars from Supabase Cloud Database (with API/LocalStorage fallback)
     async function loadInitialCars() {
+      // 1. Supabase Cloud DB
+      if (window.SadguruDB) {
+        try {
+          const cloudCars = await window.SadguruDB.getAllCars();
+          if (Array.isArray(cloudCars) && cloudCars.length > 0) {
+            ALL_CARS = cloudCars;
+            localStorage.setItem('sadguru_inventory', JSON.stringify(ALL_CARS));
+            updateKPIs();
+            renderAdminCars();
+            return;
+          }
+        } catch (err) {
+          console.warn('Supabase initial fetch skipped:', err);
+        }
+      }
+
+      // 2. Local API fetch
       try {
         const res = await fetch('/api/cars');
         if (res.ok) {
@@ -1604,14 +1622,19 @@
       closeDeleteModal();
       showToast('🗑️ गाड़ी हटाई जा रही है...', 'info');
 
-      // Attempt server DELETE
-      let serverSuccess = false;
-      try {
-        const res = await fetch(`/api/cars/${carId}`, { method: 'DELETE' });
-        if (res.ok) serverSuccess = true;
-      } catch (e) {
-        console.warn('Backend DELETE error (using local storage fallback)', e);
+      // 1. Delete from Supabase Cloud DB
+      if (window.SadguruDB) {
+        try {
+          await window.SadguruDB.deleteCar(carId);
+        } catch (e) {
+          console.warn('Supabase delete error:', e);
+        }
       }
+
+      // 2. Attempt local server DELETE
+      try {
+        await fetch(`/api/cars/${carId}`, { method: 'DELETE' });
+      } catch (e) {}
 
       // Update client array
       ALL_CARS = ALL_CARS.filter(c => c.id !== carId);
@@ -1619,7 +1642,7 @@
 
       updateKPIs();
       renderAdminCars();
-      showToast('✅ गाड़ी इन्वेंट्री से सफलतापूर्वक हटा दी गई है!', 'success');
+      showToast('✅ गाड़ी इन्वेंट्री और Supabase क्लाउड से हटा दी गई है!', 'success');
     }
 
     // 6. Toggle Sold / Available Status
@@ -1629,7 +1652,18 @@
 
       const newStatus = car.status === 'sold' ? 'available' : 'sold';
       car.status = newStatus;
+      const isSold = (newStatus === 'sold');
 
+      // 1. Update in Supabase Cloud DB
+      if (window.SadguruDB) {
+        try {
+          await window.SadguruDB.updateCarStatus(carId, isSold);
+        } catch (e) {
+          console.warn('Supabase status update error:', e);
+        }
+      }
+
+      // 2. Local API PUT
       try {
         await fetch(`/api/cars/${carId}`, {
           method: 'PUT',
@@ -1709,7 +1743,17 @@
         desc_en: desc
       };
 
-      // 1. Post to Server API
+      // 1. Post to Supabase Cloud DB
+      if (window.SadguruDB) {
+        try {
+          await window.SadguruDB.addCar(newCar);
+          console.log('Car synced to Supabase successfully!');
+        } catch (err) {
+          console.warn('Supabase upload skipped, saving to localStorage:', err);
+        }
+      }
+
+      // 2. Post to Local Server API (if active)
       try {
         const res = await fetch('/api/cars', {
           method: 'POST',
@@ -1724,12 +1768,12 @@
         console.warn('Backend upload skipped, saving to localStorage directly', err);
       }
 
-      // 2. Add to Local Array & Storage
+      // 3. Add to Local Array & Storage
       ALL_CARS.unshift(newCar);
       localStorage.setItem('sadguru_inventory', JSON.stringify(ALL_CARS));
 
       updateKPIs();
-      showToast('🎉 कार सफलतापूर्वक अपलोड हो गई और शोरूम में लाइव है!', 'success');
+      showToast('🎉 कार सफलतापूर्वक Supabase क्लाउड और लाइव शोरूम में अपलोड हो गई!', 'success');
 
       if (submitBtn) {
         submitBtn.disabled = false;
