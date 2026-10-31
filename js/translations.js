@@ -23,6 +23,10 @@ const APP_TRANSLATIONS = {
     nav_contact: 'शोरूम पता',
     nav_admin: 'कार अपलोड / Admin',
     btn_test_drive: 'टेस्ट ड्राइव',
+    dock_3d: '3D शोरूम',
+    dock_cars: 'गाड़ियां',
+    dock_emi: 'EMI',
+    dock_call: 'कॉल',
 
     // Hero Real Car Showcase
     hero_badge: 'सेक्टर 14, गुड़गांव शोरूम लाइव • 50+ गाड़ियां उपलब्ध',
@@ -220,6 +224,10 @@ const APP_TRANSLATIONS = {
     nav_contact: 'Showroom Location',
     nav_admin: 'Upload Car / Admin',
     btn_test_drive: 'Test Drive',
+    dock_3d: '3D Studio',
+    dock_cars: 'Cars',
+    dock_emi: 'EMI',
+    dock_call: 'Call',
 
     // Hero Real Car Showcase
     hero_badge: 'Sector 14, Gurugram Showroom Live • 50+ Cars Available',

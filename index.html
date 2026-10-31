@@ -122,42 +122,6 @@
 
   <!-- ================= HERO SHOWCASE: FEATURED VERNA SX SPORT (3D & REAL HD) ================= -->
   <section class="hero-3d-section" id="virtual-showroom">
-    <!-- 3D WebGL Interactive Car Canvas (Hero Primary) -->
-    <div id="canvas-container" class="hero-view-panel active"></div>
-
-    <!-- Real Car HD Multi-Angle Studio Stage (Dual Mode) -->
-    <div id="real-car-showcase" class="hero-view-panel" style="display: none;">
-      <div class="hero-car-main-view">
-        <!-- Main Car Image on Stage -->
-        <div class="hero-car-stage-wrapper" title="कार के अलग-अलग एंगल देखने के लिए तीर या नीचे थंबनेल पर क्लिक करें">
-          <img id="hero-main-car-img" src="assets/car-photos/verna-hero-34.jpg" alt="2022 Hyundai Verna 1.5 CRDi AT SX Sport" class="hero-car-stage-img" />
-          
-          <!-- Stage Lighting and Reflection Floor Glow -->
-          <div class="hero-stage-podium"></div>
-
-          <!-- Arrow Navigation on Car Stage -->
-          <button class="hero-nav-arrow arrow-prev" id="btn-hero-prev" aria-label="Previous Car Angle" title="पिछला एंगल">
-            <i data-lucide="chevron-left"></i>
-          </button>
-          <button class="hero-nav-arrow arrow-next" id="btn-hero-next" aria-label="Next Car Angle" title="अगला एंगल">
-            <i data-lucide="chevron-right"></i>
-          </button>
-
-          <!-- Current Angle Badge Pill -->
-          <div class="hero-angle-indicator" id="hero-angle-label">
-            <i data-lucide="camera" style="width: 14px; height: 14px;"></i>
-            <span id="hero-angle-text">1. फ्रंट 3/4 (Hero)</span>
-          </div>
-
-          <!-- Fullscreen Lightbox Button -->
-          <button class="hero-inspect-btn" onclick="window.openVernaGalleryModal()" title="19 HD फोटोज़ और सरकारी RC देखें">
-            <i data-lucide="maximize-2" style="width: 15px; height: 15px;"></i>
-            <span data-i18n="btn_inspect_all_photos">सभी 19 फोटो व RC देखें</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!-- Showroom HUD Overlay -->
     <div class="showroom-hud">
       <!-- HUD Top Row -->
@@ -211,6 +175,45 @@
               <div class="rev-bar-track">
                 <div class="rev-bar-fill"></div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Stage Viewport: 3D Canvas / Real Car HD Studio -->
+      <div class="hero-stage-viewport">
+        <!-- 3D WebGL Interactive Car Canvas (Hero Primary) -->
+        <div id="canvas-container" class="hero-view-panel active"></div>
+
+        <!-- Real Car HD Multi-Angle Studio Stage (Dual Mode) -->
+        <div id="real-car-showcase" class="hero-view-panel" style="display: none;">
+          <div class="hero-car-main-view">
+            <!-- Main Car Image on Stage -->
+            <div class="hero-car-stage-wrapper" title="कार के अलग-अलग एंगल देखने के लिए तीर या नीचे थंबनेल पर क्लिक करें">
+              <img id="hero-main-car-img" src="assets/car-photos/verna-hero-34.jpg" alt="2022 Hyundai Verna 1.5 CRDi AT SX Sport" class="hero-car-stage-img" />
+              
+              <!-- Stage Lighting and Reflection Floor Glow -->
+              <div class="hero-stage-podium"></div>
+
+              <!-- Arrow Navigation on Car Stage -->
+              <button class="hero-nav-arrow arrow-prev" id="btn-hero-prev" aria-label="Previous Car Angle" title="पिछला एंगल">
+                <i data-lucide="chevron-left"></i>
+              </button>
+              <button class="hero-nav-arrow arrow-next" id="btn-hero-next" aria-label="Next Car Angle" title="अगला एंगल">
+                <i data-lucide="chevron-right"></i>
+              </button>
+
+              <!-- Current Angle Badge Pill -->
+              <div class="hero-angle-indicator" id="hero-angle-label">
+                <i data-lucide="camera" style="width: 14px; height: 14px;"></i>
+                <span id="hero-angle-text">1. फ्रंट 3/4 (Hero)</span>
+              </div>
+
+              <!-- Fullscreen Lightbox Button -->
+              <button class="hero-inspect-btn" onclick="window.openVernaGalleryModal()" title="19 HD फोटोज़ और सरकारी RC देखें">
+                <i data-lucide="maximize-2" style="width: 15px; height: 15px;"></i>
+                <span data-i18n="btn_inspect_all_photos">सभी 19 फोटो व RC देखें</span>
+              </button>
             </div>
           </div>
         </div>
@@ -1057,6 +1060,30 @@
       </div>
     </div>
   </div>
+
+  <!-- Floating Mobile Quick Action Dock (Visible ONLY on mobile devices) -->
+  <nav class="mobile-bottom-dock" aria-label="Mobile Quick Navigation">
+    <a href="#virtual-showroom" class="dock-item active" title="3D वर्चुअल शोरूम">
+      <i data-lucide="box"></i>
+      <span data-i18n="dock_3d">3D शोरूम</span>
+    </a>
+    <a href="#inventory" class="dock-item" title="सर्टिफाइड कार्स">
+      <i data-lucide="car"></i>
+      <span data-i18n="dock_cars">गाड़ियां</span>
+    </a>
+    <a href="#emi-calc" class="dock-item" title="ईएमआई कैलकुलेटर">
+      <i data-lucide="calculator"></i>
+      <span data-i18n="dock_emi">EMI</span>
+    </a>
+    <a href="tel:+919810123456" class="dock-item dock-call" title="कॉल करें">
+      <i data-lucide="phone-call"></i>
+      <span data-i18n="dock_call">कॉल</span>
+    </a>
+    <a href="https://wa.me/919810123456?text=नमस्ते सद्गुरु मोटर्स, मुझे गाड़ी खरीदनी/बेचनी है।" target="_blank" class="dock-item dock-wa" title="WhatsApp पर चैट करें">
+      <i data-lucide="message-circle"></i>
+      <span>WhatsApp</span>
+    </a>
+  </nav>
 
   <!-- Client-side Scripts -->
   <script src="js/translations.js"></script>
