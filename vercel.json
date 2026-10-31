@@ -1,8 +1,23 @@
 {
   "version": 2,
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/admin", "destination": "/admin.html" },
-    { "source": "/api/cars", "destination": "/data/cars.json" }
+  "builds": [
+    {
+      "src": "**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/admin",
+      "dest": "/admin.html"
+    },
+    {
+      "src": "/api/cars",
+      "dest": "/data/cars.json"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
