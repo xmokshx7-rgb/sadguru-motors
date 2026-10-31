@@ -7,7 +7,8 @@
 const SUPABASE_CONFIG = {
   url: 'https://jcjbufwcwizxijcjjryq.supabase.co',
   anonKey: 'sb_publishable_pG1dDGKLCNvgSvGTjLVYXQ_b0epjODb',
-  table: 'cars'
+  table: 'cars',
+  leadsTable: 'customer_leads'
 };
 
 window.SadguruDB = {
@@ -80,6 +81,116 @@ window.SadguruDB = {
       return res.ok;
     } catch (err) {
       console.error('Supabase deleteCar error:', err);
+      return false;
+    }
+  },
+
+  /* ================= GOOGLE CUSTOMER LEADS API ================= */
+  async getAllLeads() {
+    let cloudLeads = [];
+    try {
+      const res = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/${SUPABASE_CONFIG.leadsTable}?select=*&order=last_login.desc`, {
+        headers: {
+          'apikey': SUPABASE_CONFIG.anonKey,
+          'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`
+        }
+      });
+      if (res.ok) {
+        cloudLeads = await res.json();
+      }
+    } catch (err) {
+      console.warn('Supabase leads fetch failed, falling back to local storage:', err);
+    }
+
+    // Merge with local storage leads to ensure 0% data loss
+    try {
+      const localLeads = JSON.parse(localStorage.getItem('sadguru_customer_leads') || '[]');
+      const leadMap = new Map();
+      cloudLeads.forEach(l => leadMap.set(l.email || l.id, l));
+      localLeads.forEach(l => {
+        const key = l.email || l.id;
+        if (!leadMap.has(key)) {
+          leadMap.set(key, l);
+        } else {
+          // Merge fresher timestamps
+          const existing = leadMap.get(key);
+          if (new Date(l.last_login || 0) > new Date(existing.last_login || 0)) {
+            leadMap.set(key, { ...existing, ...l });
+          }
+        }
+      });
+      return Array.from(leadMap.values());
+    } catch (e) {
+      return cloudLeads;
+    }
+  },
+
+  async recordCustomerLead(leadData) {
+    const nowIso = new Date().toISOString();
+    const cleanLead = {
+      id: leadData.id || ('usr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5)),
+      name: leadData.name || 'Google User',
+      email: leadData.email || '',
+      picture: leadData.picture || '',
+      provider: leadData.provider || 'google',
+      created_at: leadData.created_at || nowIso,
+      last_login: nowIso,
+      phone: leadData.phone || '',
+      car_interest: leadData.car_interest || ''
+    };
+
+    // 1. Immediately cache in local storage (instant response)
+    try {
+      const localLeads = JSON.parse(localStorage.getItem('sadguru_customer_leads') || '[]');
+      const existingIdx = localLeads.findIndex(l => l.email === cleanLead.email);
+      if (existingIdx >= 0) {
+        localLeads[existingIdx] = { ...localLeads[existingIdx], ...cleanLead, created_at: localLeads[existingIdx].created_at || cleanLead.created_at };
+      } else {
+        localLeads.unshift(cleanLead);
+      }
+      localStorage.setItem('sadguru_customer_leads', JSON.stringify(localLeads));
+    } catch (e) {
+      console.warn('Local lead save warning:', e);
+    }
+
+    // 2. Persist to Supabase Cloud Database (if table exists)
+    try {
+      const res = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/${SUPABASE_CONFIG.leadsTable}`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_CONFIG.anonKey,
+          'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'resolution=merge-duplicates'
+        },
+        body: JSON.stringify(cleanLead)
+      });
+      return res.ok;
+    } catch (err) {
+      console.warn('Supabase lead write failed (cached locally):', err);
+      return false;
+    }
+  },
+
+  async deleteLead(leadId) {
+    // Delete from local cache
+    try {
+      const localLeads = JSON.parse(localStorage.getItem('sadguru_customer_leads') || '[]');
+      const filtered = localLeads.filter(l => l.id !== leadId && l.email !== leadId);
+      localStorage.setItem('sadguru_customer_leads', JSON.stringify(filtered));
+    } catch (e) {}
+
+    // Delete from Supabase
+    try {
+      const res = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/${SUPABASE_CONFIG.leadsTable}?id=eq.${encodeURIComponent(leadId)}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_CONFIG.anonKey,
+          'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`
+        }
+      });
+      return res.ok;
+    } catch (err) {
       return false;
     }
   },

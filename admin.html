@@ -313,6 +313,178 @@
       border-radius: 3px 3px 0 0;
     }
 
+    .badge-leads-count {
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+    .leads-stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .leads-stat-item {
+      background: #f8fafc;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+    }
+    .leads-stat-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--royal-blue);
+    }
+    .leads-stat-lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Leads Table */
+    .leads-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      background: var(--pure-white);
+    }
+    .leads-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .leads-table th {
+      background: #f8fafc;
+      padding: 12px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      border-bottom: 1.5px solid var(--card-border);
+    }
+    .leads-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--card-border);
+      vertical-align: middle;
+      font-size: 0.88rem;
+    }
+    .leads-table tr:hover td {
+      background: #f8fafc;
+    }
+    .lead-profile-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .lead-avatar-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #3b82f6;
+    }
+    .lead-name-text {
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lead-email-link {
+      color: var(--royal-blue);
+      text-decoration: none;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .lead-email-link:hover {
+      text-decoration: underline;
+    }
+    .badge-google-verified {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    .lead-action-btns {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-lead-wa {
+      background: #22c55e;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+    }
+    .btn-lead-wa:hover {
+      background: #16a34a;
+    }
+    .btn-lead-del {
+      background: none;
+      border: 1px solid #fecaca;
+      color: #dc2626;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+    .btn-lead-del:hover {
+      background: #fee2e2;
+    }
+
+    /* Google Console Instructions Box */
+    .google-setup-card {
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .google-setup-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #166534;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .google-setup-desc {
+      font-size: 0.85rem;
+      color: #14532d;
+      line-height: 1.5;
+    }
+    .sql-code-box {
+      background: #0f172a;
+      color: #38bdf8;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.82rem;
+      overflow-x: auto;
+      margin: 10px 0;
+      position: relative;
+    }
+
     /* Form Container */
     .panel-card {
       background: var(--pure-white);
@@ -916,6 +1088,16 @@
           <div class="kpi-label">कुल स्टॉक वैल्यू (Valuation)</div>
         </div>
       </div>
+
+      <div class="kpi-card" onclick="switchTab('leads')" style="cursor: pointer;" title="Google लीड्स देखने के लिए क्लिक करें">
+        <div class="kpi-icon" style="background: #ecfdf5; color: #059669;">
+          <i data-lucide="users" style="width: 26px; height: 26px;"></i>
+        </div>
+        <div>
+          <div class="kpi-val" id="kpi-total-leads">0</div>
+          <div class="kpi-label">रजिस्टर्ड ग्राहक (Google Leads)</div>
+        </div>
+      </div>
     </div>
 
     <!-- Tab Bar -->
@@ -927,6 +1109,11 @@
       <button class="tab-btn" id="tab-btn-manage" onclick="switchTab('manage')">
         <i data-lucide="list-filter" style="width: 18px; height: 18px;"></i>
         <span>कार प्रबंधन व हटाएं (Manage & Remove)</span>
+      </button>
+      <button class="tab-btn" id="tab-btn-leads" onclick="switchTab('leads')">
+        <i data-lucide="users" style="width: 18px; height: 18px;"></i>
+        <span>गूगल लॉगिन ग्राहक (Google Leads)</span>
+        <span class="badge-leads-count" id="leads-badge-count">0</span>
       </button>
     </div>
 
@@ -1231,6 +1418,124 @@
       </div>
     </div>
 
+    <!-- ================= TAB 3: GOOGLE LEADS SECTION ================= -->
+    <div id="section-leads" style="display: none;">
+      <div class="panel-card">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">
+              <i data-lucide="users" style="color: var(--emerald); width: 22px; height: 22px;"></i>
+              🔐 गूगल 1-क्लिक लॉगिन ग्राहक व लीड्स (Google Verified Leads)
+            </h2>
+            <p class="panel-subtitle">
+              वेबसाइट पर गूगल अकाउंट से लॉगिन करने वाले ग्राहकों का रियल-टाइम डेटाबेस। सीधे 1-क्लिक में WhatsApp करें या कॉल लगाएं।
+            </p>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn btn-outline" onclick="exportLeadsCSV()" title="CSV / Excel में डाउनलोड करें">
+              <i data-lucide="download" style="width: 15px; height: 15px;"></i>
+              <span>Excel/CSV एक्सपोर्ट</span>
+            </button>
+            <button class="btn btn-primary" onclick="testAddSampleLead()" title="टेस्ट लीड जोड़कर चेक करें">
+              <i data-lucide="user-plus" style="width: 15px; height: 15px;"></i>
+              <span>+ टेस्ट ग्राहक जोड़ें</span>
+            </button>
+            <button class="btn btn-secondary" onclick="renderAdminLeads()" title="डेटा रीफ्रेश करें">
+              <i data-lucide="rotate-cw" style="width: 15px; height: 15px;"></i>
+              <span>रीफ्रेश</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Leads Stats Counters -->
+        <div class="leads-stats-row">
+          <div class="leads-stat-item">
+            <div class="leads-stat-num" id="stat-total-leads">0</div>
+            <div class="leads-stat-lbl">कुल रजिस्टर्ड ग्राहक (Total Leads)</div>
+          </div>
+          <div class="leads-stat-item">
+            <div class="leads-stat-num" style="color: #059669;" id="stat-today-leads">0</div>
+            <div class="leads-stat-lbl">आज के नए लॉगिन (Today's Visits)</div>
+          </div>
+          <div class="leads-stat-item">
+            <div class="leads-stat-num" style="color: #2563eb;">100%</div>
+            <div class="leads-stat-lbl">गूगल वेरिफाइड प्रोफाइल्स</div>
+          </div>
+          <div class="leads-stat-item">
+            <div class="leads-stat-num" style="color: #d97706;" id="stat-active-provider">Google GIS</div>
+            <div class="leads-stat-lbl">सक्रिय ऑथेंटिकेशन प्रोवाइडर</div>
+          </div>
+        </div>
+
+        <!-- Search Bar for Leads -->
+        <div class="inventory-toolbar" style="margin-bottom: 16px;">
+          <div class="search-input-box" style="flex: 1;">
+            <i data-lucide="search" style="width: 18px; height: 18px;"></i>
+            <input type="text" id="leads-search-input" placeholder="ग्राहक का नाम या ईमेल खोजें..." oninput="filterAdminLeads()" />
+          </div>
+        </div>
+
+        <!-- Leads Table -->
+        <div class="leads-table-wrap">
+          <table class="leads-table">
+            <thead>
+              <tr>
+                <th>ग्राहक का नाम व फ़ोटो</th>
+                <th>ईमेल आईडी (Gmail)</th>
+                <th>फ़ोन नंबर</th>
+                <th>पहला लॉगिन समय</th>
+                <th>अंतिम बार एक्टिव</th>
+                <th>क्विक एक्शन</th>
+              </tr>
+            </thead>
+            <tbody id="leads-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Google Cloud Console Integration Setup Card -->
+        <div class="google-setup-card">
+          <div class="google-setup-title">
+            <i data-lucide="settings" style="width: 18px; height: 18px;"></i>
+            Google Cloud Console OAuth 2.0 Client ID सेटिंग्स
+          </div>
+          <p class="google-setup-desc">
+            अगर आप अपना खुद का Google Cloud Client ID डालना चाहते हैं, तो <strong>console.cloud.google.com</strong> से Web OAuth Client ID बनाकर नीचे सेव कर सकते हैं:
+          </p>
+          <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+            <input type="text" id="admin-google-client-id" class="form-control" style="flex: 1; min-width: 280px;" placeholder="xxxxxxxxx.apps.googleusercontent.com" />
+            <button type="button" class="btn btn-primary" onclick="saveGoogleClientId()">
+              <i data-lucide="save" style="width: 15px; height: 15px;"></i>
+              <span>Google ID सेव करें</span>
+            </button>
+          </div>
+
+          <div style="margin-top: 14px;">
+            <span style="font-size: 0.82rem; font-weight: 700; color: #166534;">📋 Supabase में `customer_leads` टेबल बनाने के लिए SQL कोड (1-क्लिक कॉपी):</span>
+            <div class="sql-code-box" id="leads-sql-code">CREATE TABLE IF NOT EXISTS customer_leads (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  picture TEXT,
+  provider TEXT DEFAULT 'google',
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  last_login TIMESTAMPTZ DEFAULT NOW(),
+  phone TEXT,
+  car_interest TEXT
+);
+ALTER TABLE customer_leads ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public Full Leads" ON customer_leads FOR ALL USING (true);</div>
+            <button type="button" class="btn btn-outline" style="font-size: 0.78rem; padding: 5px 12px;" onclick="copyLeadsSql()">
+              <i data-lucide="copy" style="width: 14px; height: 14px;"></i>
+              <span>SQL कॉपी करें</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </main>
 
   <!-- Delete Confirmation Modal -->
@@ -1391,6 +1696,11 @@
     document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) lucide.createIcons();
       loadInitialCars();
+      updateLeadsCount();
+      const savedGoogleId = localStorage.getItem('sadguru_google_client_id');
+      if (savedGoogleId && document.getElementById('admin-google-client-id')) {
+        document.getElementById('admin-google-client-id').value = savedGoogleId;
+      }
     });
 
     // 1. Load Cars from Supabase Cloud Database (with API/LocalStorage fallback)
@@ -1458,30 +1768,41 @@
       showToast('✅ इन्वेंट्री सफलतापूर्वक सिंक हो गई!', 'success');
     }
 
+    let ALL_LEADS = [];
+
     // 2. Tab Switcher
     function switchTab(tabId) {
       const uploadSec = document.getElementById('section-upload');
       const manageSec = document.getElementById('section-manage');
+      const leadsSec = document.getElementById('section-leads');
       const btnUpload = document.getElementById('tab-btn-upload');
       const btnManage = document.getElementById('tab-btn-manage');
+      const btnLeads = document.getElementById('tab-btn-leads');
+
+      uploadSec.style.display = 'none';
+      manageSec.style.display = 'none';
+      if (leadsSec) leadsSec.style.display = 'none';
+      btnUpload.classList.remove('active');
+      btnManage.classList.remove('active');
+      if (btnLeads) btnLeads.classList.remove('active');
 
       if (tabId === 'upload') {
         uploadSec.style.display = 'block';
-        manageSec.style.display = 'none';
         btnUpload.classList.add('active');
-        btnManage.classList.remove('active');
-      } else {
-        uploadSec.style.display = 'none';
+      } else if (tabId === 'manage') {
         manageSec.style.display = 'block';
-        btnUpload.classList.remove('active');
         btnManage.classList.add('active');
         renderAdminCars();
+      } else if (tabId === 'leads') {
+        if (leadsSec) leadsSec.style.display = 'block';
+        if (btnLeads) btnLeads.classList.add('active');
+        renderAdminLeads();
       }
       if (window.lucide) lucide.createIcons();
     }
 
     // 3. Update KPIs
-    function updateKPIs() {
+    async function updateKPIs() {
       const total = ALL_CARS.length;
       const sold = ALL_CARS.filter(c => c.status === 'sold').length;
       const available = total - sold;
@@ -1496,6 +1817,199 @@
 
       const countAll = document.getElementById('count-all');
       if (countAll) countAll.textContent = total;
+
+      await updateLeadsCount();
+    }
+
+    async function updateLeadsCount() {
+      try {
+        let leads = [];
+        if (window.SadguruDB && typeof window.SadguruDB.getAllLeads === 'function') {
+          leads = await window.SadguruDB.getAllLeads();
+        } else {
+          leads = JSON.parse(localStorage.getItem('sadguru_customer_leads') || '[]');
+        }
+        ALL_LEADS = leads || [];
+        const leadsCountEl = document.getElementById('kpi-total-leads');
+        const leadsBadgeEl = document.getElementById('leads-badge-count');
+        const statTotalEl = document.getElementById('stat-total-leads');
+        const statTodayEl = document.getElementById('stat-today-leads');
+
+        if (leadsCountEl) leadsCountEl.textContent = ALL_LEADS.length;
+        if (leadsBadgeEl) leadsBadgeEl.textContent = ALL_LEADS.length;
+        if (statTotalEl) statTotalEl.textContent = ALL_LEADS.length;
+
+        const todayStr = new Date().toISOString().slice(0, 10);
+        const todayCount = ALL_LEADS.filter(l => (l.last_login || l.created_at || '').slice(0, 10) === todayStr).length;
+        if (statTodayEl) statTodayEl.textContent = todayCount;
+      } catch (e) {
+        console.warn('Leads count error:', e);
+      }
+    }
+
+    // 3.1 Render Google Leads in Leads Tab
+    async function renderAdminLeads() {
+      await updateLeadsCount();
+      const tbody = document.getElementById('leads-table-body');
+      if (!tbody) return;
+
+      const q = (document.getElementById('leads-search-input')?.value || '').toLowerCase().trim();
+      let filtered = ALL_LEADS;
+      if (q) {
+        filtered = ALL_LEADS.filter(l => 
+          (l.name || '').toLowerCase().includes(q) ||
+          (l.email || '').toLowerCase().includes(q) ||
+          (l.phone || '').includes(q)
+        );
+      }
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 36px 20px; color: var(--text-muted);">
+              <i data-lucide="users" style="width: 38px; height: 38px; margin: 0 auto 10px; display: block; opacity: 0.4;"></i>
+              <strong>कोई ग्राहक या लीड नहीं मिली</strong>
+              <p style="font-size: 0.85rem; margin-top: 4px;">जैसे ही ग्राहक वेबसाइट पर Google One-Click Login करेगा, उसका डेटा यहाँ स्वतः दिखेगा।</p>
+              <button class="btn btn-outline" style="margin-top: 12px; font-size: 0.82rem;" onclick="testAddSampleLead()">
+                <i data-lucide="user-plus" style="width: 14px; height: 14px;"></i>
+                <span>टेस्ट ग्राहक जोड़कर देखें</span>
+              </button>
+            </td>
+          </tr>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      const defaultAvatar = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%232563eb'/><text x='50%' y='55%' font-size='42' font-family='sans-serif' fill='white' text-anchor='middle' dominant-baseline='middle'>👤</text></svg>";
+
+      tbody.innerHTML = filtered.map(lead => {
+        const createdDate = lead.created_at ? new Date(lead.created_at).toLocaleString('hi-IN', { dateStyle: 'medium', timeStyle: 'short' }) : 'आज';
+        const lastLoginDate = lead.last_login ? new Date(lead.last_login).toLocaleString('hi-IN', { dateStyle: 'medium', timeStyle: 'short' }) : 'हाल ही में';
+        const waText = encodeURIComponent(`नमस्ते ${lead.name} जी, सद्गुरु मोटर्स (सेक्टर 14 गुड़गांव) में आपका स्वागत है। आपने हमारी वेबसाइट पर विजिट किया था, क्या आप किसी गाड़ी की टेस्ट ड्राइव या जानकारी चाहते हैं?`);
+        const phone = lead.phone || 'उपलब्ध नहीं';
+
+        return `
+          <tr>
+            <td>
+              <div class="lead-profile-box">
+                <img src="${lead.picture || defaultAvatar}" class="lead-avatar-img" onerror="this.src='${defaultAvatar}'" />
+                <div>
+                  <div class="lead-name-text">
+                    ${lead.name}
+                    <span class="badge-google-verified">✓ Google Verified</span>
+                  </div>
+                  <span style="font-size: 0.74rem; color: var(--text-muted);">${lead.provider ? lead.provider.toUpperCase() : 'GOOGLE'} SSO</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <a href="mailto:${lead.email}" class="lead-email-link" title="ईमेल भेजें">
+                <i data-lucide="mail" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i>
+                ${lead.email}
+              </a>
+            </td>
+            <td>
+              <span style="font-weight: 600; color: var(--text-body);">${phone}</span>
+            </td>
+            <td style="font-size: 0.82rem; color: var(--text-muted);">${createdDate}</td>
+            <td style="font-size: 0.82rem; color: #059669; font-weight: 600;">${lastLoginDate}</td>
+            <td>
+              <div class="lead-action-btns">
+                <a href="https://wa.me/?text=${waText}" target="_blank" class="btn-lead-wa" title="WhatsApp पर बात करें">
+                  <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
+                  <span>WhatsApp</span>
+                </a>
+                <button class="btn-lead-del" onclick="deleteAdminLead('${lead.id || lead.email}')" title="लीड हटाएं">
+                  <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function filterAdminLeads() {
+      renderAdminLeads();
+    }
+
+    async function deleteAdminLead(id) {
+      if (!confirm('क्या आप इस ग्राहक लीड को हटाना चाहते हैं?')) return;
+      if (window.SadguruDB && typeof window.SadguruDB.deleteLead === 'function') {
+        await window.SadguruDB.deleteLead(id);
+      } else {
+        const local = JSON.parse(localStorage.getItem('sadguru_customer_leads') || '[]');
+        const filtered = local.filter(l => l.id !== id && l.email !== id);
+        localStorage.setItem('sadguru_customer_leads', JSON.stringify(filtered));
+      }
+      showToast('लीड हटा दी गई!', 'success');
+      renderAdminLeads();
+    }
+
+    function exportLeadsCSV() {
+      if (!ALL_LEADS || ALL_LEADS.length === 0) {
+        showToast('एक्सपोर्ट करने के लिए कोई ग्राहक डेटा नहीं है!', 'error');
+        return;
+      }
+      let csv = 'ID,Name,Email,Phone,Provider,Registered Date,Last Login\n';
+      ALL_LEADS.forEach(l => {
+        csv += `"${l.id || ''}","${(l.name || '').replace(/"/g, '""')}","${l.email || ''}","${l.phone || ''}","${l.provider || 'google'}","${l.created_at || ''}","${l.last_login || ''}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `sadguru_customers_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Excel CSV फाइल डाउनलोड हो गई!', 'success');
+    }
+
+    async function testAddSampleLead() {
+      const names = ['राजेश खन्ना', 'प्रियंका सिंह', 'मनोज कुमार', 'सुनील यादव', 'आकाश मल्होत्रा'];
+      const rName = names[Math.floor(Math.random() * names.length)];
+      const sample = {
+        id: 'usr_' + Date.now(),
+        name: rName,
+        email: rName.toLowerCase().replace(/\s+/g, '.') + Math.floor(Math.random() * 89 + 10) + '@gmail.com',
+        phone: '98' + Math.floor(Math.random() * 89999999 + 10000000),
+        picture: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(rName)}&backgroundColor=1e40af`,
+        provider: 'google',
+        created_at: new Date().toISOString(),
+        last_login: new Date().toISOString()
+      };
+      if (window.SadguruDB && typeof window.SadguruDB.recordCustomerLead === 'function') {
+        await window.SadguruDB.recordCustomerLead(sample);
+      } else {
+        const local = JSON.parse(localStorage.getItem('sadguru_customer_leads') || '[]');
+        local.unshift(sample);
+        localStorage.setItem('sadguru_customer_leads', JSON.stringify(local));
+      }
+      showToast(`टेस्ट ग्राहक "${sample.name}" सफलतापूर्वक जुड़ गया!`, 'success');
+      renderAdminLeads();
+    }
+
+    function saveGoogleClientId() {
+      const input = document.getElementById('admin-google-client-id');
+      if (!input) return;
+      const val = input.value.trim();
+      if (!val) {
+        alert('कृपया वैध Google Client ID दर्ज करें।');
+        return;
+      }
+      localStorage.setItem('sadguru_google_client_id', val);
+      showToast('Google OAuth Client ID सफलतापूर्वक सेव हो गई!', 'success');
+    }
+
+    function copyLeadsSql() {
+      const code = document.getElementById('leads-sql-code')?.innerText;
+      if (code && navigator.clipboard) {
+        navigator.clipboard.writeText(code);
+        showToast('SQL कोड क्लिपबोर्ड पर कॉपी हो गया!', 'success');
+      }
     }
 
     // 4. Render Cars in Manage Tab

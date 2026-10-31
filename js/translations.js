@@ -11,6 +11,7 @@ const APP_TRANSLATIONS = {
     top_call: '+91 98101 23456',
     top_whatsapp: 'WhatsApp चैट',
     top_admin: 'डीलर पोर्टल (Admin)',
+    top_google_login: 'Google लॉगिन',
 
     // Navbar
     brand_title: 'सद्गुरु मोटर्स',
@@ -212,6 +213,7 @@ const APP_TRANSLATIONS = {
     top_call: '+91 98101 23456',
     top_whatsapp: 'WhatsApp Chat',
     top_admin: 'Dealer Portal (Admin)',
+    top_google_login: 'Google Login',
 
     // Navbar
     brand_title: 'Sadguru Motors',
