@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>डीलर पोर्टल | सद्गुरु मोटर्स (Sadguru Motors) - सेक्टर 14 गुड़गांव</title>
+  <meta name="description" content="सद्गुरु मोटर्स डीलर मैनेजमेंट पोर्टल - आसानी से नई गाड़ियां अपलोड करें और मौजूदा इन्वेंट्री प्रबंधित या हटाएं।" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+
+  <!-- Apple SF Pro Font & Hind Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --royal-blue: #1e40af;
+      --royal-blue-hover: #1d4ed8;
+      --navy-dark: #0f2347;
+      --navy-deep: #0a1832;
+      --blue-subtle: #eff6ff;
+      --blue-border: #bfdbfe;
+      --pure-white: #ffffff;
+      --bg-slate: #f8fafc;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --emerald: #059669;
+      --emerald-bg: #ecfdf5;
+      --crimson: #dc2626;
+      --crimson-bg: #fef2f2;
+      --amber: #d97706;
+      --amber-bg: #fffbeb;
+
+      --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", system-ui, "Segoe UI", Roboto, "Hind", sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 25px -3px rgba(30, 64, 175, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--font-family);
+    }
+
+    body {
+      background-color: var(--bg-slate);
+      color: var(--text-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 60px;
+    }
+
+    /* Top Announcement */
+    .admin-topbar {
+      background: var(--navy-deep);
+      color: #cbd5e1;
+      padding: 8px 24px;
+      font-size: 0.84rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .admin-topbar a {
+      color: #93c5fd;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .admin-topbar a:hover {
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .admin-header {
+      background: var(--pure-white);
+      border-bottom: 1.5px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-crest {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #1e40af, #0a1832);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.3);
+    }
+
+    .brand-info h1 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--royal-blue);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .brand-info span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-dealer {
+      background: var(--blue-subtle);
+      color: var(--royal-blue);
+      border: 1px solid var(--blue-border);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--royal-blue);
+      color: var(--pure-white);
+      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.25);
+    }
+    .btn-primary:hover {
+      background: var(--royal-blue-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: var(--pure-white);
+      color: var(--royal-blue);
+      border: 1.5px solid var(--blue-border);
+    }
+    .btn-outline:hover {
+      background: var(--blue-subtle);
+    }
+
+    .btn-danger {
+      background: var(--crimson);
+      color: var(--pure-white);
+    }
+    .btn-danger:hover {
+      background: #b91c1c;
+    }
+
+    .btn-success {
+      background: var(--emerald);
+      color: var(--pure-white);
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: var(--text-body);
+      border: 1px solid var(--card-border);
+    }
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    /* Container */
+    .main-container {
+      max-width: 1300px;
+      margin: 24px auto 0 auto;
+      padding: 0 24px;
+    }
+
+    /* KPI Bar */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: var(--pure-white);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.2s ease;
+    }
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .kpi-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .kpi-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .kpi-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* Navigation Tabs */
+    .tab-bar {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid var(--card-border);
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: var(--royal-blue);
+    }
+
+    .tab-btn.active {
+      color: var(--royal-blue);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--royal-blue);
+      border-radius: 3px 3px 0 0;
+    }
+
+    /* Form Container */
+    .panel-card {
+      background: var(--pure-white);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 30px;
+    }
+
+    .panel-header {
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .panel-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Form Grid */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .req {
+      color: var(--crimson);
+      margin-left: 2px;
+    }
+
+    .form-control {
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--card-border);
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background: #ffffff;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--royal-blue);
+      box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.12);
+    }
+
+    /* Preset Cars Picker */
+    .presets-box {
+      margin: 16px 0;
+      background: var(--blue-subtle);
+      border: 1.5px dashed var(--blue-border);
+      padding: 16px;
+      border-radius: var(--radius-md);
+    }
+
+    .presets-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--royal-blue);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .presets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+    }
+
+    .preset-pill {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-pill:hover {
+      border-color: var(--royal-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .preset-pill img {
+      width: 100%;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+
+    .preset-pill span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Image Preview Box */
+    .photo-preview-wrap {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .preview-box {
+      width: 240px;
+      height: 150px;
+      border-radius: 10px;
+      border: 2px dashed var(--blue-border);
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Feature Checkbox Chips */
+    .features-chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .chip-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      border: 1px solid var(--card-border);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .chip-item input[type="checkbox"] {
+      cursor: pointer;
+      accent-color: var(--royal-blue);
+    }
+
+    .chip-item:hover {
+      background: #e2e8f0;
+    }
+
+    .chip-item.checked {
+      background: var(--blue-subtle);
+      border-color: var(--royal-blue);
+      color: var(--royal-blue);
+      font-weight: 600;
+    }
+
+    /* Inventory Table / Cards */
+    .inventory-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .search-input-box {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .search-input-box input {
+      width: 100%;
+      padding: 10px 14px 10px 38px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--card-border);
+      font-size: 0.92rem;
+      outline: none;
+    }
+
+    .search-input-box i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 7px 14px;
+      background: var(--pure-white);
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--royal-blue);
+      color: var(--pure-white);
+      border-color: var(--royal-blue);
+    }
+
+    .inventory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .inventory-card {
+      background: var(--pure-white);
+      border: 1.5px solid var(--card-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .inventory-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--blue-border);
+    }
+
+    .card-img-box {
+      height: 190px;
+      position: relative;
+      background: #0f172a;
+    }
+
+    .card-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-status-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .badge-available {
+      background: var(--emerald);
+      color: #ffffff;
+    }
+
+    .badge-sold {
+      background: var(--crimson);
+      color: #ffffff;
+    }
+
+    .card-reg-pill {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      color: #ffffff;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+
+    .card-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .card-specs-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .mini-spec {
+      background: #f1f5f9;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-body);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 10px;
+      border-top: 1px solid #f1f5f9;
+      margin-bottom: 14px;
+    }
+
+    .card-price {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--royal-blue);
+    }
+
+    .card-emi {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 480px;
+      width: 100%;
+      padding: 26px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      animation: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-icon-danger {
+      width: 56px;
+      height: 56px;
+      background: var(--crimson-bg);
+      color: var(--crimson);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toast {
+      background: var(--navy-deep);
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      border-left: 4px solid var(--royal-blue);
+      animation: slideIn 0.3s ease;
+      min-width: 300px;
+    }
+
+    .toast.success {
+      border-left-color: var(--emerald);
+    }
+
+    .toast.danger {
+      border-left-color: var(--crimson);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .inventory-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="admin-topbar">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <i data-lucide="shield-check" style="width: 15px; height: 15px; color: #4ade80;"></i>
+      <span>सद्गुरु मोटर्स गुड़गांव सेक्टर 14 - ऑफिशियल डीलर इन्वेंट्री मैनेजमेंट सिस्टम</span>
+    </div>
+    <div>
+      <a href="index.html" target="_blank">
+        <i data-lucide="external-link" style="width: 13px; height: 13px;"></i>
+        <span>लाइव शोरूम वेबसाइट खोलें</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="admin-header">
+    <div class="header-container">
+      <div class="brand-section">
+        <div class="brand-crest">
+          <svg viewBox="0 0 40 40" fill="none" style="width: 28px; height: 28px;">
+            <path d="M6 13C6 11.3431 7.34315 10 9 10H31C32.6569 10 34 11.3431 34 13V22C34 29 20 36 20 36C20 36 6 29 6 22V13Z" fill="url(#adminGrad)" stroke="#60a5fa" stroke-width="1.8"/>
+            <path d="M12 20L15.5 14.5H24.5L28 20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="14" cy="24.5" r="2.5" fill="#ffffff"/>
+            <circle cx="26" cy="24.5" r="2.5" fill="#ffffff"/>
+            <defs>
+              <linearGradient id="adminGrad" x1="6" y1="10" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#2563eb"/>
+                <stop offset="1" stop-color="#0a1931"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <h1>सद्गुरु मोटर्स <span class="badge-dealer">डीलर पोर्टल</span></h1>
+          <span>सेक्टर 14, ओल्ड दिल्ली रोड, गुड़गांव (HR-26)</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-outline" onclick="syncCarsFromBackend()">
+          <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i>
+          <span>सिंक डेटा (Refresh)</span>
+        </button>
+        <a href="index.html" class="btn btn-primary">
+          <i data-lucide="eye" style="width: 16px; height: 16px;"></i>
+          <span>लाइव शोरूम देखें</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+
+    <!-- KPI Summary Metrics -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background: #eff6ff; color: #1e40af;">
+          <i data-lucide="car" style="width: 26px; height: 26px;"></i>
+        </div>
+        <div>
+          <div class="kpi-val" id="kpi-total-cars">0</div>
+          <div class="kpi-label">कुल कारें (Total Inventory)</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background: #ecfdf5; color: #059669;">
+          <i data-lucide="check-circle" style="width: 26px; height: 26px;"></i>
+        </div>
+        <div>
+          <div class="kpi-val" id="kpi-available-cars">0</div>
+          <div class="kpi-label">बिक्री हेतु उपलब्ध (Available)</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background: #fef2f2; color: #dc2626;">
+          <i data-lucide="tag" style="width: 26px; height: 26px;"></i>
+        </div>
+        <div>
+          <div class="kpi-val" id="kpi-sold-cars">0</div>
+          <div class="kpi-label">बिक चुकी / बुक्ड (Sold)</div>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon" style="background: #fffbeb; color: #d97706;">
+          <i data-lucide="indian-rupee" style="width: 26px; height: 26px;"></i>
+        </div>
+        <div>
+          <div class="kpi-val" id="kpi-total-value">₹0.00 Cr</div>
+          <div class="kpi-label">कुल स्टॉक वैल्यू (Valuation)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+      <button class="tab-btn active" id="tab-btn-upload" onclick="switchTab('upload')">
+        <i data-lucide="plus-circle" style="width: 18px; height: 18px;"></i>
+        <span>नई कार अपलोड करें (Upload Car)</span>
+      </button>
+      <button class="tab-btn" id="tab-btn-manage" onclick="switchTab('manage')">
+        <i data-lucide="list-filter" style="width: 18px; height: 18px;"></i>
+        <span>कार प्रबंधन व हटाएं (Manage & Remove)</span>
+      </button>
+    </div>
+
+    <!-- ================= TAB 1: UPLOAD FORM ================= -->
+    <div id="section-upload">
+      <div class="panel-card">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">
+              <i data-lucide="upload-cloud" style="color: var(--royal-blue); width: 22px; height: 22px;"></i>
+              सद्गुरु मोटर्स शोरूम में नई कार जोड़ें
+            </h2>
+            <p class="panel-subtitle">कार के विवरण और फ़ोटो दर्ज करें। सबमिट करने पर गाड़ी तुरंत लाइव वेबसाइट पर उपलब्ध हो जाएगी।</p>
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="resetCarForm()">
+            <i data-lucide="rotate-ccw" style="width: 15px; height: 15px;"></i>
+            <span>फॉर्म रीसेट करें</span>
+          </button>
+        </div>
+
+        <!-- Quick 1-Click Car Presets -->
+        <div class="presets-box">
+          <div class="presets-title">
+            <i data-lucide="zap" style="width: 15px; height: 15px;"></i>
+            <span>त्वरित कार प्रीसेट (Click to Auto-fill Photo & Model):</span>
+          </div>
+          <div class="presets-grid">
+            <div class="preset-pill" onclick="applyPreset('verna')">
+              <img src="assets/car-photos/verna-hero-34.jpg" alt="Verna" />
+              <span>Hyundai Verna</span>
+            </div>
+            <div class="preset-pill" onclick="applyPreset('creta')">
+              <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80" alt="Creta" />
+              <span>Hyundai Creta</span>
+            </div>
+            <div class="preset-pill" onclick="applyPreset('thar')">
+              <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=400&q=80" alt="Thar" />
+              <span>Mahindra Thar</span>
+            </div>
+            <div class="preset-pill" onclick="applyPreset('city')">
+              <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=400&q=80" alt="City" />
+              <span>Honda City</span>
+            </div>
+            <div class="preset-pill" onclick="applyPreset('safari')">
+              <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=80" alt="Safari" />
+              <span>Tata Safari</span>
+            </div>
+            <div class="preset-pill" onclick="applyPreset('bmw')">
+              <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=400&q=80" alt="BMW" />
+              <span>BMW 3 Series</span>
+            </div>
+            <div class="preset-pill" onclick="applyPreset('swift')">
+              <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=400&q=80" alt="Swift" />
+              <span>Maruti Swift</span>
+            </div>
+            <div class="preset-pill" onclick="applyPreset('fortuner')">
+              <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=400&q=80" alt="Fortuner" />
+              <span>Toyota Fortuner</span>
+            </div>
+          </div>
+        </div>
+
+        <form id="car-upload-form" onsubmit="handleCarUpload(event)">
+          <div class="form-grid">
+            
+            <!-- Car Full Name -->
+            <div class="form-group full-width">
+              <label for="car-name">कार का पूरा नाम व मॉडल (Car Title) <span class="req">*</span></label>
+              <input type="text" id="car-name" class="form-control" placeholder="उदा: 2023 Mahindra Thar LX Hardtop 4x4 Diesel" required />
+            </div>
+
+            <!-- Brand -->
+            <div class="form-group">
+              <label for="car-brand">ब्रांड / निर्माता (Brand) <span class="req">*</span></label>
+              <select id="car-brand" class="form-control" required onchange="handleBrandChange(this.value)">
+                <option value="Hyundai">Hyundai (हुंडई)</option>
+                <option value="Maruti">Maruti Suzuki (मारुति सुजुकी)</option>
+                <option value="Mahindra">Mahindra (महिंद्रा)</option>
+                <option value="Tata">Tata (टाटा)</option>
+                <option value="Honda">Honda (होंडा)</option>
+                <option value="Toyota">Toyota (टोयोटा)</option>
+                <option value="Kia">Kia (किआ)</option>
+                <option value="BMW">BMW (बीएमडब्ल्यू)</option>
+                <option value="Audi">Audi (ऑडी)</option>
+                <option value="Mercedes">Mercedes-Benz (मर्सिडीज)</option>
+                <option value="Skoda">Skoda (स्कोडा)</option>
+                <option value="Volkswagen">Volkswagen (फॉक्सवैगन)</option>
+                <option value="MG">MG (एमजी)</option>
+                <option value="Other">अन्य (Other)</option>
+              </select>
+            </div>
+
+            <!-- Body Style / Category -->
+            <div class="form-group">
+              <label for="car-type">बॉडी स्टाइल (Category) <span class="req">*</span></label>
+              <select id="car-type" class="form-control" required>
+                <option value="suv">SUV (एसयूवी)</option>
+                <option value="sedan">Sedan (सेडान)</option>
+                <option value="hatchback">Hatchback (हैचबैक)</option>
+                <option value="luxury">Luxury (लक्ज़री)</option>
+              </select>
+            </div>
+
+            <!-- Year -->
+            <div class="form-group">
+              <label for="car-year">मैन्युफैक्चरिंग वर्ष (Year) <span class="req">*</span></label>
+              <select id="car-year" class="form-control" required>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022" selected>2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+              </select>
+            </div>
+
+            <!-- Asking Price -->
+            <div class="form-group">
+              <label for="car-price">नकद कीमत (₹ Lakhs में) <span class="req">*</span></label>
+              <input type="number" id="car-price" class="form-control" step="0.05" min="1" max="150" placeholder="10.85" required oninput="calculateEMIFromPrice(this.value)" />
+            </div>
+
+            <!-- Monthly EMI -->
+            <div class="form-group">
+              <label for="car-emi">मासिक EMI (अनुमानित) <span class="req">*</span></label>
+              <input type="text" id="car-emi" class="form-control" placeholder="₹16,900" required />
+            </div>
+
+            <!-- KM Driven -->
+            <div class="form-group">
+              <label for="car-km">ओडोमीटर (KM Driven) <span class="req">*</span></label>
+              <input type="text" id="car-km" class="form-control" placeholder="28,400 km" required />
+            </div>
+
+            <!-- Fuel Type -->
+            <div class="form-group">
+              <label for="car-fuel">ईंधन प्रकार (Fuel Type) <span class="req">*</span></label>
+              <select id="car-fuel" class="form-control" required>
+                <option value="Petrol">पेट्रोल (Petrol)</option>
+                <option value="Diesel">डीजल (Diesel)</option>
+                <option value="CNG">सीएनजी (CNG)</option>
+                <option value="Electric">इलेक्ट्रिक (EV)</option>
+                <option value="Hybrid">हाइब्रिड (Hybrid)</option>
+              </select>
+            </div>
+
+            <!-- Transmission -->
+            <div class="form-group">
+              <label for="car-trans">ट्रांसमिशन (Transmission) <span class="req">*</span></label>
+              <select id="car-trans" class="form-control" required>
+                <option value="Automatic">ऑटोमैटिक (Automatic)</option>
+                <option value="Manual">मैनुअल (Manual)</option>
+                <option value="DCT">DCT ऑटोमैटिक</option>
+                <option value="CVT">CVT ऑटोमैटिक</option>
+                <option value="AMT">AMT ऑटोमैटिक</option>
+              </select>
+            </div>
+
+            <!-- RTO Registration Number -->
+            <div class="form-group">
+              <label for="car-reg">आरसी नंबर / रजिस्ट्रेशन (RTO) <span class="req">*</span></label>
+              <input type="text" id="car-reg" class="form-control" placeholder="HR-26-EV-1479 (गुड़गांव नॉर्थ)" required />
+            </div>
+
+            <!-- Ownership -->
+            <div class="form-group">
+              <label for="car-owners">ओनरशिप (Number of Owners) <span class="req">*</span></label>
+              <select id="car-owners" class="form-control" required>
+                <option value="1st">1st ओनर (Single Handed)</option>
+                <option value="2nd">2nd ओनर</option>
+                <option value="3rd">3rd ओनर</option>
+              </select>
+            </div>
+
+            <!-- Color -->
+            <div class="form-group">
+              <label for="car-color">गाड़ी का रंग (Color)</label>
+              <input type="text" id="car-color" class="form-control" placeholder="पोलर व्हाइट (Polar White)" />
+            </div>
+
+            <!-- Inspection Grade -->
+            <div class="form-group">
+              <label for="car-grade">क्वालिटी ग्रेड (Inspection Score)</label>
+              <input type="text" id="car-grade" class="form-control" value="A+ (99/100, 210+ Certified)" />
+            </div>
+
+            <!-- Photos Upload & URL -->
+            <div class="form-group full-width">
+              <label>गाड़ी की फ़ोटो (Upload Image or URL) <span class="req">*</span></label>
+              <div class="photo-preview-wrap">
+                <div class="preview-box" id="preview-box">
+                  <img id="image-preview" src="assets/car-photos/verna-hero-34.jpg" alt="Preview" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80';" />
+                </div>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+                  <div>
+                    <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">
+                      विकल्प 1: अपने फोन या कंप्यूटर से फोटो अपलोड करें
+                    </span>
+                    <input type="file" id="car-file-input" accept="image/*" class="form-control" onchange="handleFileUpload(event)" />
+                  </div>
+                  <div>
+                    <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">
+                      विकल्प 2: या फोटो का सीधा लिंक (URL / Path) पेस्ट करें
+                    </span>
+                    <input type="text" id="car-image-url" class="form-control" value="assets/car-photos/verna-hero-34.jpg" oninput="updateImagePreview(this.value)" placeholder="https://..." />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Features Checklist -->
+            <div class="form-group full-width">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label>प्रमुख फीचर्स व स्पेसिफिकेशन (Select Features):</label>
+                <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 0.78rem;" onclick="selectAllFeatures()">सभी चुनें</button>
+              </div>
+              <div class="features-chip-grid" id="features-container">
+                <label class="chip-item checked"><input type="checkbox" value="इलेक्ट्रिक सनरूफ" checked onchange="toggleChip(this)"> इलेक्ट्रिक सनरूफ</label>
+                <label class="chip-item checked"><input type="checkbox" value="10.25 इंच एचडी टचस्क्रीन" checked onchange="toggleChip(this)"> 10.25" एचडी टचस्क्रीन</label>
+                <label class="chip-item checked"><input type="checkbox" value="एप्पल कारप्ले & एंड्रॉइड ऑटो" checked onchange="toggleChip(this)"> एप्पल कारप्ले & एंड्रॉइड ऑटो</label>
+                <label class="chip-item checked"><input type="checkbox" value="क्रूज़ कंट्रोल" checked onchange="toggleChip(this)"> क्रूज़ कंट्रोल</label>
+                <label class="chip-item checked"><input type="checkbox" value="रिवर्स पार्किंग कैमरा & सेंसर्स" checked onchange="toggleChip(this)"> रिवर्स कैमरा & सेंसर्स</label>
+                <label class="chip-item checked"><input type="checkbox" value="डायमंड कट अलॉय व्हील्स" checked onchange="toggleChip(this)"> डायमंड कट अलॉय व्हील्स</label>
+                <label class="chip-item checked"><input type="checkbox" value="पुश बटन स्टार्ट / कीलेस एंट्री" checked onchange="toggleChip(this)"> पुश स्टार्ट & कीलेस एंट्री</label>
+                <label class="chip-item checked"><input type="checkbox" value="6 एयरबैग्स & एबीएस सेफ्टी" checked onchange="toggleChip(this)"> 6 एयरबैग्स सेफ्टी</label>
+                <label class="chip-item"><input type="checkbox" value="वेंटिलेटेड लेदर सीट्स" onchange="toggleChip(this)"> वेंटिलेटेड लेदर सीट्स</label>
+                <label class="chip-item"><input type="checkbox" value="प्रीमियम बोस साउंड सिस्टम" onchange="toggleChip(this)"> बोस साउंड सिस्टम</label>
+                <label class="chip-item checked"><input type="checkbox" value="100% नॉन-एक्सीडेंटल वेरिफाइड" checked onchange="toggleChip(this)"> 100% नॉन-एक्सीडेंटल</label>
+                <label class="chip-item checked"><input type="checkbox" value="1 साल की सद्गुरु शील्ड वारंटी" checked onchange="toggleChip(this)"> 1 साल वारंटी</label>
+              </div>
+            </div>
+
+            <!-- Auto-generate Description -->
+            <div class="form-group full-width">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label for="car-desc">कार विवरण (Description - हिंदी & English)</label>
+                <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 0.78rem;" onclick="autoGenerateDescription()">
+                  <i data-lucide="sparkles" style="width: 13px; height: 13px;"></i> ⚡ ऑटो-जनरेट विवरण
+                </button>
+              </div>
+              <textarea id="car-desc" class="form-control" rows="3" placeholder="गुड़गांव (HR-26) रजिस्टर्ड, 1st सिंगल ओनर कार। 100% नॉन-एक्सीडेंटल और शोरूम कंडीशन। 1 साल की वारंटी और फ्री आरसी ट्रांसफर शामिल है।"></textarea>
+            </div>
+
+          </div>
+
+          <!-- Submit Buttons -->
+          <div style="display: flex; gap: 14px; margin-top: 26px; flex-wrap: wrap;">
+            <button type="submit" id="btn-submit-car" class="btn btn-primary" style="padding: 13px 28px; font-size: 1rem;">
+              <i data-lucide="cloud-upload" style="width: 18px; height: 18px;"></i>
+              <span>कार शोरूम में लाइव अपलोड करें (Upload Car Now)</span>
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="resetCarForm()" style="padding: 13px 20px;">
+              <span>रद्द करें</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================= TAB 2: MANAGE INVENTORY ================= -->
+    <div id="section-manage" style="display: none;">
+      <div class="panel-card">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">
+              <i data-lucide="layers" style="color: var(--royal-blue); width: 22px; height: 22px;"></i>
+              मौजूदा कार इन्वेंट्री प्रबंधन (Manage & Remove Cars)
+            </h2>
+            <p class="panel-subtitle">किसी भी गाड़ी को हटाने (Delete) के लिए लाल बटन दबाएं, या बिक्री स्थिति (Available / Sold) बदलें।</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline" onclick="restoreDefaultInventory()" title="शुरुआती 10 गाड़ियां वापस लाएं">
+              <i data-lucide="database" style="width: 15px; height: 15px;"></i>
+              <span>डिफ़ॉल्ट स्टॉक रीस्टोर करें</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Toolbar: Search & Filter -->
+        <div class="inventory-toolbar">
+          <div class="search-input-box">
+            <i data-lucide="search" style="width: 18px; height: 18px;"></i>
+            <input type="text" id="admin-search-input" placeholder="कार का नाम, ब्रांड या HR-26 नंबर सर्च करें..." oninput="filterAdminCars()" />
+          </div>
+
+          <div class="filter-pills">
+            <button class="filter-btn active" data-filter="all" onclick="setAdminFilter('all', this)">सभी (<span id="count-all">0</span>)</button>
+            <button class="filter-btn" data-filter="suv" onclick="setAdminFilter('suv', this)">SUV</button>
+            <button class="filter-btn" data-filter="sedan" onclick="setAdminFilter('sedan', this)">Sedan</button>
+            <button class="filter-btn" data-filter="hatchback" onclick="setAdminFilter('hatchback', this)">Hatchback</button>
+            <button class="filter-btn" data-filter="luxury" onclick="setAdminFilter('luxury', this)">Luxury</button>
+            <button class="filter-btn" data-filter="available" onclick="setAdminFilter('available', this)">उपलब्ध</button>
+            <button class="filter-btn" data-filter="sold" onclick="setAdminFilter('sold', this)">बिक चुकी</button>
+          </div>
+        </div>
+
+        <!-- Cars Grid -->
+        <div class="inventory-grid" id="admin-cars-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-backdrop" id="delete-modal">
+    <div class="modal-box">
+      <div class="modal-icon-danger">
+        <i data-lucide="trash-2" style="width: 28px; height: 28px;"></i>
+      </div>
+      <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">कार इन्वेंट्री से हटाएं?</h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 20px;" id="delete-modal-msg">
+        क्या आप वाकई इस गाड़ी को सद्गुरु मोटर्स की वेबसाइट से स्थायी रूप से हटाना चाहते हैं?
+      </p>
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button class="btn btn-secondary" onclick="closeDeleteModal()" style="flex: 1;">
+          रद्द करें
+        </button>
+        <button class="btn btn-danger" id="confirm-delete-btn" style="flex: 1;">
+          हाँ, गाड़ी हटाएं
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JavaScript Application Logic -->
+  <script>
+    let ALL_CARS = [];
+    let currentFilter = 'all';
+    let searchQuery = '';
+    let carPendingDeleteId = null;
+
+    // Preset configurations for instant filling
+    const PRESETS = {
+      verna: {
+        name: '2022 Hyundai Verna 1.5 CRDi AT SX (Sport Edition)',
+        brand: 'Hyundai',
+        type: 'sedan',
+        year: 2022,
+        price: 10.85,
+        emi: '₹16,900',
+        km: '67,861 km',
+        fuel: 'Diesel',
+        trans: 'Automatic',
+        reg: 'HR-26-EV-1479 (गुड़गांव नॉर्थ)',
+        owners: '1st',
+        color: 'पोलर व्हाइट (ब्लैक रूफ & जीटी किट)',
+        image: 'assets/car-photos/verna-hero-34.jpg'
+      },
+      creta: {
+        name: '2022 Hyundai Creta SX (O) 1.5 Turbo Petrol',
+        brand: 'Hyundai',
+        type: 'suv',
+        year: 2022,
+        price: 14.85,
+        emi: '₹22,950',
+        km: '24,500 km',
+        fuel: 'Petrol',
+        trans: 'DCT',
+        reg: 'HR-26 (गुड़गांव)',
+        owners: '1st',
+        color: 'टाइटन ग्रे मैटेलिक',
+        image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80'
+      },
+      thar: {
+        name: '2023 Mahindra Thar LX Hardtop 4x4 Diesel AT',
+        brand: 'Mahindra',
+        type: 'suv',
+        year: 2023,
+        price: 15.60,
+        emi: '₹24,100',
+        km: '18,200 km',
+        fuel: 'Diesel',
+        trans: 'Automatic',
+        reg: 'HR-26-EC-9988 (गुड़गांव)',
+        owners: '1st',
+        color: 'नापोली ब्लैक (Napoli Black)',
+        image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80'
+      },
+      city: {
+        name: '2021 Honda City ZX 5th Gen CVT i-VTEC',
+        brand: 'Honda',
+        type: 'sedan',
+        year: 2021,
+        price: 10.45,
+        emi: '₹16,200',
+        km: '28,200 km',
+        fuel: 'Petrol',
+        trans: 'CVT',
+        reg: 'HR-26 (गुड़गांव)',
+        owners: '1st',
+        color: 'प्लैटिनम व्हाइट पर्ल',
+        image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80'
+      },
+      safari: {
+        name: '2022 Tata Safari XZA+ Dark Edition (6-Seater)',
+        brand: 'Tata',
+        type: 'suv',
+        year: 2022,
+        price: 18.25,
+        emi: '₹28,100',
+        km: '26,000 km',
+        fuel: 'Diesel',
+        trans: 'Automatic',
+        reg: 'DL-8C (Delhi NCR)',
+        owners: '1st',
+        color: 'ओबेरॉन ब्लैक (Dark Edition)',
+        image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80'
+      },
+      bmw: {
+        name: '2019 BMW 3 Series 320d Luxury Line',
+        brand: 'BMW',
+        type: 'luxury',
+        year: 2019,
+        price: 27.90,
+        emi: '₹42,500',
+        km: '42,000 km',
+        fuel: 'Diesel',
+        trans: 'Automatic',
+        reg: 'HR-26 (गुड़गांव वीआईपी)',
+        owners: '1st',
+        color: 'अल्पाइन व्हाइट (Alpine White)',
+        image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80'
+      },
+      swift: {
+        name: '2021 Maruti Suzuki Swift ZXi+ Dual Tone AMT',
+        brand: 'Maruti',
+        type: 'hatchback',
+        year: 2021,
+        price: 6.85,
+        emi: '₹10,500',
+        km: '22,400 km',
+        fuel: 'Petrol',
+        trans: 'AMT',
+        reg: 'HR-26 (गुड़गांव)',
+        owners: '1st',
+        color: 'सॉलिड फायर रेड / ब्लैक रूफ',
+        image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80'
+      },
+      fortuner: {
+        name: '2022 Toyota Fortuner 2.8 4x2 AT Diesel',
+        brand: 'Toyota',
+        type: 'suv',
+        year: 2022,
+        price: 33.50,
+        emi: '₹51,900',
+        km: '34,000 km',
+        fuel: 'Diesel',
+        trans: 'Automatic',
+        reg: 'HR-26 (गुड़गांव)',
+        owners: '1st',
+        color: 'सुपर व्हाइट (Super White)',
+        image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80'
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      loadInitialCars();
+    });
+
+    // 1. Load Cars from API or LocalStorage
+    async function loadInitialCars() {
+      try {
+        const res = await fetch('/api/cars');
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            ALL_CARS = data;
+            localStorage.setItem('sadguru_inventory', JSON.stringify(ALL_CARS));
+            updateKPIs();
+            renderAdminCars();
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Backend API unavailable, checking localStorage fallback...', err);
+      }
+
+      // LocalStorage fallback
+      try {
+        const stored = localStorage.getItem('sadguru_inventory');
+        if (stored) {
+          ALL_CARS = JSON.parse(stored);
+          updateKPIs();
+          renderAdminCars();
+          return;
+        }
+      } catch (e) {}
+
+      // If both empty, fetch from cars.json directly
+      try {
+        const resStatic = await fetch('data/cars.json');
+        if (resStatic.ok) {
+          ALL_CARS = await resStatic.json();
+          localStorage.setItem('sadguru_inventory', JSON.stringify(ALL_CARS));
+          updateKPIs();
+          renderAdminCars();
+        }
+      } catch (e) {}
+    }
+
+    // Sync button
+    async function syncCarsFromBackend() {
+      showToast('🔄 बैकएंड डेटा सिंक हो रहा है...', 'info');
+      await loadInitialCars();
+      showToast('✅ इन्वेंट्री सफलतापूर्वक सिंक हो गई!', 'success');
+    }
+
+    // 2. Tab Switcher
+    function switchTab(tabId) {
+      const uploadSec = document.getElementById('section-upload');
+      const manageSec = document.getElementById('section-manage');
+      const btnUpload = document.getElementById('tab-btn-upload');
+      const btnManage = document.getElementById('tab-btn-manage');
+
+      if (tabId === 'upload') {
+        uploadSec.style.display = 'block';
+        manageSec.style.display = 'none';
+        btnUpload.classList.add('active');
+        btnManage.classList.remove('active');
+      } else {
+        uploadSec.style.display = 'none';
+        manageSec.style.display = 'block';
+        btnUpload.classList.remove('active');
+        btnManage.classList.add('active');
+        renderAdminCars();
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // 3. Update KPIs
+    function updateKPIs() {
+      const total = ALL_CARS.length;
+      const sold = ALL_CARS.filter(c => c.status === 'sold').length;
+      const available = total - sold;
+
+      let totalValLakhs = ALL_CARS.reduce((sum, c) => sum + (parseFloat(c.price) || 0), 0);
+      const totalCr = (totalValLakhs / 100).toFixed(2);
+
+      document.getElementById('kpi-total-cars').textContent = total;
+      document.getElementById('kpi-available-cars').textContent = available;
+      document.getElementById('kpi-sold-cars').textContent = sold;
+      document.getElementById('kpi-total-value').textContent = `₹${totalCr} Cr`;
+
+      const countAll = document.getElementById('count-all');
+      if (countAll) countAll.textContent = total;
+    }
+
+    // 4. Render Cars in Manage Tab
+    function renderAdminCars() {
+      const container = document.getElementById('admin-cars-container');
+      if (!container) return;
+
+      let filtered = ALL_CARS.filter(car => {
+        // Status or type filter
+        let matchFilter = true;
+        if (currentFilter === 'available') matchFilter = car.status !== 'sold';
+        else if (currentFilter === 'sold') matchFilter = car.status === 'sold';
+        else if (currentFilter !== 'all') matchFilter = car.type === currentFilter;
+
+        // Search query
+        let matchSearch = true;
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          matchSearch = (car.name || '').toLowerCase().includes(q) ||
+                        (car.brand || '').toLowerCase().includes(q) ||
+                        (car.reg_hi || car.reg_en || '').toLowerCase().includes(q);
+        }
+
+        return matchFilter && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; background: #fff; border-radius: 12px; border: 1.5px dashed var(--blue-border);">
+            <i data-lucide="car-front" style="width: 48px; height: 48px; color: var(--royal-blue); margin-bottom: 12px;"></i>
+            <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 6px;">कोई गाड़ी नहीं मिली</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">फ़िल्टर बदलें या नई कार अपलोड करें।</p>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(car => {
+        const isSold = car.status === 'sold';
+        const reg = car.reg_hi || car.reg_en || 'HR-26 (Gurugram)';
+        const fuel = car.fuel_hi || car.fuel_en || 'Petrol';
+        const trans = car.trans_hi || car.trans_en || 'Manual';
+
+        return `
+          <div class="inventory-card" data-id="${car.id}">
+            <div class="card-img-box">
+              <img src="${car.image}" alt="${car.name}" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80';" />
+              <span class="card-status-badge ${isSold ? 'badge-sold' : 'badge-available'}">
+                <i data-lucide="${isSold ? 'x-circle' : 'check-circle'}" style="width: 12px; height: 12px;"></i>
+                ${isSold ? 'बिक चुकी (Sold)' : 'उपलब्ध (Available)'}
+              </span>
+              <span class="card-reg-pill">${reg.split(' ')[0]}</span>
+            </div>
+
+            <div class="card-body">
+              <div>
+                <h3 class="card-title">${car.name}</h3>
+                <div class="card-sub">${car.year} • ${car.brand} • ${car.owners_hi || car.owners_en || '1st Owner'}</div>
+
+                <div class="card-specs-row">
+                  <span class="mini-spec"><i data-lucide="gauge" style="width:12px;height:12px;"></i> ${car.km}</span>
+                  <span class="mini-spec"><i data-lucide="fuel" style="width:12px;height:12px;"></i> ${fuel}</span>
+                  <span class="mini-spec"><i data-lucide="zap" style="width:12px;height:12px;"></i> ${trans.split(' ')[0]}</span>
+                </div>
+              </div>
+
+              <div>
+                <div class="card-price-row">
+                  <div>
+                    <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">कीमत</span>
+                    <div class="card-price">₹${parseFloat(car.price).toFixed(2)} Lakh</div>
+                  </div>
+                  <div style="text-align: right;">
+                    <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">EMI शुरू</span>
+                    <div class="card-emi">${car.emi}/माह</div>
+                  </div>
+                </div>
+
+                <div class="card-actions">
+                  <button class="btn ${isSold ? 'btn-success' : 'btn-outline'}" onclick="toggleCarStatus('${car.id}')" style="padding: 8px 10px; font-size: 0.8rem;" title="स्थिति बदलें">
+                    <i data-lucide="${isSold ? 'check' : 'tag'}" style="width: 14px; height: 14px;"></i>
+                    <span>${isSold ? 'उपलब्ध करें' : 'सोल्ड मार्क करें'}</span>
+                  </button>
+
+                  <button class="btn btn-danger" onclick="promptDeleteCar('${car.id}', '${encodeURIComponent(car.name)}')" style="padding: 8px 10px; font-size: 0.8rem;" title="गाड़ी हटाएं">
+                    <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
+                    <span>कार हटाएं</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // 5. Delete Car Handlers
+    function promptDeleteCar(carId, carNameEncoded) {
+      const carName = decodeURIComponent(carNameEncoded);
+      carPendingDeleteId = carId;
+      const modal = document.getElementById('delete-modal');
+      const msg = document.getElementById('delete-modal-msg');
+      if (msg) {
+        msg.innerHTML = `क्या आप वाकई <strong>"${carName}"</strong> को सद्गुरु मोटर्स की इन्वेंट्री से हटाना चाहते हैं? यह कार्रवाई पूर्ववत नहीं की जा सकती।`;
+      }
+      const confirmBtn = document.getElementById('confirm-delete-btn');
+      if (confirmBtn) {
+        confirmBtn.onclick = () => executeDeleteCar(carId);
+      }
+      modal.classList.add('active');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeDeleteModal() {
+      const modal = document.getElementById('delete-modal');
+      if (modal) modal.classList.remove('active');
+      carPendingDeleteId = null;
+    }
+
+    async function executeDeleteCar(carId) {
+      closeDeleteModal();
+      showToast('🗑️ गाड़ी हटाई जा रही है...', 'info');
+
+      // Attempt server DELETE
+      let serverSuccess = false;
+      try {
+        const res = await fetch(`/api/cars/${carId}`, { method: 'DELETE' });
+        if (res.ok) serverSuccess = true;
+      } catch (e) {
+        console.warn('Backend DELETE error (using local storage fallback)', e);
+      }
+
+      // Update client array
+      ALL_CARS = ALL_CARS.filter(c => c.id !== carId);
+      localStorage.setItem('sadguru_inventory', JSON.stringify(ALL_CARS));
+
+      updateKPIs();
+      renderAdminCars();
+      showToast('✅ गाड़ी इन्वेंट्री से सफलतापूर्वक हटा दी गई है!', 'success');
+    }
+
+    // 6. Toggle Sold / Available Status
+    async function toggleCarStatus(carId) {
+      const car = ALL_CARS.find(c => c.id === carId);
+      if (!car) return;
+
+      const newStatus = car.status === 'sold' ? 'available' : 'sold';
+      car.status = newStatus;
+
+      try {
+        await fetch(`/api/cars/${carId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus })
+        });
+      } catch (e) {}
+
+      localStorage.setItem('sadguru_inventory', JSON.stringify(ALL_CARS));
+      updateKPIs();
+      renderAdminCars();
+
+      const statusText = newStatus === 'sold' ? 'बिक चुकी (Sold)' : 'बिक्री हेतु उपलब्ध (Available)';
+      showToast(`स्थिति अपडेट: ${statusText}`, 'success');
+    }
+
+    // 7. Form Handlers & Upload
+    async function handleCarUpload(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('btn-submit-car');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<i data-lucide="loader" style="width:16px;height:16px;animation:spin 1s linear infinite;"></i> <span>अपलोड हो रहा है...</span>`;
+        if (window.lucide) lucide.createIcons();
+      }
+
+      const name = document.getElementById('car-name').value.trim();
+      const brand = document.getElementById('car-brand').value;
+      const type = document.getElementById('car-type').value;
+      const year = parseInt(document.getElementById('car-year').value) || 2022;
+      const price = parseFloat(document.getElementById('car-price').value) || 9.5;
+      const emi = document.getElementById('car-emi').value.trim() || '₹15,000';
+      const km = document.getElementById('car-km').value.trim() || '25,000 km';
+      const fuel = document.getElementById('car-fuel').value;
+      const trans = document.getElementById('car-trans').value;
+      const reg = document.getElementById('car-reg').value.trim() || 'HR-26 (गुड़गांव)';
+      const owners = document.getElementById('car-owners').value;
+      const color = document.getElementById('car-color').value.trim() || 'व्हाइट';
+      const grade = document.getElementById('car-grade').value.trim() || 'A+ (99/100, 210+ Certified)';
+      const image = document.getElementById('car-image-url').value.trim() || 'assets/car-photos/verna-hero-34.jpg';
+      const desc = document.getElementById('car-desc').value.trim() || `गुड़गांव रजिस्टर्ड ${name}। 100% नॉन-एक्सीडेंटल शोरूम कंडीशन।`;
+
+      // Gather checked features
+      const features = [];
+      document.querySelectorAll('#features-container input[type="checkbox"]:checked').forEach(cb => {
+        features.push(cb.value);
+      });
+
+      const newCar = {
+        id: 'car-' + Date.now().toString(36) + '-' + Math.random().toString(36).substring(2, 6),
+        name: name,
+        brand: brand,
+        type: type,
+        year: year,
+        price: price,
+        emi: emi,
+        km: km.includes('km') ? km : `${km} km`,
+        fuel_hi: fuel,
+        fuel_en: fuel === 'पेट्रोल' ? 'Petrol' : fuel === 'डीजल' ? 'Diesel' : fuel,
+        trans_hi: trans,
+        trans_en: trans.includes('ऑटो') ? 'Automatic' : trans,
+        reg_hi: reg,
+        reg_en: reg,
+        owners_hi: `${owners} ओनर`,
+        owners_en: `${owners} Owner`,
+        color_hi: color,
+        color_en: color,
+        inspectionGrade: grade,
+        warranty_hi: '1 साल की सद्गुरु शील्ड वारंटी',
+        warranty_en: '1 Year Sadguru Shield Warranty',
+        status: 'available',
+        image: image,
+        allPhotos: [{ url: image, label_hi: 'फ्रंट 3/4 प्रोफाइल', label_en: 'Front 3/4 Stance' }],
+        features_hi: features,
+        features_en: features,
+        desc_hi: desc,
+        desc_en: desc
+      };
+
+      // 1. Post to Server API
+      try {
+        const res = await fetch('/api/cars', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newCar)
+        });
+        if (res.ok) {
+          const resData = await res.json();
+          if (resData.car && resData.car.id) newCar.id = resData.car.id;
+        }
+      } catch (err) {
+        console.warn('Backend upload skipped, saving to localStorage directly', err);
+      }
+
+      // 2. Add to Local Array & Storage
+      ALL_CARS.unshift(newCar);
+      localStorage.setItem('sadguru_inventory', JSON.stringify(ALL_CARS));
+
+      updateKPIs();
+      showToast('🎉 कार सफलतापूर्वक अपलोड हो गई और शोरूम में लाइव है!', 'success');
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i data-lucide="cloud-upload" style="width: 18px; height: 18px;"></i> <span>कार शोरूम में लाइव अपलोड करें (Upload Car Now)</span>`;
+      }
+
+      // Switch to manage view to see newly uploaded car
+      switchTab('manage');
+    }
+
+    // 8. Helper Functions
+    function calculateEMIFromPrice(priceVal) {
+      const p = parseFloat(priceVal);
+      if (!p || isNaN(p)) return;
+      const emi = Math.round(p * 1550);
+      document.getElementById('car-emi').value = `₹${emi.toLocaleString('en-IN')}`;
+    }
+
+    function updateImagePreview(url) {
+      const img = document.getElementById('image-preview');
+      if (img && url) {
+        img.src = url;
+      }
+    }
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        document.getElementById('car-image-url').value = dataUrl;
+        document.getElementById('image-preview').src = dataUrl;
+        showToast('📷 फोटो सफलतापूर्वक लोड हो गई!', 'success');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function applyPreset(key) {
+      const preset = PRESETS[key];
+      if (!preset) return;
+
+      document.getElementById('car-name').value = preset.name;
+      document.getElementById('car-brand').value = preset.brand;
+      document.getElementById('car-type').value = preset.type;
+      document.getElementById('car-year').value = preset.year;
+      document.getElementById('car-price').value = preset.price;
+      document.getElementById('car-emi').value = preset.emi;
+      document.getElementById('car-km').value = preset.km;
+      document.getElementById('car-fuel').value = preset.fuel;
+      document.getElementById('car-trans').value = preset.trans;
+      document.getElementById('car-reg').value = preset.reg;
+      document.getElementById('car-owners').value = preset.owners;
+      document.getElementById('car-color').value = preset.color;
+      document.getElementById('car-image-url').value = preset.image;
+      updateImagePreview(preset.image);
+
+      autoGenerateDescription();
+      showToast(`⚡ ${preset.name} प्रीसेट लोड हो गया!`, 'info');
+    }
+
+    function autoGenerateDescription() {
+      const name = document.getElementById('car-name').value || 'सर्टिफाइड कार';
+      const reg = document.getElementById('car-reg').value || 'HR-26 (गुड़गांव)';
+      const owners = document.getElementById('car-owners').value;
+      const km = document.getElementById('car-km').value || 'वेरिफाइड KM';
+
+      const desc = `गुड़गांव रजिस्टर्ड (${reg}) ${name}। ${owners} ओनर गाड़ी है, ${km} चली है और सर्विस रिकॉर्ड्स के साथ 100% नॉन-एक्सीडेंटल वेरिफाइड है। 1 साल की सद्गुरु शील्ड वारंटी और फ्री आरसी ट्रांसफर शामिल है।`;
+      document.getElementById('car-desc').value = desc;
+    }
+
+    function toggleChip(input) {
+      const label = input.parentElement;
+      if (input.checked) label.classList.add('checked');
+      else label.classList.remove('checked');
+    }
+
+    function selectAllFeatures() {
+      document.querySelectorAll('#features-container input[type="checkbox"]').forEach(cb => {
+        cb.checked = true;
+        cb.parentElement.classList.add('checked');
+      });
+    }
+
+    function resetCarForm() {
+      document.getElementById('car-upload-form').reset();
+      document.getElementById('image-preview').src = 'assets/car-photos/verna-hero-34.jpg';
+      document.getElementById('car-image-url').value = 'assets/car-photos/verna-hero-34.jpg';
+      showToast('फॉर्म रीसेट कर दिया गया', 'info');
+    }
+
+    function setAdminFilter(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderAdminCars();
+    }
+
+    function filterAdminCars() {
+      searchQuery = document.getElementById('admin-search-input').value.trim();
+      renderAdminCars();
+    }
+
+    async function restoreDefaultInventory() {
+      if (!confirm('क्या आप डिफ़ॉल्ट 10 गाड़ियों का स्टॉक रीस्टोर करना चाहते हैं?')) return;
+      try {
+        const res = await fetch('data/cars.json');
+        if (res.ok) {
+          ALL_CARS = await res.json();
+          localStorage.setItem('sadguru_inventory', JSON.stringify(ALL_CARS));
+          updateKPIs();
+          renderAdminCars();
+          showToast('✅ शुरुआती स्टॉक सफलतापूर्वक रीस्टोर हो गया!', 'success');
+        }
+      } catch (e) {
+        showToast('रीस्टोर करने में त्रुटि', 'danger');
+      }
+    }
+
+    // 9. Floating Toast Helper
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.innerHTML = `
+        <i data-lucide="${type === 'success' ? 'check-circle' : type === 'danger' ? 'alert-triangle' : 'info'}" style="width: 18px; height: 18px; flex-shrink: 0;"></i>
+        <span>${message}</span>
+      `;
+      container.appendChild(toast);
+      if (window.lucide) lucide.createIcons();
+
+      setTimeout(() => {
+        toast.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+  </script>
+</body>
+</html>

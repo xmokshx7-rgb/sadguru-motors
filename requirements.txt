@@ -1,0 +1,5 @@
+# Sadguru Motors - Python Backend Requirements
+# The default app.py uses Python standard library (http.server, json, urllib) with zero pip dependencies!
+# Optional extensions for production deployment:
+# flask>=2.0.0
+# gunicorn>=20.1.0

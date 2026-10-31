@@ -1,0 +1,20 @@
+{
+  "name": "sadguru-motors-website",
+  "version": "1.0.0",
+  "description": "Sadguru Motors - 3D Immersive Pre-Owned Car Dealership Website (Sector 14, Gurgaon)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "threejs",
+    "webgl",
+    "sadguru-motors",
+    "used-cars-gurgaon",
+    "nodejs",
+    "bilingual"
+  ],
+  "author": "Sadguru Motors Sector 14 Gurugram",
+  "license": "ISC"
+}
