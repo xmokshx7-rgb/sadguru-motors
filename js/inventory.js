@@ -736,14 +736,12 @@ window.inspectCarPhotos = function(carId) {
   if (carId === 'verna-hr26-sport') {
     if (window.openVernaGalleryModal) {
       window.openVernaGalleryModal();
+      return;
     }
-  } else {
-    // For other cars, scroll to hero or open inspect
-    const card = document.querySelector(`.car-card[data-id="${carId}"]`);
-    if (card) {
-      const reportBtn = card.querySelector('.btn-view-report');
-      if (reportBtn) reportBtn.click();
-    }
+  }
+  // For all cars, open the comprehensive HD modal directly
+  if (window.openCarModal) {
+    window.openCarModal(carId);
   }
 };
 

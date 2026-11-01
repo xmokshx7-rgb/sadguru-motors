@@ -371,6 +371,20 @@ function initTestDriveBooking() {
       ? `Hello Sadguru Motors!\n\nI have submitted a Test Drive Request:\n- Customer: ${name}\n- Phone: ${phone}\n- Car: ${selectedCar.name}\n- Preferred Date: ${date}\n- Location: ${location === 'showroom' ? 'Sadguru Motors Showroom, Sector 14 Gurugram' : 'Doorstep Test Drive (Home Delivery in Gurgaon)'}`
       : `नमस्ते सद्गुरु मोटर्स!\n\nमैंने टेस्ट ड्राइव की रिक्वेस्ट भेजी है:\n- ग्राहक: ${name}\n- फोन: ${phone}\n- गाड़ी: ${selectedCar.name}\n- तारीख: ${date}\n- लोकेशन: ${location === 'showroom' ? 'सद्गुरु मोटर्स शोरूम, सेक्टर 14 गुड़गांव' : 'डोरस्टेप टेस्ट ड्राइव (गुड़गांव होम डिलीवरी)'}`;
 
+    // Persist test drive lead to Supabase & local CRM database
+    if (window.SadguruDB && typeof window.SadguruDB.recordCustomerLead === 'function') {
+      try {
+        window.SadguruDB.recordCustomerLead({
+          id: 'td_' + Date.now(),
+          name: name,
+          email: phone + '@customer.sadgurumotors.in',
+          phone: phone,
+          car_interest: selectedCar.name,
+          provider: 'test_drive'
+        });
+      } catch (e) {}
+    }
+
     window.open(`https://wa.me/919810123456?text=${encodeURIComponent(message)}`, '_blank');
     window.closeAllModals();
 
@@ -423,31 +437,40 @@ function initUIControls() {
     }
   });
 
-  // Mobile menu drawer toggle
+  // Mobile menu drawer toggle with liquid glass animation
   const mobileBtn = document.getElementById('btn-mobile-menu');
   const navLinks = document.querySelector('.nav-links');
   if (mobileBtn && navLinks) {
-    mobileBtn.addEventListener('click', () => {
-      const isVisible = navLinks.style.display === 'flex';
-      navLinks.style.display = isVisible ? 'none' : 'flex';
-      navLinks.style.position = isVisible ? 'static' : 'absolute';
-      navLinks.style.top = '82px';
-      navLinks.style.left = '0';
-      navLinks.style.width = '100%';
-      navLinks.style.background = '#ffffff';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.padding = '20px';
-      navLinks.style.borderBottom = '1.5px solid var(--border-light)';
-      navLinks.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = navLinks.classList.contains('mobile-active');
+      navLinks.classList.toggle('mobile-active', !isActive);
+      mobileBtn.innerHTML = !isActive 
+        ? '<i data-lucide="x" style="width: 24px; height: 24px;"></i>' 
+        : '<i data-lucide="menu" style="width: 24px; height: 24px;"></i>';
+      if (window.lucide) lucide.createIcons();
     });
 
     // Close mobile menu on clicking any link
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          navLinks.style.display = 'none';
+        navLinks.classList.remove('mobile-active');
+        if (mobileBtn) {
+          mobileBtn.innerHTML = '<i data-lucide="menu" style="width: 24px; height: 24px;"></i>';
+          if (window.lucide) lucide.createIcons();
         }
       });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !mobileBtn.contains(e.target) && navLinks.classList.contains('mobile-active')) {
+        navLinks.classList.remove('mobile-active');
+        if (mobileBtn) {
+          mobileBtn.innerHTML = '<i data-lucide="menu" style="width: 24px; height: 24px;"></i>';
+          if (window.lucide) lucide.createIcons();
+        }
+      }
     });
   }
 }
