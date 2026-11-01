@@ -18,9 +18,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Three.js 3D WebGL Engine, OrbitControls, GSAP & Lucide Icons -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <!-- GSAP Animations & Lucide Icons -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -173,199 +171,134 @@
     </div>
   </header>
 
-  <!-- ================= HERO SHOWCASE: FEATURED VERNA SX SPORT (3D & REAL HD) ================= -->
-  <section class="hero-3d-section" id="virtual-showroom">
-    <!-- Showroom HUD Overlay -->
-    <div class="showroom-hud">
-      <!-- HUD Top Row -->
-      <div class="hud-top">
-        <div class="hero-badge-wrap">
-          <div class="hero-pill-badge">
-            <span class="dot"></span>
-            <span data-i18n="hero_badge_deal">🔴 सर्टिफाइड कार शोरूम • सेक्टर 14 गुड़गांव • 1st ओनर</span>
-          </div>
-          <h2 class="hero-title" data-i18n="hero_car_title">
-            2022 हुंडई वरना 1.5 CRDi AT (SX Sport Edition)
-          </h2>
-          <p class="hero-desc" data-i18n="hero_car_sub">
-            गुड़गांव रजिस्टर्ड (HR-26-EV-1479) • 1st सिंगल ओनर • 67,861 KM वेरिफाइड • सनरूफ • ब्लैक GT विंग • क्वाड एग्जॉस्ट
-          </p>
-          <div class="hero-deal-strip">
-            <span class="deal-price-badge" data-i18n="hero_price_tag">नकद कीमत: ₹10,85,000</span>
-            <span class="deal-emi-badge" data-i18n="hero_emi_tag">आसान EMI: ₹16,900/माह</span>
-            <span class="deal-verified-badge"><i data-lucide="shield-check" style="width:14px;height:14px;"></i> HR-26-EV-1479 • 1st Owner</span>
-          </div>
+  <!-- ================= LUXURY LIQUID GLASS HERO BANNER ================= -->
+  <section class="hero-banner-section" id="virtual-showroom">
+    <div class="hero-banner-ambient-glow"></div>
+    <div class="container hero-banner-container">
+      
+      <!-- Left Column: Compelling Luxury Pitch & Featured Deal -->
+      <div class="hero-banner-left">
+        <!-- Live Verified Badge -->
+        <div class="hero-glass-pill">
+          <span class="pulsing-live-dot"></span>
+          <span data-i18n="hero_pill_tag">सर्टिफाइड लक्ज़री कार्स • सेक्टर 14 ओल्ड दिल्ली रोड, गुड़गांव</span>
         </div>
 
-        <!-- Mode Switcher: 3D Interactive Model vs Real HD Photos -->
-        <div class="hero-mode-toggle-wrap">
-          <div class="hero-mode-toggle">
-            <button class="hero-mode-btn active" id="btn-mode-3d">
-              <i data-lucide="box"></i> <span data-i18n="hero_mode_3d">3D WebGL मॉडल</span>
-            </button>
-            <button class="hero-mode-btn" id="btn-mode-real">
-              <i data-lucide="camera"></i> <span data-i18n="hero_mode_real">असली कार HD स्टूडियो</span>
-            </button>
-          </div>
-        </div>
+        <!-- Main Banner Title -->
+        <h1 class="hero-banner-title">
+          <span class="title-sub" data-i18n="hero_title_sub">सद्गुरु मोटर्स गुड़गांव</span>
+          <span class="title-main" data-i18n="hero_title_main">सर्टिफाइड लक्ज़री व सेडान कार्स 100% भरोसे के साथ</span>
+        </h1>
 
-        <!-- Right Side HUD (Engine Sound & Throttle) -->
-        <div class="hud-side-controls">
-          <div class="hud-control-group">
-            <span class="hud-label" data-i18n="hud_engine_title">इंजन साउंड & थ्रोटल (Web Audio)</span>
-            <button class="btn-engine-start" id="btn-engine-start">
-              <i data-lucide="power"></i> <span data-i18n="btn_engine_start">स्टार्ट इंजन / START</span>
-            </button>
-            <button class="btn btn-secondary" id="btn-rev-engine" style="padding: 8px 12px; font-size: 0.8rem; margin-top: 4px;">
-              <i data-lucide="gauge"></i> <span data-i18n="btn_rev">रेव करें (Rev Accelerator)</span>
-            </button>
-            <div class="rev-meter-wrap">
-              <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #cbd5e1;">
-                <span>0 RPM</span>
-                <span>1.5 CRDi TACHO</span>
-                <span>6000</span>
-              </div>
-              <div class="rev-bar-track">
-                <div class="rev-bar-fill"></div>
-              </div>
+        <!-- Banner Subtitle / Description -->
+        <p class="hero-banner-desc" data-i18n="hero_banner_desc">
+          गुड़गांव में 15+ वर्षों से सर्टिफाइड सेकंड हैंड गाड़ियों का सबसे विश्वसनीय शोरूम। हर कार 210+ सख्त क्वालिटी चेक्स, हरियाणा सरकारी RC वेरिफिकेशन और 0 डाउनपेमेंट लोन सुविधा के साथ उपलब्ध।
+        </p>
+
+        <!-- Featured Deal of the Week (Liquid Glass Card) -->
+        <div class="hero-deal-card">
+          <div class="deal-card-glow"></div>
+          <div class="deal-header">
+            <span class="deal-tag" data-i18n="deal_tag_week">⭐ फीचर डील ऑफ द वीक</span>
+            <span class="deal-status" data-i18n="deal_in_stock">✓ शोरूम पर तैयार</span>
+          </div>
+
+          <div class="deal-car-info">
+            <h3 class="deal-car-name" data-i18n="hero_car_title">2022 हुंडई वरना 1.5 CRDi AT (SX Sport Edition)</h3>
+            <div class="deal-specs-pills">
+              <span><i data-lucide="shield-check"></i> 1st ओनर (HR-26-EV-1479)</span>
+              <span><i data-lucide="gauge"></i> 67,861 KM ओरिजिनल</span>
+              <span><i data-lucide="sun"></i> इलेक्ट्रिक सनरूफ</span>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Hero Stage Viewport: 3D Canvas / Real Car HD Studio -->
-      <div class="hero-stage-viewport">
-        <!-- 3D WebGL Interactive Car Canvas (Hero Primary) -->
-        <div id="canvas-container" class="hero-view-panel active"></div>
-
-        <!-- Real Car HD Multi-Angle Studio Stage (Dual Mode) -->
-        <div id="real-car-showcase" class="hero-view-panel" style="display: none;">
-          <div class="hero-car-main-view">
-            <!-- Main Car Image on Stage -->
-            <div class="hero-car-stage-wrapper" title="कार के अलग-अलग एंगल देखने के लिए तीर या नीचे थंबनेल पर क्लिक करें">
-              <img id="hero-main-car-img" src="assets/car-photos/verna-hero-34.jpg" alt="2022 Hyundai Verna 1.5 CRDi AT SX Sport" class="hero-car-stage-img" />
-              
-              <!-- Stage Lighting and Reflection Floor Glow -->
-              <div class="hero-stage-podium"></div>
-
-              <!-- Arrow Navigation on Car Stage -->
-              <button class="hero-nav-arrow arrow-prev" id="btn-hero-prev" aria-label="Previous Car Angle" title="पिछला एंगल">
-                <i data-lucide="chevron-left"></i>
-              </button>
-              <button class="hero-nav-arrow arrow-next" id="btn-hero-next" aria-label="Next Car Angle" title="अगला एंगल">
-                <i data-lucide="chevron-right"></i>
-              </button>
-
-              <!-- Current Angle Badge Pill -->
-              <div class="hero-angle-indicator" id="hero-angle-label">
-                <i data-lucide="camera" style="width: 14px; height: 14px;"></i>
-                <span id="hero-angle-text">1. फ्रंट 3/4 (Hero)</span>
-              </div>
-
-              <!-- Fullscreen Lightbox Button -->
-              <button class="hero-inspect-btn" onclick="window.openVernaGalleryModal()" title="19 HD फोटोज़ और सरकारी RC देखें">
-                <i data-lucide="maximize-2" style="width: 15px; height: 15px;"></i>
-                <span data-i18n="btn_inspect_all_photos">सभी 19 फोटो व RC देखें</span>
-              </button>
+          <div class="deal-pricing-row">
+            <div class="price-box">
+              <span class="price-lbl">विशेष नकद कीमत</span>
+              <span class="price-val">₹10,85,000</span>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- HUD Bottom Row -->
-      <div class="hud-bottom">
-        <!-- 3D Showroom Config Controls (Colors, Camera Presets, Lights) -->
-        <div class="hud-config-box" id="hud-3d-config-box">
-          <!-- Paint Colors -->
-          <div class="color-picker-group">
-            <span class="hud-label" data-i18n="hud_colors_title">प्रीमियम मैटेलिक कलर:</span>
-            <button class="color-dot active" data-color="#ffffff" title="Polar White (मूल रंग)" style="background: #ffffff;"></button>
-            <button class="color-dot" data-color="#0f2347" title="Royal Blue (रॉयल ब्लू)" style="background: #0f2347;"></button>
-            <button class="color-dot" data-color="#111827" title="Midnight Black (ब्लैक)" style="background: #111827;"></button>
-            <button class="color-dot" data-color="#b91c1c" title="Passion Red (रेड)" style="background: #b91c1c;"></button>
-            <button class="color-dot" data-color="#94a3b8" title="Typhoon Silver (सिल्वर)" style="background: #94a3b8;"></button>
-          </div>
-
-          <!-- Camera Views -->
-          <div class="camera-view-group">
-            <span class="hud-label" data-i18n="hud_camera_title">कैमरा व्यू:</span>
-            <button class="btn-cam-view active" data-view="orbit" title="360 Orbit"><i data-lucide="rotate-3d"></i> <span data-i18n="view_360">360°</span></button>
-            <button class="btn-cam-view" data-view="front" title="Front 3/4"><i data-lucide="car"></i> <span data-i18n="view_front">फ्रंट 3/4</span></button>
-            <button class="btn-cam-view" data-view="side" title="Side"><i data-lucide="move-horizontal"></i> <span data-i18n="view_side">साइड</span></button>
-            <button class="btn-cam-view" data-view="rear" title="Rear GT"><i data-lucide="flag"></i> <span data-i18n="view_rear">रियर GT</span></button>
-            <button class="btn-cam-view" data-view="interior" title="Cabin"><i data-lucide="disc"></i> <span data-i18n="view_interior">केबिन</span></button>
-            <button class="btn-cam-view" data-view="top" title="Top"><i data-lucide="arrow-down"></i> <span data-i18n="view_top">टॉप</span></button>
-          </div>
-
-          <!-- Lighting and Turntable Toggles -->
-          <div class="hud-toggles">
-            <button class="hud-icon-toggle active" id="btn-toggle-lights" title="हेडलाइट ऑन/ऑफ">
-              <i data-lucide="sun"></i>
-            </button>
-            <button class="hud-icon-toggle" id="btn-toggle-underglow" title="नियॉन अंडरग्लो ऑन/ऑफ">
-              <i data-lucide="sparkles"></i>
-            </button>
-            <button class="hud-icon-toggle active" id="btn-toggle-rotate" title="ऑटो टर्नटेबल रोटेट">
-              <i data-lucide="refresh-cw"></i>
+            <div class="emi-box">
+              <span class="emi-lbl">आसान EMI शुरू</span>
+              <span class="emi-val">₹16,900<small>/माह</small></span>
+            </div>
+            <button class="btn btn-secondary btn-sm-glass" onclick="window.openVernaGalleryModal()" title="सरकारी RC व सभी फोटो देखें">
+              <i data-lucide="eye"></i> <span data-i18n="btn_inspect_all_photos">19 फोटो व RC</span>
             </button>
           </div>
         </div>
 
-        <!-- Real Car Angle Selector Strip -->
-        <div class="hero-real-angles-box" id="hero-real-angles-box" style="display: none;">
-          <div class="hero-angle-strip" id="hero-angle-strip">
-            <button class="hero-angle-btn active" data-angle="0" data-src="assets/car-photos/verna-hero-34.jpg" data-label-hi="1. फ्रंट 3/4 (Hero)" data-label-en="1. Front 3/4 (Hero)">
-              <img src="assets/car-photos/verna-hero-34.jpg" alt="Angle 1" />
-              <span data-i18n="hero_angle_1">1. फ्रंट 3/4 (Hero)</span>
-            </button>
-            <button class="hero-angle-btn" data-angle="1" data-src="assets/car-photos/verna-side.jpg" data-label-hi="2. साइड प्रोफाइल" data-label-en="2. Side Profile">
-              <img src="assets/car-photos/verna-side.jpg" alt="Angle 2" />
-              <span data-i18n="hero_angle_2">2. साइड प्रोफाइल</span>
-            </button>
-            <button class="hero-angle-btn" data-angle="2" data-src="assets/car-photos/verna-rear-gt.jpg" data-label-hi="3. रियर GT विंग" data-label-en="3. Rear GT Wing">
-              <img src="assets/car-photos/verna-rear-gt.jpg" alt="Angle 3" />
-              <span data-i18n="hero_angle_3">3. रियर GT विंग</span>
-            </button>
-            <button class="hero-angle-btn" data-angle="3" data-src="assets/car-photos/verna-front-straight.jpg" data-label-hi="4. फ्रंट सीधा फेस" data-label-en="4. Front Straight Face">
-              <img src="assets/car-photos/verna-front-straight.jpg" alt="Angle 4" />
-              <span data-i18n="hero_angle_4">4. फ्रंट सीधा फेस</span>
-            </button>
-            <button class="hero-angle-btn" data-angle="4" data-src="assets/car-photos/verna-interior-sunroof.jpg" data-label-hi="5. कॉकपिट व सनरूफ" data-label-en="5. Cockpit & Sunroof">
-              <img src="assets/car-photos/verna-interior-sunroof.jpg" alt="Angle 5" />
-              <span data-i18n="hero_angle_5">5. कॉकपिट व सनरूफ</span>
-            </button>
-            <button class="hero-angle-btn" data-angle="5" data-src="assets/car-photos/verna-steering-dash.jpg" data-label-hi="6. स्टीयरिंग व मीटर" data-label-en="6. Steering & Meter">
-              <img src="assets/car-photos/verna-steering-dash.jpg" alt="Angle 6" />
-              <span data-i18n="hero_angle_6">6. स्टीयरिंग व मीटर</span>
-            </button>
-            <button class="hero-angle-btn" data-angle="6" data-src="assets/car-photos/verna-front-seats.jpg" data-label-hi="7. डुअल-टोन सीट्स" data-label-en="7. Dual-Tone Seats">
-              <img src="assets/car-photos/verna-front-seats.jpg" alt="Angle 7" />
-              <span data-i18n="hero_angle_7">7. डुअल-टोन सीट्स</span>
-            </button>
-            <button class="hero-angle-btn" data-angle="7" data-src="assets/car-photos/verna-rc-card.jpg" data-label-hi="8. सरकारी RC कार्ड" data-label-en="8. Govt RC Card">
-              <img src="assets/car-photos/verna-rc-card.jpg" alt="Angle 8" />
-              <span data-i18n="hero_angle_8">8. सरकारी RC कार्ड</span>
-            </button>
-            <button class="hero-angle-btn" data-angle="8" data-src="assets/car-photos/verna-speedometer.jpg" data-label-hi="9. स्पीडोमीटर (67k KM)" data-label-en="9. Speedometer (67k KM)">
-              <img src="assets/car-photos/verna-speedometer.jpg" alt="Angle 9" />
-              <span data-i18n="hero_angle_9">9. स्पीडोमीटर (67k KM)</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- HUD Action Buttons -->
-        <div class="hud-cta-box">
-          <button class="btn btn-white-hero" onclick="window.openTestDriveModal('verna-hr26-sport')">
+        <!-- Hero CTAs Cluster -->
+        <div class="hero-cta-cluster">
+          <a href="#inventory" class="btn btn-primary btn-hero-cta">
+            <i data-lucide="car"></i> <span data-i18n="cta_explore_cars">50+ सर्टिफाइड कार्स देखें</span>
+          </a>
+          <button class="btn btn-secondary btn-hero-cta" onclick="window.openTestDriveModal('verna-hr26-sport')">
             <i data-lucide="calendar"></i> <span data-i18n="cta_testdrive">फ्री टेस्ट ड्राइव बुक करें</span>
           </button>
-          <button class="btn btn-outline-white" onclick="window.openVernaGalleryModal()">
-            <i data-lucide="eye"></i> <span data-i18n="btn_inspect_all_photos">सभी 19 फोटो व RC देखें</span>
-          </button>
-          <a href="https://wa.me/919911922050?text=नमस्ते सद्गुरु मोटर्स, मुझे 2022 हुंडई वरना 1.5 CRDi AT (HR-26-EV-1479) के बारे में जानकारी चाहिए।" target="_blank" class="btn btn-whatsapp-hero" title="WhatsApp पर तुरंत चैट करें">
-            <i data-lucide="message-circle"></i> <span>WhatsApp</span>
+          <a href="https://wa.me/919911922050?text=नमस्ते सद्गुरु मोटर्स, मुझे गाड़ियों के बारे में जानकारी चाहिए।" target="_blank" class="btn btn-whatsapp btn-hero-cta" title="व्हाट्सएप पर तुरंत चैट करें">
+            <i data-lucide="message-circle"></i> <span>WhatsApp चैट</span>
           </a>
         </div>
+
+        <!-- Trust Badges Strip -->
+        <div class="hero-trust-bullets">
+          <span><i data-lucide="check-circle-2"></i> <span data-i18n="trust_bullet_1">210+ क्वालिटी चेक्स</span></span>
+          <span><i data-lucide="shield-check"></i> <span data-i18n="trust_bullet_2">100% नॉन-एक्सीडेंटल</span></span>
+          <span><i data-lucide="file-check"></i> <span data-i18n="trust_bullet_3">ऑन-स्पॉट RC ट्रांसफर</span></span>
+          <span><i data-lucide="badge-percent"></i> <span data-i18n="trust_bullet_4">0 डाउनपेमेंट EMI</span></span>
+        </div>
       </div>
+
+      <!-- Right Column: Interactive Real HD Liquid Glass Showcase Stage -->
+      <div class="hero-banner-right">
+        <div class="hero-showcase-glass-card">
+          <div class="showcase-card-reflection"></div>
+          
+          <!-- Image Stage -->
+          <div class="showcase-image-viewport">
+            <img id="hero-banner-car-img" src="assets/car-photos/verna-hero-34.jpg" alt="2022 Hyundai Verna 1.5 CRDi AT SX Sport" class="showcase-car-img" />
+            <div class="showcase-stage-gradient"></div>
+
+            <!-- Floating Translucent Badges on Image -->
+            <div class="floating-glass-badge badge-top-right">
+              <i data-lucide="award" style="color: #4ade80;"></i>
+              <span>हरियाणा RC वेरिफाइड (HR-26)</span>
+            </div>
+
+            <div class="floating-glass-badge badge-bottom-left">
+              <i data-lucide="star" style="color: #fde047;"></i>
+              <span>4.9★ (1,500+ खुश ग्राहक)</span>
+            </div>
+          </div>
+
+          <!-- Quick Angle Selectors -->
+          <div class="showcase-angle-controls">
+            <span class="angle-switch-label">असली फोटो एंगल बदलें:</span>
+            <div class="showcase-angle-tabs">
+              <button class="angle-tab active" onclick="window.switchHeroBannerAngle(0, 'assets/car-photos/verna-hero-34.jpg', this)">
+                <i data-lucide="camera"></i> <span>फ्रंट 3/4</span>
+              </button>
+              <button class="angle-tab" onclick="window.switchHeroBannerAngle(1, 'assets/car-photos/verna-side.jpg', this)">
+                <i data-lucide="move-horizontal"></i> <span>साइड व्यू</span>
+              </button>
+              <button class="angle-tab" onclick="window.switchHeroBannerAngle(2, 'assets/car-photos/verna-interior-sunroof.jpg', this)">
+                <i data-lucide="sun"></i> <span>सनरूफ व केबिन</span>
+              </button>
+              <button class="angle-tab" onclick="window.switchHeroBannerAngle(3, 'assets/car-photos/verna-rear-gt.jpg', this)">
+                <i data-lucide="flag"></i> <span>रियर GT विंग</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Bottom Stage Action -->
+          <div class="showcase-footer-action">
+            <button class="btn btn-primary" onclick="window.openVernaGalleryModal()" style="width: 100%; justify-content: center;">
+              <i data-lucide="images"></i> <span>सभी 19 फोटो व ओरिजिनल RC कॉपी देखें</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1184,9 +1117,9 @@
 
   <!-- Floating Mobile Quick Action Dock (Visible ONLY on mobile devices) -->
   <nav class="mobile-bottom-dock" aria-label="Mobile Quick Navigation">
-    <a href="#virtual-showroom" class="dock-item active" title="3D वर्चुअल शोरूम">
-      <i data-lucide="box"></i>
-      <span data-i18n="dock_3d">3D शोरूम</span>
+    <a href="#virtual-showroom" class="dock-item active" title="सद्गुरु शोरूम">
+      <i data-lucide="sparkles"></i>
+      <span data-i18n="dock_3d">शोरूम</span>
     </a>
     <a href="#inventory" class="dock-item" title="सर्टिफाइड कार्स">
       <i data-lucide="car"></i>
@@ -1211,7 +1144,6 @@
   <script src="js/supabase-client.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/inventory.js"></script>
-  <script src="js/car3d.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

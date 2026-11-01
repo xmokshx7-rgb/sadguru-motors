@@ -697,513 +697,473 @@ button:active,
 }
 
 /* --------------------------------------------------------------------------
-   7. HERO 3D SHOWROOM: FEATURED VERNA SX SPORT
+   7. LUXURY LIQUID GLASS HERO BANNER: SADGURU MOTORS FEATURED SHOWCASE
    -------------------------------------------------------------------------- */
-.hero-3d-section {
+.hero-banner-section {
   position: relative;
   width: 100%;
-  padding: 24px 0 36px;
-  background: transparent;
+  min-height: 84vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 0 54px;
+  background: radial-gradient(circle at 80% 25%, rgba(37, 99, 235, 0.18) 0%, rgba(13, 27, 42, 0) 65%),
+              radial-gradient(circle at 20% 75%, rgba(56, 189, 248, 0.12) 0%, rgba(10, 25, 47, 0) 60%);
+  overflow: hidden;
 }
 
-.showroom-hud {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 0 20px;
+.hero-banner-ambient-glow {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(37, 99, 235, 0.08) 50%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  animation: ambientFloat 8s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes ambientFloat {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  100% { transform: translate(-30px, 20px) scale(1.12); opacity: 1; }
+}
+
+.hero-banner-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 44px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Left Column */
+.hero-banner-left {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
-/* HUD Top Row */
-.hud-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.hero-badge-wrap {
-  flex: 1;
-  min-width: 290px;
-}
-
-.hero-pill-badge {
+.hero-glass-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(52, 211, 153, 0.35);
-  color: #34d399;
-  padding: 4px 12px;
+  gap: 8px;
+  padding: 6px 16px;
   border-radius: var(--radius-pill);
-  font-size: 0.78rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  backdrop-filter: blur(8px);
+  background: rgba(37, 99, 235, 0.16);
+  border: 1px solid rgba(56, 189, 248, 0.38);
+  backdrop-filter: blur(20px) saturate(180%);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #93c5fd;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  margin-bottom: 16px;
+  align-self: flex-start;
 }
 
-.hero-title {
-  font-size: 2.2rem;
-  color: #ffffff;
-  font-weight: 900;
-  line-height: 1.15;
-  margin-bottom: 6px;
-  letter-spacing: -0.02em;
+.pulsing-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+  animation: pulseGlow 2s infinite;
+  flex-shrink: 0;
 }
 
-.hero-desc {
-  font-size: 0.95rem;
-  color: var(--text-body);
-  line-height: 1.5;
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.25); }
+}
+
+.hero-banner-title {
   margin-bottom: 12px;
 }
 
-.hero-deal-strip {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
+.hero-banner-title .title-sub {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #60a5fa;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
 }
 
-.deal-price-badge {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.15) 100%);
-  border: 1.5px solid rgba(251, 191, 36, 0.5);
-  color: #fde047;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  font-size: 1.1rem;
+.hero-banner-title .title-main {
+  display: block;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
   font-weight: 800;
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
-}
-
-.deal-emi-badge {
-  background: rgba(37, 99, 235, 0.2);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  color: var(--electric-cyan);
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  font-size: 0.92rem;
-  font-weight: 700;
-}
-
-/* 3D vs Real Photo Mode Toggle */
-.hero-mode-toggle {
-  display: inline-flex;
-  background: rgba(10, 16, 32, 0.85);
-  border: 1.5px solid var(--liquid-border-specular);
-  border-radius: var(--radius-pill);
-  padding: 4px;
-  gap: 4px;
-  backdrop-filter: blur(14px);
-  box-shadow: var(--liquid-bevel-inner);
-}
-
-.hero-mode-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 16px;
-  border-radius: var(--radius-pill);
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.84rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.hero-mode-btn.active {
-  background: var(--electric-sapphire);
+  line-height: 1.16;
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.5);
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Right HUD Controls (Engine Start & Rev) */
-.hud-side-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.hero-banner-desc {
+  font-size: 1.02rem;
+  line-height: 1.62;
+  color: #cbd5e1;
+  margin-bottom: 22px;
+  max-width: 620px;
 }
 
-.btn-engine-start {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 11px 18px;
-  border-radius: var(--radius-pill);
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(185, 28, 28, 0.4) 100%);
-  border: 1.5px solid rgba(239, 68, 68, 0.5);
-  color: #fca5a5;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.25);
-}
-
-.btn-engine-start:hover, .btn-engine-start.running {
-  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  color: #ffffff;
-  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
-  border-color: #f87171;
-}
-
-.rev-meter-wrap {
-  width: 180px;
-  background: rgba(10, 16, 32, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 6px 10px;
-}
-
-.rev-bar-track {
-  width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-top: 4px;
-}
-
-.rev-bar-fill {
-  height: 100%;
-  width: 10%;
-  background: linear-gradient(90deg, #10b981 0%, #f59e0b 70%, #ef4444 100%);
-  border-radius: 4px;
-  transition: width 0.15s ease-out;
-}
-
-/* ================= HERO STAGE VIEWPORT (3D & REAL HD DUAL VIEW) ================= */
-.hero-stage-viewport {
+/* Featured Deal Card - Ultra Liquid Glass */
+.hero-deal-card {
   position: relative;
-  width: 100%;
-  height: 520px;
-  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.03) 100%), rgba(10, 25, 47, 0.72);
+  backdrop-filter: blur(28px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 18px 22px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 24px rgba(37, 99, 235, 0.15);
+  margin-bottom: 22px;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 50%, #12213e 0%, #060a14 100%);
-  border: 1.5px solid var(--liquid-border-specular);
-  box-shadow:
-    var(--liquid-bevel-inner),
-    0 24px 60px -10px rgba(0, 0, 0, 0.7),
-    var(--liquid-glow-cyan);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-.hero-view-panel {
+.hero-deal-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 32px rgba(56, 189, 248, 0.22);
+}
+
+.deal-card-glow {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-#canvas-container {
-  width: 100%;
-  height: 100%;
-  cursor: grab;
-}
-
-#canvas-container:active {
-  cursor: grabbing;
-}
-
-/* Real HD Studio Stage */
-#real-car-showcase {
-  width: 100%;
-  height: 100%;
-}
-
-.hero-car-main-view {
-  width: 100%;
-  height: 100%;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-car-stage-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 18px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-car-stage-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.3s ease;
-}
-
-.hero-stage-podium {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(0deg, rgba(6, 10, 20, 0.85) 0%, transparent 100%);
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.75), transparent);
   pointer-events: none;
 }
 
-.hero-nav-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(10, 16, 32, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+.deal-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  backdrop-filter: blur(12px);
-  transition: all var(--transition-fast);
-  z-index: 10;
+  margin-bottom: 10px;
 }
 
-.hero-nav-arrow:hover {
-  background: var(--electric-sapphire);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.arrow-prev { left: 16px; }
-.arrow-next { right: 16px; }
-
-.hero-angle-indicator {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  background: rgba(10, 16, 32, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  font-size: 0.82rem;
+.deal-tag {
+  font-size: 0.8rem;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.hero-inspect-btn {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(10, 16, 32, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  padding: 8px 16px;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.32);
+  padding: 3px 10px;
   border-radius: var(--radius-pill);
-  font-size: 0.84rem;
+}
+
+.deal-status {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.deal-car-name {
+  font-size: 1.22rem;
   font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.deal-specs-pills {
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.deal-specs-pills span {
+  display: inline-flex;
   align-items: center;
-  gap: 7px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 8px;
 }
 
-.hero-inspect-btn:hover {
-  background: var(--electric-sapphire);
-  transform: translateY(-2px);
+.deal-specs-pills span i {
+  width: 14px;
+  height: 14px;
+  color: #60a5fa;
 }
 
-/* ================= HUD BOTTOM CONTROLS ================= */
-.hud-bottom {
+.deal-pricing-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 14px;
   flex-wrap: wrap;
-  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.hud-config-box {
-  background: var(--liquid-glass-surface);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid var(--liquid-border-specular);
-  border-radius: var(--radius-pill);
-  padding: 8px 16px;
+.deal-pricing-row .price-box {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow:
-    var(--liquid-bevel-inner),
-    0 10px 25px rgba(0, 0, 0, 0.4);
+  flex-direction: column;
 }
 
-.hud-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--text-muted);
+.deal-pricing-row .price-lbl {
+  font-size: 0.72rem;
+  color: #94a3b8;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-/* Metallic Paint Colors */
-.color-picker-group {
+.deal-pricing-row .price-val {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.deal-pricing-row .emi-box {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
 }
 
-.color-dot {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  position: relative;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+.deal-pricing-row .emi-lbl {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.color-dot:hover {
-  transform: scale(1.15);
-}
-
-.color-dot.active {
-  border-color: #ffffff;
-  box-shadow: 0 0 14px var(--electric-cyan), 0 0 0 2px rgba(56, 189, 248, 0.5);
-  transform: scale(1.15);
-}
-
-/* Camera Views */
-.camera-view-group {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.btn-cam-view {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--text-body);
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-  font-size: 0.78rem;
+.deal-pricing-row .emi-val {
+  font-size: 1.15rem;
   font-weight: 700;
-  cursor: pointer;
+  color: #34d399;
+}
+
+.deal-pricing-row .emi-val small {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.btn-sm-glass {
+  padding: 7px 14px !important;
+  font-size: 0.82rem !important;
+  border-radius: 10px !important;
+}
+
+/* CTAs Cluster */
+.hero-cta-cluster {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.btn-hero-cta {
+  padding: 12px 22px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+}
+
+/* Trust Bullets */
+.hero-trust-bullets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-trust-bullets span {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  transition: all var(--transition-fast);
+  gap: 6px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #cbd5e1;
 }
 
-.btn-cam-view:hover {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
+.hero-trust-bullets span i {
+  width: 15px;
+  height: 15px;
+  color: #34d399;
+  flex-shrink: 0;
 }
 
-.btn-cam-view.active {
-  background: var(--electric-sapphire);
-  color: #ffffff;
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.5);
-}
-
-/* Feature Toggles */
-.hud-toggles {
+/* Right Column: Liquid Glass HD Showcase Stage */
+.hero-banner-right {
   display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-showcase-glass-card {
+  width: 100%;
+  max-width: 540px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%), rgba(10, 25, 47, 0.75);
+  backdrop-filter: blur(36px) saturate(210%);
+  -webkit-backdrop-filter: blur(36px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 0 35px rgba(37, 99, 235, 0.22);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.hero-showcase-glass-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 45px rgba(56, 189, 248, 0.28);
+}
+
+.showcase-card-reflection {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.04) 50%, transparent 60%);
+  pointer-events: none;
+}
+
+.showcase-image-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10.6;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #040914;
+}
+
+.showcase-car-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.showcase-stage-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, transparent 0%, rgba(4, 9, 20, 0.75) 100%);
+  pointer-events: none;
+}
+
+.floating-glass-badge {
+  position: absolute;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-}
-
-.hud-icon-toggle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.hud-icon-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(10, 25, 47, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.42);
+  z-index: 3;
 }
 
-.hud-icon-toggle.active {
-  background: rgba(37, 99, 235, 0.35);
-  color: var(--electric-cyan);
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+.floating-glass-badge i {
+  width: 14px;
+  height: 14px;
 }
 
-/* Real Angles Carousel Strip */
-.hero-real-angles-box {
-  width: 100%;
-  max-width: 650px;
+.badge-top-right {
+  top: 12px;
+  right: 12px;
 }
 
-.hero-angle-strip {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+.badge-bottom-left {
+  bottom: 12px;
+  left: 12px;
 }
 
-.hero-angle-strip::-webkit-scrollbar {
-  display: none;
+.showcase-angle-controls {
+  margin-top: 14px;
 }
 
-.hero-angle-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--liquid-glass-surface);
-  border: 1px solid var(--liquid-border-specular);
-  border-radius: 10px;
-  padding: 4px 10px 4px 4px;
-  color: var(--text-muted);
+.angle-switch-label {
+  display: block;
   font-size: 0.76rem;
-  font-weight: 700;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: all var(--transition-fast);
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
 }
 
-.hero-angle-btn img {
-  width: 40px;
-  height: 28px;
-  border-radius: 6px;
-  object-fit: cover;
+.showcase-angle-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
 }
 
-.hero-angle-btn.active {
-  background: rgba(37, 99, 235, 0.25);
-  border-color: var(--electric-cyan);
-  color: #ffffff;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
-}
-
-/* Bottom CTA Buttons */
-.hud-cta-box {
+.angle-tab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px 6px;
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  font-weight: 600;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  outline: none;
+}
+
+.angle-tab i {
+  width: 16px;
+  height: 16px;
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.angle-tab:hover {
+  background: rgba(37, 99, 235, 0.25);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.angle-tab.active {
+  background: rgba(37, 99, 235, 0.4);
+  border-color: rgba(56, 189, 248, 0.75);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.angle-tab.active i {
+  color: #38bdf8;
+}
+
+.showcase-footer-action {
+  margin-top: 12px;
 }
 
 /* --------------------------------------------------------------------------
@@ -2651,6 +2611,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
     padding-top: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
+
+  .hero-banner-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -2707,115 +2672,104 @@ input[type="range"]::-webkit-slider-thumb:hover {
     display: none;
   }
 
-  /* Hero Section Stacked Naturally */
-  .hero-3d-section {
-    padding: 14px 0 24px;
+  /* Luxury Liquid Glass Hero Banner Responsive Overrides */
+  .hero-banner-section {
+    padding: 18px 0 28px;
+    min-height: auto;
   }
 
-  .showroom-hud {
+  .hero-banner-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
     padding: 0 14px;
+  }
+
+  .hero-banner-title .title-sub {
+    font-size: 0.95rem;
+  }
+
+  .hero-banner-title .title-main {
+    font-size: 1.65rem;
+    line-height: 1.2;
+  }
+
+  .hero-banner-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .hero-deal-card {
+    padding: 14px 16px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+  }
+
+  .deal-car-name {
+    font-size: 1.08rem;
+  }
+
+  .deal-pricing-row {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
   }
 
-  .hero-title {
-    font-size: 1.55rem;
+  .deal-pricing-row .price-val {
+    font-size: 1.3rem;
   }
 
-  .hero-desc {
-    font-size: 0.86rem;
-  }
-
-  .hero-mode-toggle {
+  .deal-pricing-row .btn-sm-glass {
     width: 100%;
-    display: flex;
-  }
-
-  .hero-mode-btn {
-    flex: 1;
     justify-content: center;
   }
 
-  .hud-side-controls {
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--liquid-glass-surface);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--liquid-border-specular);
-    border-radius: var(--radius-pill);
-    padding: 8px 14px;
-  }
-
-  .rev-meter-wrap {
-    width: 120px;
-  }
-
-  /* Dedicated Touchable 3D Stage Viewport */
-  .hero-stage-viewport {
-    height: 330px;
-    min-height: 330px;
-    border-radius: 20px;
-    margin: 4px 0;
-  }
-
-  .hero-nav-arrow {
-    width: 38px;
-    height: 38px;
-  }
-
-  /* Bottom Controls on Mobile */
-  .hud-bottom {
+  .hero-cta-cluster {
     flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .hud-config-box {
-    flex-direction: column;
-    align-items: stretch;
-    border-radius: 20px;
-    padding: 14px;
-    gap: 12px;
-  }
-
-  .color-picker-group {
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .color-dot {
-    width: 32px;
-    height: 32px;
-  }
-
-  .camera-view-group {
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    gap: 6px;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-  }
-
-  .btn-cam-view {
-    flex-shrink: 0;
-  }
-
-  .hud-toggles {
-    justify-content: center;
-  }
-
-  .hud-cta-box {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
     gap: 10px;
+    width: 100%;
   }
 
-  .hud-cta-box .btn {
+  .btn-hero-cta {
     width: 100%;
-    padding: 14px;
+    justify-content: center;
+    padding: 13px 18px;
+  }
+
+  .hero-trust-bullets {
+    gap: 12px;
+    font-size: 0.8rem;
+  }
+
+  .hero-showcase-glass-card {
+    max-width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  .showcase-image-viewport {
+    aspect-ratio: 16 / 10.5;
+    border-radius: 14px;
+  }
+
+  .floating-glass-badge {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+  }
+
+  .showcase-angle-tabs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .angle-tab {
+    padding: 7px 4px;
+    font-size: 0.72rem;
+  }
+
+  .showcase-footer-action .btn {
+    font-size: 0.84rem;
+    padding: 12px 14px;
   }
 
   /* Trust Banner */

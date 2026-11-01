@@ -587,6 +587,30 @@ function initTranslucentInteractionsAndSmoothUI() {
 }
 
 /**
+ * Liquid Glass Hero Banner Angle Switcher
+ */
+window.switchHeroBannerAngle = function(index, src, btnElement) {
+  const carImg = document.getElementById('hero-banner-car-img');
+  if (carImg) {
+    carImg.style.opacity = '0.35';
+    carImg.style.transform = 'scale(0.98)';
+    setTimeout(() => {
+      carImg.src = src;
+      carImg.style.opacity = '1';
+      carImg.style.transform = 'scale(1)';
+    }, 120);
+  }
+  const tabs = document.querySelectorAll('.angle-tab');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  if (btnElement) {
+    btnElement.classList.add('active');
+  }
+  if (window.soundEngine && typeof window.soundEngine.playSwitchClick === 'function') {
+    try { window.soundEngine.playSwitchClick(); } catch (e) {}
+  }
+};
+
+/**
  * Hero Dual-Mode Controller (3D WebGL vs Real HD Photos)
  */
 function initHeroModeToggle() {
@@ -696,6 +720,7 @@ let currentHeroAngleIndex = 0;
 
 function initHeroRealCarShowcase() {
   const mainImg = document.getElementById('hero-main-car-img');
+  if (!mainImg) return;
   const angleLabel = document.getElementById('hero-angle-text');
   const angleBtns = document.querySelectorAll('.hero-angle-btn');
   const prevBtn = document.getElementById('btn-hero-prev');
