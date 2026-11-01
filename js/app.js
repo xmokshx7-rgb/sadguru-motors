@@ -473,6 +473,112 @@ function initUIControls() {
       }
     });
   }
+
+  // Initialize Translucent Liquid Glass Click Effects & Ultra-Smooth UI
+  initTranslucentInteractionsAndSmoothUI();
+}
+
+/**
+ * Ultra-Smooth Translucent Liquid Glass Ripple & Silky Smooth Interaction Engine
+ */
+function initTranslucentInteractionsAndSmoothUI() {
+  // 1. Global Translucent Glass Ripple on click/tap of ANY button or interactive element
+  const clickableSelector = `
+    button, 
+    .btn, 
+    a.btn, 
+    .dock-item, 
+    .category-btn, 
+    .category-pill, 
+    .gallery-tab-btn, 
+    .hud-icon-toggle, 
+    .hero-mode-btn, 
+    .btn-cam-view, 
+    .lang-btn, 
+    .fab-btn, 
+    .modal-close-btn, 
+    .btn-fast-google, 
+    .gallery-thumb-item, 
+    .color-swatch, 
+    .user-profile-btn,
+    .top-link, 
+    .hero-nav-arrow,
+    [role="button"]
+  `;
+
+  document.addEventListener('pointerdown', (e) => {
+    const target = e.target.closest(clickableSelector);
+    if (!target) return;
+
+    // Create translucent liquid ripple
+    const rect = target.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.className = 'liquid-translucent-ripple';
+
+    const size = Math.max(rect.width, rect.height) * 2.2;
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+
+    // Coordinates relative to button
+    const x = (e.clientX !== undefined && e.clientX !== 0) ? (e.clientX - rect.left) : (rect.width / 2);
+    const y = (e.clientY !== undefined && e.clientY !== 0) ? (e.clientY - rect.top) : (rect.height / 2);
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    // Ensure container constraints
+    const computedPos = window.getComputedStyle(target).position;
+    if (computedPos === 'static') {
+      target.style.position = 'relative';
+    }
+    target.style.overflow = 'hidden';
+
+    // Add sheen flash micro-animation
+    target.classList.add('translucent-sheen-active');
+    setTimeout(() => {
+      target.classList.remove('translucent-sheen-active');
+    }, 450);
+
+    target.appendChild(ripple);
+
+    // Subtle tactile audio click feedback
+    try {
+      if (window.showroomInstance && window.showroomInstance.soundEngine && !window.showroomInstance.soundEngine.isMuted) {
+        window.showroomInstance.soundEngine.playSwitchClick();
+      }
+    } catch (err) {}
+
+    // Clean up ripple element smoothly
+    setTimeout(() => {
+      if (ripple && ripple.parentNode) {
+        ripple.remove();
+      }
+    }, 650);
+  }, { passive: true });
+
+  // 2. Ultra-Smooth Anchor Scrolling with Fixed Header Offset
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#' || href === '#!') return;
+
+    const targetEl = document.querySelector(href);
+    if (targetEl) {
+      e.preventDefault();
+      const navOffset = 76;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
+
+      if (history.pushState) {
+        history.pushState(null, null, href);
+      }
+    }
+  });
 }
 
 /**
