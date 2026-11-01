@@ -71,6 +71,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 76px;
   font-size: 16px;
   background-color: var(--liquid-obsidian);
   overflow-x: hidden;
@@ -88,35 +89,20 @@ body {
   min-height: 100vh;
 }
 
-/* Animated Floating Liquid Aura in Background */
+/* High-Performance Liquid Aura in Background (GPU Composited, Zero Filter Overhead) */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   pointer-events: none;
   z-index: -2;
   background:
-    radial-gradient(ellipse 70% 50% at 15% 15%, rgba(37, 99, 235, 0.22) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 45% at 85% 35%, rgba(6, 182, 212, 0.18) 0%, transparent 55%),
-    radial-gradient(ellipse 75% 60% at 50% 85%, rgba(139, 92, 246, 0.14) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 40% at 75% 90%, rgba(16, 185, 129, 0.12) 0%, transparent 50%);
-  filter: blur(40px);
-  animation: liquidMeshFloat 22s ease-in-out infinite alternate;
-}
-
-@keyframes liquidMeshFloat {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  50% {
-    transform: scale(1.08) translate(-15px, 20px);
-  }
-  100% {
-    transform: scale(1.02) translate(15px, -15px);
-  }
+    radial-gradient(ellipse 65% 50% at 15% 15%, rgba(37, 99, 235, 0.22) 0%, rgba(37, 99, 235, 0.06) 35%, transparent 65%),
+    radial-gradient(ellipse 60% 45% at 85% 30%, rgba(6, 182, 212, 0.16) 0%, rgba(6, 182, 212, 0.04) 30%, transparent 60%),
+    radial-gradient(ellipse 75% 60% at 50% 85%, rgba(139, 92, 246, 0.12) 0%, rgba(139, 92, 246, 0.03) 35%, transparent 65%),
+    radial-gradient(ellipse 45% 45% at 80% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 55%);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .container {
@@ -258,8 +244,7 @@ button:active,
     rgba(255, 255, 255, 0.1) 80%,
     transparent 100%
   );
-  backdrop-filter: blur(8px) saturate(200%);
-  -webkit-backdrop-filter: blur(8px) saturate(200%);
+  /* Optimized: no dynamic blur on animated scaling ripple */
   box-shadow: 
     0 0 28px rgba(56, 189, 248, 0.75),
     inset 0 0 16px rgba(255, 255, 255, 0.85);
@@ -293,8 +278,7 @@ button:active,
     rgba(56, 189, 248, 0.24) 45%,
     rgba(255, 255, 255, 0.08) 100%
   );
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  /* Optimized sheen flash */
   pointer-events: none;
   z-index: 50;
   animation: translucentSheenFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -470,8 +454,8 @@ button:active,
   top: 0;
   z-index: 1000;
   background: rgba(8, 14, 28, 0.88);
-  backdrop-filter: blur(28px) saturate(200%);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   border-bottom: 1px solid var(--liquid-border-specular);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.15),
@@ -713,21 +697,15 @@ button:active,
 
 .hero-banner-ambient-glow {
   position: absolute;
-  top: 15%;
-  right: 10%;
+  top: 10%;
+  right: 8%;
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(37, 99, 235, 0.08) 50%, transparent 70%);
-  filter: blur(60px);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(37, 99, 235, 0.06) 45%, transparent 70%);
   pointer-events: none;
-  animation: ambientFloat 8s ease-in-out infinite alternate;
+  transform: translateZ(0);
   z-index: 1;
-}
-
-@keyframes ambientFloat {
-  0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-  100% { transform: translate(-30px, 20px) scale(1.12); opacity: 1; }
 }
 
 .hero-banner-container {
@@ -754,7 +732,7 @@ button:active,
   border-radius: var(--radius-pill);
   background: rgba(37, 99, 235, 0.16);
   border: 1px solid rgba(56, 189, 248, 0.38);
-  backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(150%);
   font-size: 0.82rem;
   font-weight: 600;
   color: #93c5fd;
@@ -814,7 +792,7 @@ button:active,
 .hero-deal-card {
   position: relative;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.03) 100%), rgba(10, 25, 47, 0.72);
-  backdrop-filter: blur(28px) saturate(210%);
+  backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
   padding: 18px 22px;
@@ -1012,8 +990,8 @@ button:active,
   width: 100%;
   max-width: 540px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%), rgba(10, 25, 47, 0.75);
-  backdrop-filter: blur(36px) saturate(210%);
-  -webkit-backdrop-filter: blur(36px) saturate(210%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 24px;
   padding: 16px;
@@ -1182,8 +1160,8 @@ button:active,
 
 .trust-card {
   background: var(--liquid-glass-card);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
   border: 1px solid var(--liquid-border-specular);
   border-radius: var(--radius-lg);
   padding: 18px;
@@ -1240,8 +1218,8 @@ button:active,
 
 .inventory-filters-wrap {
   background: var(--liquid-glass-surface);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   border: 1px solid var(--liquid-border-specular);
   border-radius: var(--radius-lg);
   padding: 20px;
@@ -1371,8 +1349,8 @@ button:active,
 
 .car-card {
   background: var(--liquid-glass-card);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   border: 1.5px solid var(--liquid-border-specular);
   border-radius: 20px;
   overflow: hidden;
@@ -1584,8 +1562,8 @@ button:active,
 
 .calculator-sliders {
   background: var(--liquid-glass-surface);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   border: 1.5px solid var(--liquid-border-specular);
   border-radius: 20px;
   padding: 28px;
@@ -1651,8 +1629,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .emi-result-panel {
   background: linear-gradient(135deg, rgba(30, 58, 115, 0.75) 0%, rgba(10, 16, 32, 0.85) 100%);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   border: 1.5px solid var(--liquid-border-specular);
   border-radius: 20px;
   padding: 32px 28px;
@@ -1728,8 +1706,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .sell-form-card {
   background: var(--liquid-glass-surface);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   border: 1.5px solid var(--liquid-border-specular);
   border-radius: 20px;
   padding: 28px;
@@ -1791,8 +1769,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .testimonial-card {
   background: var(--liquid-glass-card);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
   border: 1px solid var(--liquid-border-specular);
   border-radius: 18px;
   padding: 24px;
@@ -1903,8 +1881,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .modal-content-card {
   position: relative;
   background: rgba(11, 19, 38, 0.94);
-  backdrop-filter: blur(32px) saturate(200%);
-  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1.5px solid var(--liquid-border-specular);
   border-radius: 24px;
   padding: 30px;
@@ -2102,8 +2080,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
   right: 14px;
   height: 64px;
   background: rgba(9, 15, 30, 0.88);
-  backdrop-filter: blur(28px) saturate(200%);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-pill);
   box-shadow:
@@ -2552,8 +2530,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
     left: 0;
     width: 100%;
     background: rgba(8, 14, 28, 0.96);
-    backdrop-filter: blur(32px) saturate(200%);
-    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.16);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
     flex-direction: column;
@@ -2955,4 +2933,33 @@ input[type="range"]::-webkit-slider-thumb:hover {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+/* ==========================================================================
+   PERFORMANCE & 120 FPS BUTTERY SMOOTH SCROLL ACCELERATION
+   ========================================================================== */
+.navbar,
+.mobile-bottom-dock,
+.floating-contact-fabs,
+.hero-showcase-glass-card {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.car-card {
+  contain: paint;
+  will-change: transform;
+}
+
+/* Off-screen Content Visibility Optimization */
+.inventory-section,
+.promise-section,
+.emi-section,
+.sell-car-section,
+.location-section,
+.customer-reviews-section,
+footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 650px;
 }

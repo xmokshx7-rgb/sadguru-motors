@@ -18,9 +18,8 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- GSAP Animations & Lucide Icons -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons (Async Defer) -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <!-- Google Identity Services (GIS) for 1-Click Google Login -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -256,7 +255,7 @@
           
           <!-- Image Stage -->
           <div class="showcase-image-viewport">
-            <img id="hero-banner-car-img" src="assets/car-photos/verna-hero-34.jpg" alt="2022 Hyundai Verna 1.5 CRDi AT SX Sport" class="showcase-car-img" />
+            <img id="hero-banner-car-img" src="assets/car-photos/verna-hero-34.jpg" alt="2022 Hyundai Verna 1.5 CRDi AT SX Sport" class="showcase-car-img" fetchpriority="high" decoding="async" />
             <div class="showcase-stage-gradient"></div>
 
             <!-- Floating Translucent Badges on Image -->

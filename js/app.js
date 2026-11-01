@@ -511,7 +511,7 @@ function initTranslucentInteractionsAndSmoothUI() {
     [role="button"]
   `;
 
-  document.addEventListener('pointerdown', (e) => {
+  document.addEventListener('click', (e) => {
     const target = e.target.closest(clickableSelector);
     if (!target) return;
 
@@ -520,7 +520,7 @@ function initTranslucentInteractionsAndSmoothUI() {
     const ripple = document.createElement('span');
     ripple.className = 'liquid-translucent-ripple';
 
-    const size = Math.max(rect.width, rect.height) * 2.2;
+    const size = Math.max(rect.width, rect.height) * 2;
     ripple.style.width = `${size}px`;
     ripple.style.height = `${size}px`;
 
@@ -530,25 +530,24 @@ function initTranslucentInteractionsAndSmoothUI() {
     ripple.style.left = `${x}px`;
     ripple.style.top = `${y}px`;
 
-    // Ensure container constraints
+    // Ensure container constraints without breaking styles
     const computedPos = window.getComputedStyle(target).position;
     if (computedPos === 'static') {
       target.style.position = 'relative';
     }
-    target.style.overflow = 'hidden';
 
     // Add sheen flash micro-animation
     target.classList.add('translucent-sheen-active');
     setTimeout(() => {
       target.classList.remove('translucent-sheen-active');
-    }, 450);
+    }, 350);
 
     target.appendChild(ripple);
 
     // Subtle tactile audio click feedback
     try {
-      if (window.showroomInstance && window.showroomInstance.soundEngine && !window.showroomInstance.soundEngine.isMuted) {
-        window.showroomInstance.soundEngine.playSwitchClick();
+      if (window.soundEngine && !window.soundEngine.isMuted) {
+        window.soundEngine.playSwitchClick();
       }
     } catch (err) {}
 
@@ -557,7 +556,7 @@ function initTranslucentInteractionsAndSmoothUI() {
       if (ripple && ripple.parentNode) {
         ripple.remove();
       }
-    }, 650);
+    }, 450);
   }, { passive: true });
 
   // 2. Ultra-Smooth Anchor Scrolling with Fixed Header Offset
@@ -570,13 +569,9 @@ function initTranslucentInteractionsAndSmoothUI() {
     const targetEl = document.querySelector(href);
     if (targetEl) {
       e.preventDefault();
-      const navOffset = 76;
-      const elementPosition = targetEl.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: 'smooth'
+      targetEl.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
 
       if (history.pushState) {

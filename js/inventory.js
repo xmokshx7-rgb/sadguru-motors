@@ -463,7 +463,7 @@ class InventoryManager {
       return `
         <div class="car-card" data-id="${car.id}">
           <div class="car-image-box">
-            <img src="${car.image}" alt="${car.name}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80';" />
+            <img src="${car.image}" alt="${car.name}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80';" />
             <div class="car-badge-top-left">
               <span class="badge-certified"><i data-lucide="shield-check" style="width:13px;height:13px;"></i> ${inspectedBadge}</span>
               <span class="badge-location">${reg.split(' ')[0]}</span>
