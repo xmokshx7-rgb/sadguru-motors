@@ -708,7 +708,7 @@ window.openCarModal = function(carId) {
         <button class="btn btn-primary" onclick="window.openTestDriveModal('${car.id}'); window.closeAllModals();" style="flex: 1.2;">
           <i data-lucide="calendar"></i> ${isEn ? 'Book Test Drive (Sector 14 or Home)' : 'टेस्ट ड्राइव बुक करें (सेक्टर 14 या घर पर)'}
         </button>
-        <a href="https://wa.me/919810123456?text=${encodeURIComponent(isEn ? `Hello Sadguru Motors, I am interested in ${car.name} (ID: ${car.id}). Please share more details.` : `नमस्ते सद्गुरु मोटर्स, मुझे ${car.name} (ID: ${car.id}) के बारे में जानकारी चाहिए।`)}" target="_blank" class="btn btn-whatsapp" style="flex: 1;">
+        <a href="https://wa.me/919911922050?text=${encodeURIComponent(isEn ? `Hello Sadguru Motors, I am interested in ${car.name} (ID: ${car.id}). Please share more details.` : `नमस्ते सद्गुरु मोटर्स, मुझे ${car.name} (ID: ${car.id}) के बारे में जानकारी चाहिए।`)}" target="_blank" class="btn btn-whatsapp" style="flex: 1;">
           <i data-lucide="message-circle"></i> ${isEn ? 'WhatsApp Inquiry' : 'व्हाट्सएप पर बात करें'}
         </a>
         <button class="btn btn-secondary" onclick="window.closeAllModals(event)" style="padding: 10px 18px;" data-close-modal="true">

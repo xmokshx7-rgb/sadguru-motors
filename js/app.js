@@ -315,7 +315,7 @@ function initSellCarCalculator() {
           </div>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="https://wa.me/919810123456?text=${encodeURIComponent(isEn ? `Hello Sadguru Motors, I want to sell my ${brand} ${model} (${year}). Estimated offer: ₹${minVal}-₹${maxVal} L. Phone: ${phone}` : `नमस्ते सद्गुरु मोटर्स, मुझे अपनी ${brand} ${model} (${year}) बेचनी है। अनुमानित ऑफर: ₹${minVal}-₹${maxVal} L। मेरा फोन: ${phone}।`)}" target="_blank" class="btn btn-whatsapp" style="flex: 1;">
+            <a href="https://wa.me/919911922050?text=${encodeURIComponent(isEn ? `Hello Sadguru Motors, I want to sell my ${brand} ${model} (${year}). Estimated offer: ₹${minVal}-₹${maxVal} L. Phone: ${phone}` : `नमस्ते सद्गुरु मोटर्स, मुझे अपनी ${brand} ${model} (${year}) बेचनी है। अनुमानित ऑफर: ₹${minVal}-₹${maxVal} L। मेरा फोन: ${phone}।`)}" target="_blank" class="btn btn-whatsapp" style="flex: 1;">
               <i data-lucide="message-circle"></i> ${isEn ? 'Schedule Inspection in Sector 14' : 'सेक्टर 14 इंस्पेक्शन शेड्यूल करें'}
             </a>
             <button class="btn btn-secondary" onclick="window.closeAllModals(event)" style="padding: 10px 18px;" data-close-modal="true">
@@ -385,7 +385,7 @@ function initTestDriveBooking() {
       } catch (e) {}
     }
 
-    window.open(`https://wa.me/919810123456?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/919911922050?text=${encodeURIComponent(message)}`, '_blank');
     window.closeAllModals();
 
     const confirmMsg = isEn 

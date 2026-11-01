@@ -8,7 +8,7 @@ const APP_TRANSLATIONS = {
     // Top Bar
     top_address: 'सेक्टर 14, ओल्ड दिल्ली रोड, गुड़गांव',
     top_timing: 'सोम - रवि: 10:00 AM - 8:30 PM (7 दिन खुला)',
-    top_call: '+91 98101 23456',
+    top_call: '+91 99119 22050',
     top_whatsapp: 'WhatsApp चैट',
     top_admin: 'डीलर पोर्टल (Admin)',
     top_google_login: 'Google लॉगिन',
@@ -181,7 +181,7 @@ const APP_TRANSLATIONS = {
     loc_lbl_timing: 'शोरूम का समय:',
     loc_timing_val1: 'सोमवार से रविवार (सप्ताह के सातों दिन खुला)',
     loc_timing_val2: 'सुबह 10:00 बजे से रात 8:30 बजे तक',
-    loc_btn_call: 'कॉल करें: 98101 23456',
+    loc_btn_call: 'कॉल करें: 99119 22050',
     loc_btn_whatsapp: 'व्हाट्सएप पर लोकेशन लें',
     loc_btn_maps: 'गूगल मैप्स डायरेक्शन',
 
@@ -210,7 +210,7 @@ const APP_TRANSLATIONS = {
     // Top Bar
     top_address: 'Sector 14, Old Delhi Road, Gurugram',
     top_timing: 'Mon - Sun: 10:00 AM - 8:30 PM (Open 7 Days)',
-    top_call: '+91 98101 23456',
+    top_call: '+91 99119 22050',
     top_whatsapp: 'WhatsApp Chat',
     top_admin: 'Dealer Portal (Admin)',
     top_google_login: 'Google Login',
@@ -383,7 +383,7 @@ const APP_TRANSLATIONS = {
     loc_lbl_timing: 'Visiting Hours:',
     loc_timing_val1: 'Monday to Sunday (Open 7 Days a Week)',
     loc_timing_val2: '10:00 AM to 8:30 PM',
-    loc_btn_call: 'Call Now: 98101 23456',
+    loc_btn_call: 'Call Now: 99119 22050',
     loc_btn_whatsapp: 'Get Location on WhatsApp',
     loc_btn_maps: 'Google Maps Directions',
 
