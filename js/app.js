@@ -462,14 +462,19 @@ function initUIControls() {
       });
     });
 
+    // Global close mobile drawer helper
+    window.closeMobileMenu = function() {
+      navLinks.classList.remove('mobile-active');
+      if (mobileBtn) {
+        mobileBtn.innerHTML = '<i data-lucide="menu" style="width: 24px; height: 24px;"></i>';
+        if (window.lucide) lucide.createIcons();
+      }
+    };
+
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !mobileBtn.contains(e.target) && navLinks.classList.contains('mobile-active')) {
-        navLinks.classList.remove('mobile-active');
-        if (mobileBtn) {
-          mobileBtn.innerHTML = '<i data-lucide="menu" style="width: 24px; height: 24px;"></i>';
-          if (window.lucide) lucide.createIcons();
-        }
+        window.closeMobileMenu();
       }
     });
   }

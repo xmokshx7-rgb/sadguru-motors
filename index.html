@@ -29,32 +29,32 @@
 </head>
 <body>
 
-  <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
+  <!-- ================= TOP ANNOUNCEMENT & CONTACT BAR ================= -->
   <div class="top-bar">
     <div class="container">
       <div class="top-bar-left">
         <span class="top-pill">
-          <i data-lucide="map-pin" style="width: 14px; height: 14px;"></i> 
+          <i data-lucide="map-pin" style="width: 13px; height: 13px;"></i> 
           <span data-i18n="top_address">सेक्टर 14, ओल्ड दिल्ली रोड, गुड़गांव</span>
         </span>
-        <span style="color: #cbd5e1; font-size: 0.84rem;">
-          <i data-lucide="clock" style="width: 13px; height: 13px; display: inline-block; vertical-align: middle;"></i> 
-          <span data-i18n="top_timing">सोम - रवि: 10:00 AM - 8:30 PM (7 दिन खुला)</span>
+        <span class="top-hours">
+          <i data-lucide="clock" style="width: 13px; height: 13px;"></i> 
+          <span data-i18n="top_timing">10:00 AM - 8:30 PM (7 दिन खुला)</span>
         </span>
       </div>
       <div class="top-bar-right">
-        <!-- Google 1-Click User Slot -->
+        <!-- Optional User Slot if logged in -->
         <div id="user-auth-top-slot" class="user-auth-slot"></div>
 
-        <a href="admin.html" class="top-link" style="color: #fde047; font-weight: 700; background: rgba(254, 240, 138, 0.15); padding: 2px 10px; border-radius: 999px; border: 1px solid rgba(254, 240, 138, 0.3);">
-          <i data-lucide="shield" style="width: 13px; height: 13px;"></i> 
+        <a href="admin.html" class="top-admin-badge" title="सद्गुरु मोटर्स डीलर मैनेजमेंट पोर्टल">
+          <i data-lucide="shield-check" style="width: 14px; height: 14px;"></i> 
           <span data-i18n="top_admin">डीलर पोर्टल (Admin)</span>
         </a>
-        <a href="tel:+919911922050" class="top-link">
-          <i data-lucide="phone-call" style="width: 14px; height: 14px; color: #93c5fd;"></i> 
+        <a href="tel:+919911922050" class="top-link top-phone" title="कॉल करें">
+          <i data-lucide="phone-call" style="width: 13px; height: 13px;"></i> 
           <span data-i18n="top_call">+91 99119 22050</span>
         </a>
-        <a href="https://wa.me/919911922050?text=नमस्ते सद्गुरु मोटर्स, मुझे गाड़ी खरीदनी या बेचनी है।" target="_blank" class="top-link" style="color: #4ade80;">
+        <a href="https://wa.me/919911922050?text=नमस्ते सद्गुरु मोटर्स, मुझे गाड़ी खरीदनी या बेचनी है।" target="_blank" class="top-link top-whatsapp" title="WhatsApp पर चैट करें">
           <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i> 
           <span data-i18n="top_whatsapp">WhatsApp चैट</span>
         </a>
@@ -62,9 +62,10 @@
     </div>
   </div>
 
-  <!-- ================= MAIN NAVBAR ================= -->
+  <!-- ================= MAIN STICKY NAVBAR ================= -->
   <header class="navbar">
     <div class="container">
+      <!-- Brand Logo Crest -->
       <a href="#virtual-showroom" class="brand-logo" aria-label="सद्गुरु मोटर्स होम">
         <div class="brand-icon-box" title="सद्गुरु मोटर्स - सेक्टर 14 गुड़गांव">
           <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -83,47 +84,90 @@
           </svg>
         </div>
         <div class="brand-text">
-          <h1 class="royal-blue-text" data-i18n="brand_title">सद्गुरु मोटर्स</h1>
-          <span data-i18n="brand_sub">सर्टिफाइड सेकंड हैंड कार शोरूम • सेक्टर 14 गुड़गांव</span>
+          <span class="brand-name" data-i18n="brand_title">सद्गुरु मोटर्स</span>
+          <span class="brand-tagline" data-i18n="brand_sub">सर्टिफाइड कार्स • सेक्टर 14 गुड़गांव</span>
         </div>
       </a>
 
-      <!-- Desktop Navigation Links -->
+      <!-- Desktop Navigation Links (Becomes Mobile Drawer on Small Screens) -->
       <ul class="nav-links">
-        <li><a href="#virtual-showroom" class="active" data-i18n="nav_home">शोरूम</a></li>
-        <li><a href="#inventory" data-i18n="nav_inventory">कार संग्रह</a></li>
-        <li><a href="#promise" data-i18n="nav_inspection">210+ चेक्स</a></li>
-        <li><a href="#emi-calc" data-i18n="nav_emi">ईएमआई कैलकुलेटर</a></li>
-        <li><a href="#sell-car" data-i18n="nav_sell">कार बेचें</a></li>
-        <li><a href="#location" data-i18n="nav_contact">शोरूम पता</a></li>
-        <li><a href="admin.html" class="nav-admin-btn" style="color: var(--royal-blue-primary); font-weight: 700; background: var(--royal-blue-subtle); padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--royal-blue-border);"><i data-lucide="upload-cloud" style="width: 14px; height: 14px; display: inline-block; vertical-align: -2px; margin-right: 4px;"></i><span data-i18n="nav_admin">कार अपलोड / Admin</span></a></li>
+        <li>
+          <a href="#virtual-showroom" class="nav-link active">
+            <i data-lucide="box" class="nav-icon-mobile"></i>
+            <span data-i18n="nav_home">शोरूम</span>
+          </a>
+        </li>
+        <li>
+          <a href="#inventory" class="nav-link">
+            <i data-lucide="car" class="nav-icon-mobile"></i>
+            <span data-i18n="nav_inventory">कार संग्रह</span>
+          </a>
+        </li>
+        <li>
+          <a href="#promise" class="nav-link">
+            <i data-lucide="shield-check" class="nav-icon-mobile"></i>
+            <span data-i18n="nav_inspection">210+ चेक्स</span>
+          </a>
+        </li>
+        <li>
+          <a href="#emi-calc" class="nav-link">
+            <i data-lucide="calculator" class="nav-icon-mobile"></i>
+            <span data-i18n="nav_emi">ईएमआई कैलकुलेटर</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sell-car" class="nav-link">
+            <i data-lucide="banknote" class="nav-icon-mobile"></i>
+            <span data-i18n="nav_sell">कार बेचें</span>
+          </a>
+        </li>
+        <li>
+          <a href="#location" class="nav-link">
+            <i data-lucide="map-pin" class="nav-icon-mobile"></i>
+            <span data-i18n="nav_contact">शोरूम पता</span>
+          </a>
+        </li>
+
+        <!-- Drawer Exclusive Extras (Mobile & Tablet Drawer Only) -->
+        <li class="drawer-extra-item">
+          <a href="admin.html" class="nav-link nav-link-admin">
+            <i data-lucide="shield" class="nav-icon-mobile" style="color: #fbbf24;"></i>
+            <span data-i18n="nav_admin">डीलर पोर्टल (Admin)</span>
+          </a>
+        </li>
+        <li class="drawer-extra-item drawer-cta-box">
+          <button class="btn btn-primary" onclick="window.openTestDriveModal('verna-hr26-sport'); window.closeMobileMenu();" style="width: 100%;">
+            <i data-lucide="steering-wheel" style="width: 18px; height: 18px;"></i>
+            <span data-i18n="btn_test_drive">टेस्ट ड्राइव बुक करें</span>
+          </button>
+        </li>
       </ul>
 
-      <!-- Navbar Actions (Sound, Language, CTA) -->
+      <!-- Navbar Action Cluster -->
       <div class="nav-actions">
         <!-- Sound FX Toggle -->
-        <button class="sound-toggle-btn sound-on" id="btn-sound-toggle" title="ऑडियो ऑन/ऑफ">
-          <i data-lucide="volume-2" style="width: 18px; height: 18px;"></i>
+        <button class="sound-toggle-btn sound-on" id="btn-sound-toggle" title="ऑडियो ऑन/ऑफ" aria-label="Toggle Showroom Audio">
+          <i data-lucide="volume-2" style="width: 17px; height: 17px;"></i>
         </button>
 
-        <!-- Language Switcher (100% Bilingual Toggle) -->
-        <div class="lang-toggle">
+        <!-- Language Switcher (Hindi / English) -->
+        <div class="lang-toggle" role="group" aria-label="Language Selector">
           <button class="lang-btn active" id="lang-hi">हिंदी</button>
           <button class="lang-btn" id="lang-en">ENG</button>
         </div>
 
-        <!-- Google User / Login Slot -->
+        <!-- Google 1-Click User / Login Slot -->
         <div id="user-auth-nav-slot" class="user-auth-nav-slot"></div>
 
-        <!-- Primary CTA -->
-        <button class="btn btn-primary" onclick="window.openTestDriveModal('verna-hr26-sport')">
-          <i data-lucide="steering-wheel" style="width: 17px; height: 17px;"></i> 
+        <!-- Primary CTA (Desktop Only) -->
+        <button class="btn btn-primary nav-cta-btn" onclick="window.openTestDriveModal('verna-hr26-sport')">
+          <i data-lucide="steering-wheel" style="width: 16px; height: 16px;"></i> 
           <span data-i18n="btn_test_drive">टेस्ट ड्राइव</span>
         </button>
 
-        <!-- Mobile Menu Hamburger -->
+        <!-- Mobile Menu Hamburger Button -->
         <button class="mobile-menu-btn" id="btn-mobile-menu" aria-label="Toggle Navigation">
-          <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+          <i data-lucide="menu" style="width: 22px; height: 22px;"></i>
         </button>
       </div>
     </div>
