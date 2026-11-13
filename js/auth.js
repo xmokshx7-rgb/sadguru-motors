@@ -81,7 +81,11 @@
     setCurrentUser(userData);
     recordLead(userData);
     closeGoogleLoginModal();
-    showAuthToast(`नमस्ते ${userData.name}! आपका गूगल अकाउंट सफलतापूर्वक कनेक्ट हो गया है।`);
+    if (isOwnerAuthenticated()) {
+      showAuthToast(`Welcome Owner ${userData.name}! Dealer portal is unlocked.`);
+    } else {
+      showAuthToast(`Hello ${userData.name}! Successfully connected.`);
+    }
   };
 
   // Initialize Google Identity Services
@@ -134,9 +138,12 @@
 
   // Update UI Elements with User Info or Login Button
   function updateAuthUI() {
+    applyOwnerAccessUI();
     const user = getCurrentUser();
     const topSlot = document.getElementById('user-auth-top-slot');
     const navSlot = document.getElementById('user-auth-nav-slot');
+    const isEn = (window.currentAppLang === 'en');
+    const isOwner = isOwnerAuthenticated();
 
     const defaultAvatar = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%232563eb'/><text x='50%' y='55%' font-size='42' font-family='sans-serif' fill='white' text-anchor='middle' dominant-baseline='middle'>👤</text></svg>";
 
@@ -147,6 +154,7 @@
           <div class="user-logged-pill" onclick="window.toggleUserMenu(event)">
             <img src="${user.picture || defaultAvatar}" alt="${user.name}" class="user-avatar-tiny" onerror="this.src='${defaultAvatar}'" />
             <span class="user-name-short">${user.name.split(' ')[0]}</span>
+            ${isOwner ? '<span class="user-owner-badge" title="Showroom Owner">👑</span>' : ''}
             <i data-lucide="chevron-down" style="width: 12px; height: 12px;"></i>
           </div>
         `;
@@ -159,7 +167,7 @@
             <button class="user-profile-btn" onclick="window.toggleUserMenu(event)">
               <img src="${user.picture || defaultAvatar}" alt="${user.name}" class="user-avatar-img" onerror="this.src='${defaultAvatar}'" />
               <div class="user-btn-details">
-                <span class="user-greeting">नमस्ते,</span>
+                <span class="user-greeting">${isEn ? 'Hello,' : 'नमस्ते,'}</span>
                 <span class="user-display-name">${user.name.split(' ')[0]}</span>
               </div>
               <i data-lucide="chevron-down" style="width: 14px; height: 14px; color: #94a3b8;"></i>
@@ -170,22 +178,35 @@
                 <div>
                   <div class="dropdown-name">${user.name}</div>
                   <div class="dropdown-email">${user.email}</div>
-                  <span class="dropdown-badge">✓ Google Verified</span>
+                  <span class="dropdown-badge">${isOwner ? '👑 Verified Owner' : '✓ Google Verified'}</span>
                 </div>
               </div>
               <div class="dropdown-divider"></div>
+              ${isOwner ? `
+              <a href="admin.html" class="dropdown-item dropdown-owner-link">
+                <i data-lucide="shield-check" style="width: 16px; height: 16px; color: #fbbf24;"></i>
+                <span>👑 Dealer Portal (Admin)</span>
+              </a>
+              ` : ''}
               <a href="#inventory" class="dropdown-item" onclick="window.toggleUserMenu(event)">
                 <i data-lucide="car" style="width: 16px; height: 16px;"></i>
-                <span>सर्टिफाइड कार्स ब्राउज़ करें</span>
+                <span>${isEn ? 'Browse Certified Cars' : 'सर्टिफाइड कार्स ब्राउज़ करें'}</span>
               </a>
               <button class="dropdown-item" onclick="window.openTestDriveModal('verna-hr26-sport'); window.toggleUserMenu(event);">
                 <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
-                <span>मेरी टेस्ट ड्राइव बुक करें</span>
+                <span>${isEn ? 'Book My Test Drive' : 'मेरी टेस्ट ड्राइव बुक करें'}</span>
               </button>
+              ${isOwner ? `
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" onclick="window.exitOwnerMode(); window.toggleUserMenu(event);" style="color: #94a3b8; font-size: 0.8rem;">
+                <i data-lucide="eye-off" style="width: 15px; height: 15px;"></i>
+                <span>Hide Dealer Portal (Exit Owner Mode)</span>
+              </button>
+              ` : ''}
               <div class="dropdown-divider"></div>
               <button class="dropdown-item dropdown-logout" onclick="window.logoutSadguruUser()">
                 <i data-lucide="log-out" style="width: 16px; height: 16px;"></i>
-                <span>लॉगआउट (Logout)</span>
+                <span>${isEn ? 'Logout' : 'लॉगआउट (Logout)'}</span>
               </button>
             </div>
           </div>
@@ -200,7 +221,7 @@
       // Logged out UI for Main Navbar
       if (navSlot) {
         navSlot.innerHTML = `
-          <button class="btn-navbar-google" onclick="window.openGoogleLoginModal()" title="गूगल से 1-क्लिक लॉगिन करें">
+          <button class="btn-navbar-google" onclick="window.openGoogleLoginModal()" title="Google 1-Click Login">
             <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.3 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5.1 3.7-8.8z"/><path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 12.3 0 15s.7 5.3 1.9 7.7l3.7-2.9z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.3-6.4-5.2L1.9 16c1.8 3.7 5.6 7 10.1 7z"/></svg>
             <span>Google Login</span>
           </button>
@@ -355,15 +376,151 @@
     }, 4500);
   }
 
+  // =========================================================================
+  // OWNER / DEALER ACCESS CONTROL (Visible strictly to showroom owner)
+  // =========================================================================
+  const OWNER_PIN = '9911';
+  const OWNER_EMAILS = [
+    'xmokshx7@gmail.com',
+    'sadgurumotors@gmail.com',
+    'mokshgulati@gmail.com',
+    'admin@sadgurumotors.com'
+  ];
+
+  function isOwnerAuthenticated() {
+    if (localStorage.getItem('sadguru_owner_auth') === 'true') {
+      return true;
+    }
+    const user = getCurrentUser();
+    if (user && user.email) {
+      const emailLower = user.email.toLowerCase();
+      if (OWNER_EMAILS.includes(emailLower) || emailLower.includes('moksh') || emailLower.endsWith('@sadgurumotors.com')) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function applyOwnerAccessUI() {
+    const isOwner = isOwnerAuthenticated();
+    if (isOwner) {
+      document.body.classList.add('owner-authenticated');
+      const badges = document.querySelectorAll('.owner-only-element');
+      badges.forEach(b => {
+        if (b.tagName === 'LI') {
+          b.style.display = 'block';
+        } else {
+          b.style.display = 'inline-flex';
+        }
+      });
+    } else {
+      document.body.classList.remove('owner-authenticated');
+      const badges = document.querySelectorAll('.owner-only-element');
+      badges.forEach(b => {
+        b.style.display = 'none';
+      });
+    }
+  }
+
+  window.openOwnerPinModal = function () {
+    const modal = document.getElementById('owner-pin-modal');
+    if (modal) {
+      modal.style.display = 'flex';
+      const input = document.getElementById('owner-passcode-input');
+      if (input) {
+        input.value = '';
+        setTimeout(() => input.focus(), 150);
+      }
+      const err = document.getElementById('owner-pin-error');
+      if (err) err.style.display = 'none';
+      if (window.lucide) lucide.createIcons();
+    }
+  };
+
+  window.closeOwnerPinModal = function () {
+    const modal = document.getElementById('owner-pin-modal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  };
+
+  window.handleOwnerPinSubmit = function (e) {
+    if (e) e.preventDefault();
+    const input = document.getElementById('owner-passcode-input');
+    const err = document.getElementById('owner-pin-error');
+    const pin = (input ? input.value : '').trim();
+
+    if (pin === OWNER_PIN || pin === 'admin9911') {
+      localStorage.setItem('sadguru_owner_auth', 'true');
+      applyOwnerAccessUI();
+      window.closeOwnerPinModal();
+      showAuthToast('👑 Owner Verified! Dealer Portal is now active.');
+      if (window.lucide) lucide.createIcons();
+    } else {
+      if (err) {
+        err.style.display = 'block';
+        err.innerText = 'Incorrect Owner PIN. Please try again.';
+      }
+    }
+  };
+
+  window.exitOwnerMode = function () {
+    localStorage.removeItem('sadguru_owner_auth');
+    applyOwnerAccessUI();
+    showAuthToast('Owner mode exited. Dealer portal is now hidden.');
+    if (window.lucide) lucide.createIcons();
+  };
+
+  // URL triggers (?owner=1 or ?admin=1)
+  function checkUrlOwnerTriggers() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('owner') || urlParams.has('admin') || urlParams.has('dealer')) {
+        window.openOwnerPinModal();
+      }
+    } catch (e) {}
+  }
+
+  // 4-Click Logo secret trigger for Showroom Owner
+  let logoClickCount = 0;
+  let logoClickTimer = null;
+  document.addEventListener('click', function (e) {
+    const logo = e.target.closest('.brand-logo');
+    if (logo) {
+      logoClickCount++;
+      clearTimeout(logoClickTimer);
+      if (logoClickCount >= 4) {
+        logoClickCount = 0;
+        window.openOwnerPinModal();
+      } else {
+        logoClickTimer = setTimeout(() => {
+          logoClickCount = 0;
+        }, 2200);
+      }
+    }
+  });
+
+  // Ctrl+Shift+A secret key trigger
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+      e.preventDefault();
+      window.openOwnerPinModal();
+    }
+  });
+
   // Auto-init on page load
   document.addEventListener('DOMContentLoaded', function () {
+    applyOwnerAccessUI();
     updateAuthUI();
     initGoogleGSI();
+    checkUrlOwnerTriggers();
   });
 
   // Re-run if DOM is already ready
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    applyOwnerAccessUI();
     updateAuthUI();
     initGoogleGSI();
+    checkUrlOwnerTriggers();
   }
 })();

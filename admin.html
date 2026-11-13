@@ -1721,7 +1721,56 @@ CREATE POLICY "Public Full Leads" ON customer_leads FOR ALL USING (true);</div>
       }
     };
 
+    const OWNER_PIN = '9911';
+
+    function verifyAdminAccess() {
+      if (localStorage.getItem('sadguru_owner_auth') === 'true') {
+        const gate = document.getElementById('admin-lock-gate');
+        if (gate) gate.remove();
+        return;
+      }
+      let gate = document.getElementById('admin-lock-gate');
+      if (!gate) {
+        gate = document.createElement('div');
+        gate.id = 'admin-lock-gate';
+        gate.style.cssText = 'position:fixed;inset:0;background:rgba(3,7,18,0.97);backdrop-filter:blur(24px);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;';
+        gate.innerHTML = `
+          <div style="background:#0f172a;border:1px solid rgba(251,191,36,0.3);box-shadow:0 30px 80px rgba(0,0,0,0.8),0 0 30px rgba(251,191,36,0.15);border-radius:24px;padding:36px 30px;max-width:440px;width:100%;text-align:center;color:#fff;">
+            <div style="width:58px;height:58px;border-radius:50%;background:rgba(251,191,36,0.15);border:1.5px solid rgba(251,191,36,0.4);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:26px;">👑</div>
+            <h2 style="font-size:1.35rem;font-weight:800;margin-bottom:8px;color:#f8fafc;">डीलर पोर्टल (Owner Access Only)</h2>
+            <p style="font-size:0.88rem;color:#94a3b8;margin-bottom:22px;line-height:1.5;">यह पोर्टल केवल सद्गुरु मोटर्स ओनर के लिए है। कृपया ओनर पिन (PIN) दर्ज करें:</p>
+            <form onsubmit="window.submitAdminGatePin(event)">
+              <input type="password" id="gate-pin-input" placeholder="Enter PIN (e.g. 9911)" autofocus style="width:100%;padding:13px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;color:#fff;font-size:1.15rem;text-align:center;letter-spacing:3px;margin-bottom:12px;outline:none;" />
+              <div id="gate-pin-err" style="color:#ef4444;font-size:0.82rem;margin-bottom:12px;display:none;font-weight:600;">गलत पिन! पुनः प्रयास करें।</div>
+              <button type="submit" style="width:100%;padding:13px;background:linear-gradient(135deg,#2563eb,#1d4ed8);border:none;border-radius:12px;color:#fff;font-weight:700;font-size:0.95rem;cursor:pointer;margin-bottom:12px;">सत्यापित करें (Unlock)</button>
+              <a href="index.html" style="color:#94a3b8;font-size:0.84rem;text-decoration:none;display:inline-block;">← वापस मुख्य वेबसाइट पर जाएं</a>
+            </form>
+          </div>
+        `;
+        document.body.appendChild(gate);
+        const inp = document.getElementById('gate-pin-input');
+        if (inp) setTimeout(() => inp.focus(), 150);
+      }
+    }
+
+    window.submitAdminGatePin = function(e) {
+      if (e) e.preventDefault();
+      const inp = document.getElementById('gate-pin-input');
+      const err = document.getElementById('gate-pin-err');
+      const pin = (inp ? inp.value : '').trim();
+      if (pin === OWNER_PIN || pin === 'admin9911') {
+        localStorage.setItem('sadguru_owner_auth', 'true');
+        const gate = document.getElementById('admin-lock-gate');
+        if (gate) gate.remove();
+      } else {
+        if (err) {
+          err.style.display = 'block';
+        }
+      }
+    };
+
     document.addEventListener('DOMContentLoaded', () => {
+      verifyAdminAccess();
       if (window.lucide) lucide.createIcons();
       loadInitialCars();
       updateLeadsCount();

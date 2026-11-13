@@ -4,8 +4,8 @@
  * Bulletproof Bilingual Switching & Modal Control
  */
 
-// Initialize default language from localStorage or default to Hindi
-window.currentAppLang = localStorage.getItem('sadguru_lang') || 'hi';
+// Initialize default language from localStorage or default to English
+window.currentAppLang = localStorage.getItem('sadguru_lang') || 'en';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize 3D Showroom & Sound Engine
