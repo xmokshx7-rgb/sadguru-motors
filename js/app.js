@@ -1,6 +1,6 @@
 /**
  * Sadguru Motors - Main Application Logic & Language Controller
- * Sector 14, Gurgaon (HR-26)
+ * Sector 14, Gurugram
  * Bulletproof Bilingual Switching & Modal Control
  */
 
@@ -630,9 +630,9 @@ const HERO_ANGLES = [
     label_en: '7. Dual-Tone Bucket Seats & Sparco • 7 / 9'
   },
   {
-    src: 'assets/car-photos/verna-rc-card.jpg',
-    label_hi: '8. सरकारी RC कार्ड (HR26EV1479) • 8 / 9',
-    label_en: '8. Govt RC Card (HR26EV1479) • 8 / 9'
+    src: 'assets/car-photos/verna-scuff-plate.jpg',
+    label_hi: '8. इल्यूमिनेटेड डोर स्कफ प्लेट्स • 8 / 9',
+    label_en: '8. Illuminated Door Scuff Plates • 8 / 9'
   },
   {
     src: 'assets/car-photos/verna-speedometer.jpg',
@@ -850,7 +850,7 @@ const VERNA_19_PHOTOS = [
   { id: 10, url: 'assets/car-photos/verna-scuff-plate.jpg', cat: 'interior', label_hi: '10. हुंडई इल्यूमिनेटेड डोर स्कफ प्लेट्स', label_en: '10. Hyundai Illuminated Door Scuff Plates' },
   { id: 11, url: 'assets/car-photos/verna-seats-detail.jpg', cat: 'interior', label_hi: '11. डुअल-टोन लेदरेट सीट्स व ब्राइड पैड्स', label_en: '11. Dual-tone Leather Seats & Bride Pads' },
   { id: 12, url: 'assets/car-photos/verna-speedometer.jpg', cat: 'legal', label_hi: '12. डिजिटल स्पीडोमीटर क्लस्टर (67,861 KM ओरिजिनल)', label_en: '12. Digital Speedometer Cluster (67,861 KM Genuine)' },
-  { id: 13, url: 'assets/car-photos/verna-rc-card.jpg', cat: 'legal', label_hi: '13. हरियाणा सरकारी आरसी कार्ड (HR-26-EV-1479)', label_en: '13. Haryana Govt RC Certificate (HR-26-EV-1479)' },
+  { id: 13, url: 'assets/car-photos/verna-seats-detail.jpg', cat: 'interior', label_hi: '13. प्रीमियम लेदरेट अपहोल्स्ट्री व फिनिशिंग', label_en: '13. Premium Leatherette Upholstery Detail' },
   { id: 14, url: 'assets/car-photos/verna-front-left-34.jpg', cat: 'exterior', label_hi: '14. फ्रंट-लेफ्ट एंगल 2 (ब्लैक रूफ & हुड स्कूप्स)', label_en: '14. Front-Left View (Black Roof & Hood Scoops)' },
   { id: 15, url: 'assets/car-photos/verna-rear-straight.jpg', cat: 'exterior', label_hi: '15. रियर सीधा एंगल व एलईडी टेललाइट्स', label_en: '15. Rear Direct Stance & LED Taillamps' },
   { id: 16, url: 'assets/car-photos/verna-hero-angle2.jpg', cat: 'exterior', label_hi: '16. फ्रंट डायनेमिक 3/4 एंगल', label_en: '16. Front Dynamic 3/4 Stance' },

@@ -1,7 +1,7 @@
 /**
  * Sadguru Motors - Google Authentication & Lead Capture
  * Secure client authentication, Supabase lead recording & Owner access control
- * Sector 14, Gurugram (HR-26)
+ * Sector 14, Gurugram
  */
 
 (function () {

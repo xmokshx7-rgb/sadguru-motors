@@ -1,6 +1,6 @@
 /**
  * Sadguru Motors - Certified Inventory Database & Modal Renderer
- * Sector 14, Gurgaon (HR-26)
+ * Sector 14, Gurgaon (Certified)
  * Supports full bilingual rendering (English & Hindi)
  */
 
@@ -18,8 +18,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: '6-स्पीड ऑटोमैटिक (AT)',
     trans_en: '6-Speed Automatic (AT)',
     km: '67,861 km',
-    reg_hi: 'HR-26-EV-1479 (गुड़गांव नॉर्थ)',
-    reg_en: 'HR-26-EV-1479 (Gurugram North)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर (राज्नी सरदाना)',
     owners_en: '1st Owner (Single Handed)',
     color_hi: 'पोलर व्हाइट (ब्लैक रूफ & जीटी किट)',
@@ -40,7 +40,7 @@ const CAR_INVENTORY_DATA = [
       { url: 'assets/car-photos/verna-passenger-dash.jpg', label_hi: 'पैसेंजर साइड केबिन व्यू', label_en: 'Passenger Cabin & Ambient Lighting' },
       { url: 'assets/car-photos/verna-scuff-plate.jpg', label_hi: 'हुंडई इल्यूमिनेटेड स्कफ प्लेट', label_en: 'Hyundai Illuminated Scuff Plate' },
       { url: 'assets/car-photos/verna-speedometer.jpg', label_hi: 'सर्टिफाइड ओडोमीटर (67,861 KM)', label_en: 'Certified Odometer (67,861 KM)' },
-      { url: 'assets/car-photos/verna-rc-card.jpg', label_hi: 'हरियाणा सरकारी आरसी कार्ड (HR26EV1479)', label_en: 'Govt RC Card (HR26EV1479 Gurugram)' },
+      { url: 'assets/car-photos/verna-scuff-plate.jpg', label_hi: 'वाहन विवरण', label_en: 'Vehicle Details & Inspection' },
       { url: 'assets/car-photos/verna-front-left-34.jpg', label_hi: 'फ्रंट-लेफ्ट एंगल 2', label_en: 'Front-Left 3/4 Stance' },
       { url: 'assets/car-photos/verna-rear-straight.jpg', label_hi: 'रियर सीधा एंगल', label_en: 'Rear Straight View' },
       { url: 'assets/car-photos/verna-hero-angle2.jpg', label_hi: 'फ्रंट डायनेमिक एंगल', label_en: 'Front Dynamic Angle' },
@@ -77,8 +77,8 @@ const CAR_INVENTORY_DATA = [
       'Cruise Control & Multi-function Steering',
       'Certified 67,861 KM (Non-tampered)'
     ],
-    desc_hi: 'गुड़गांव (HR-26-EV-1479) में रजिस्टर्ड 2022 हुंडई वरना 1.5 CRDi डीजल ऑटोमैटिक SX स्पोर्ट्स एडिशन। 1st ओनर गाड़ी है, 67,861 किमी चली है। इसमें हाई-डाउनफ़ोर्स GT विंग, क्वाड क्रोम एग्जॉस्ट, सनरूफ, स्पार्को सीट कुशन, एम्बिएंट नियॉन लाइटिंग और नई कंडीशन टायर्स लगे हैं। ओरिजिनल सरकारी आरसी कार्ड वेरिफाइड है। 1 साल की वारंटी और फ्री आरसी ट्रांसफर शामिल है।',
-    desc_en: 'Gurugram registered (HR-26-EV-1479) 2022 Hyundai Verna 1.5 CRDi Diesel Automatic SX Sport Edition. 1st single owner, genuine 67,861 km with verified service records. Customized with GT wing spoiler, quad exhaust diffuser, electric sunroof, Sparco headrests, custom ambient neon lighting and black alloy wheels. 100% verified non-accidental with 1-Year Warranty and free RC transfer.'
+    desc_hi: 'गुड़गांव (Certified) में रजिस्टर्ड 2022 हुंडई वरना 1.5 CRDi डीजल ऑटोमैटिक SX स्पोर्ट्स एडिशन। 1st ओनर गाड़ी है, 67,861 किमी चली है। इसमें हाई-डाउनफ़ोर्स GT विंग, क्वाड क्रोम एग्जॉस्ट, सनरूफ, स्पार्को सीट कुशन, एम्बिएंट नियॉन लाइटिंग और नई कंडीशन टायर्स लगे हैं। ओरिजिनल सरकारी आरसी कार्ड वेरिफाइड है। 1 साल की वारंटी और फ्री आरसी ट्रांसफर शामिल है।',
+    desc_en: 'Gurugram registered (Certified) 2022 Hyundai Verna 1.5 CRDi Diesel Automatic SX Sport Edition. 1st single owner, genuine 67,861 km with verified service records. Customized with GT wing spoiler, quad exhaust diffuser, electric sunroof, Sparco headrests, custom ambient neon lighting and black alloy wheels. 100% verified non-accidental with 1-Year Warranty and free RC transfer.'
   },
   {
     id: 'car-1',
@@ -93,8 +93,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: 'ऑटोमैटिक (DCT)',
     trans_en: 'Automatic (DCT)',
     km: '24,500 km',
-    reg_hi: 'HR-26 (गुड़गांव)',
-    reg_en: 'HR-26 (Gurugram)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर',
     owners_en: '1st Owner',
     color_hi: 'टाइटन ग्रे मैटेलिक',
@@ -105,8 +105,8 @@ const CAR_INVENTORY_DATA = [
     image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80',
     features_hi: ['पैनोरमिक सनरूफ', 'वेंटिलेटेड फ्रंट सीट्स', '10.25" टचस्क्रीन', 'बोस 8-स्पीकर साउंड', 'ब्लूलिंक कनेक्टेड कार', '6 एयरबैग्स'],
     features_en: ['Panoramic Sunroof', 'Ventilated Front Seats', '10.25" Touchscreen', 'Bose 8-Speaker Audio', 'BlueLink Connected Car', '6 Airbags'],
-    desc_hi: 'गुड़गांव रजिस्टर्ड (HR-26) सिंगल ओनर हुंडई क्रेटा। कंपनी सर्विस रिकॉर्ड्स के साथ, कोई एक्सीडेंट नहीं। 1 साल की वारंटी और फ्री आरसी ट्रांसफर उपलब्ध।',
-    desc_en: 'Gurugram registered (HR-26) single owner Hyundai Creta. Complete company service records, 100% non-accidental. Free RC transfer included.'
+    desc_hi: 'गुड़गांव रजिस्टर्ड (Certified) सिंगल ओनर हुंडई क्रेटा। कंपनी सर्विस रिकॉर्ड्स के साथ, कोई एक्सीडेंट नहीं। 1 साल की वारंटी और फ्री आरसी ट्रांसफर उपलब्ध।',
+    desc_en: 'Gurugram registered (Certified) single owner Hyundai Creta. Complete company service records, 100% non-accidental. Free RC transfer included.'
   },
   {
     id: 'car-2',
@@ -121,8 +121,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: 'ऑटोमैटिक',
     trans_en: 'Automatic',
     km: '31,000 km',
-    reg_hi: 'HR-26 (गुड़गांव)',
-    reg_en: 'HR-26 (Gurugram)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर',
     owners_en: '1st Owner',
     color_hi: 'मिडनाइट ब्लैक',
@@ -149,8 +149,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: 'CVT ऑटोमैटिक',
     trans_en: 'CVT Automatic',
     km: '28,200 km',
-    reg_hi: 'HR-26 (गुड़गांव)',
-    reg_en: 'HR-26 (Gurugram)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर',
     owners_en: '1st Owner',
     color_hi: 'प्लैटिनम व्हाइट पर्ल',
@@ -177,8 +177,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: 'ऑटोमैटिक',
     trans_en: 'Automatic',
     km: '26,000 km',
-    reg_hi: 'DL-8C (दिल्ली एनसीआर)',
-    reg_en: 'DL-8C (Delhi NCR)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर',
     owners_en: '1st Owner',
     color_hi: 'ओबेरॉन ब्लैक',
@@ -205,8 +205,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: 'स्टेपट्रॉनिक ऑटोमैटिक',
     trans_en: 'Steptronic Automatic',
     km: '42,000 km',
-    reg_hi: 'HR-26 (गुड़गांव)',
-    reg_en: 'HR-26 (Gurugram)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर',
     owners_en: '1st Owner',
     color_hi: 'मेडिटेरेनियन ब्लू',
@@ -233,8 +233,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: 'ऑटोमैटिक (AMT)',
     trans_en: 'Automatic (AMT)',
     km: '22,400 km',
-    reg_hi: 'HR-26 (गुड़गांव)',
-    reg_en: 'HR-26 (Gurugram)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर',
     owners_en: '1st Owner',
     color_hi: 'सॉलिड फायर रेड',
@@ -261,8 +261,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: 'ऑटोमैटिक',
     trans_en: 'Automatic',
     km: '54,000 km',
-    reg_hi: 'HR-26 (गुड़गांव)',
-    reg_en: 'HR-26 (Gurugram)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर',
     owners_en: '1st Owner',
     color_hi: 'सुपर व्हाइट',
@@ -289,8 +289,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: 'e-CVT ऑटोमैटिक',
     trans_en: 'e-CVT Automatic',
     km: '14,200 km',
-    reg_hi: 'HR-26 (गुड़गांव)',
-    reg_en: 'HR-26 (Gurugram)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर',
     owners_en: '1st Owner',
     color_hi: 'रेड & ब्लैक डुअल टोन',
@@ -317,8 +317,8 @@ const CAR_INVENTORY_DATA = [
     trans_hi: 'एस-ट्रॉनिक 7-स्पीड ऑटोमैटिक',
     trans_en: 'S-Tronic 7-Speed Automatic',
     km: '29,000 km',
-    reg_hi: 'HR-26 (गुड़गांव)',
-    reg_en: 'HR-26 (Gurugram)',
+    reg_hi: 'सर्टिफाइड (गुड़गांव)',
+    reg_en: 'Certified Pre-Owned',
     owners_hi: '1st ओनर',
     owners_en: '1st Owner',
     color_hi: 'इबिस व्हाइट',
@@ -329,8 +329,8 @@ const CAR_INVENTORY_DATA = [
     image: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80',
     features_hi: ['ऑडी वर्चुअल कॉकपिट प्लस', 'MMI नेविगेशन टच', 'B&O 3D साउंड सिस्टम', 'मैट्रिक्स एलईडी हेडलैंप्स', 'क्वाट्रो स्टाइलिंग'],
     features_en: ['Audi Virtual Cockpit Plus', 'MMI Navigation Plus with Touch', 'B&O 3D Sound System', 'Matrix LED Headlamps', 'Quattro Sport Styling'],
-    desc_hi: 'ऑडी A4 40 टीएफएसआई टेक्नोलॉजी पैक। गुड़गांव वीआईपी नंबर प्लेट, शोरूम कंडीशन और जीरो क्लेम रिकॉर्ड।',
-    desc_en: 'Audi A4 40 TFSI Technology Pack. Gurugram VIP registration, immaculate showroom condition, zero claim record.'
+    desc_hi: 'ऑडी A4 40 टीएफएसआई टेक्नोलॉजी पैक। गुड़गांव शोरूम कंडीशन, 1st ओनर और जीरो क्लेम रिकॉर्ड।',
+    desc_en: 'Audi A4 40 TFSI Technology Pack. Gurugram showroom condition, 1st owner, zero claim record.'
   }
 ];
 
@@ -341,7 +341,7 @@ class InventoryManager {
     this.searchQuery = '';
     this.selectedFuel = 'all';
     this.selectedTransmission = 'all';
-    this.currentLang = window.currentAppLang || 'hi';
+    this.currentLang = window.currentAppLang || 'en';
 
     // Load from localStorage cache if available
     let cached = null;
@@ -406,8 +406,7 @@ class InventoryManager {
     const isEn = (this.currentLang === 'en');
     select.innerHTML = this.cars.map(c => {
       const priceLakhs = (parseFloat(c.price) || 0).toFixed(2);
-      const reg = (isEn ? c.reg_en : c.reg_hi) || c.reg_hi || 'HR-26';
-      return `<option value="${c.id}">${c.name} - ${reg.split(' ')[0]} - ₹${priceLakhs} L</option>`;
+      return `<option value="${c.id}">${c.name} (${c.year}) - ₹${priceLakhs} L</option>`;
     }).join('');
     if (currentVal && select.querySelector(`option[value="${currentVal}"]`)) {
       select.value = currentVal;
@@ -446,15 +445,13 @@ class InventoryManager {
     }
 
     container.innerHTML = cars.map(car => {
-      const reg = (isEn ? car.reg_en : car.reg_hi) || car.reg_hi || car.reg_en || 'HR-26';
+      const reg = (isEn ? car.reg_en : car.reg_hi) || car.reg_hi || car.reg_en || 'Certified';
       const fuel = (isEn ? car.fuel_en : car.fuel_hi) || car.fuel_hi || car.fuel_en || 'Petrol';
       const trans = (isEn ? car.trans_en : car.trans_hi) || car.trans_hi || car.trans_en || 'Manual';
       const owners = (isEn ? car.owners_en : car.owners_hi) || car.owners_hi || car.owners_en || '1st Owner';
-      const inspectedBadge = isEn ? '210+ Inspected' : '210+ चेक्ड';
+      const inspectedBadge = 'Certified Pre-Owned';
       const viewPhotosText = isEn ? 'View Photos' : 'फ़ोटो देखें';
       const priceLabel = isEn ? 'Cash Price' : 'नकद कीमत / Price';
-      const emiLabel = isEn ? 'EMI Starts at' : 'आसान EMI शुरू';
-      const perMonth = isEn ? '/mo' : '/माह';
       const btnReport = isEn ? 'Full Report' : 'पूरी रिपोर्ट';
       const btnTestDrive = isEn ? 'Test Drive' : 'टेस्ट ड्राइव';
       const isSold = (car.status === 'sold');
@@ -466,7 +463,6 @@ class InventoryManager {
             <img src="${car.image}" alt="${car.name}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80';" />
             <div class="car-badge-top-left">
               <span class="badge-certified"><i data-lucide="shield-check" style="width:13px;height:13px;"></i> ${inspectedBadge}</span>
-              <span class="badge-location">${reg.split(' ')[0]}</span>
               ${isSold ? `<span style="background: #dc2626; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;">${isEn ? 'SOLD' : 'बिक चुकी'}</span>` : ''}
             </div>
             <button class="car-3d-quick-btn" onclick="window.inspectCarPhotos('${car.id}')" title="${viewPhotosText}">
@@ -480,7 +476,6 @@ class InventoryManager {
                 <h3 class="car-title">${car.name}</h3>
                 <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 500;">${car.year} • ${owners}</span>
               </div>
-              <span class="car-reg">${reg.split(' ')[0]}</span>
             </div>
 
             <div class="car-spec-pills">
@@ -596,7 +591,7 @@ window.openCarModal = function(carId) {
   if (!modal || !body) return;
 
   const isEn = (window.currentAppLang === 'en');
-  const reg = (isEn ? car.reg_en : car.reg_hi) || car.reg_hi || car.reg_en || 'HR-26 (Gurugram)';
+  const reg = (isEn ? car.reg_en : car.reg_hi) || car.reg_hi || car.reg_en || 'Certified (Gurugram)';
   const owners = (isEn ? car.owners_en : car.owners_hi) || car.owners_hi || car.owners_en || '1st Owner';
   const desc = (isEn ? car.desc_en : car.desc_hi) || car.desc_hi || car.desc_en || '';
   const features = (isEn ? car.features_en : car.features_hi) || car.features_hi || car.features_en || [];
@@ -613,7 +608,7 @@ window.openCarModal = function(carId) {
         </div>
         ${car.allPhotos ? `
           <button type="button" onclick="window.openVernaGalleryModal()" style="position: absolute; bottom: 12px; right: 12px; background: rgba(15,23,42,0.85); color: #fff; border: 1px solid rgba(255,255,255,0.3); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; cursor: pointer; backdrop-filter: blur(8px);">
-            📷 ${isEn ? 'Inspect 19 HD Photos & RC' : '19 HD फोटो व आरसी देखें'}
+            📷 ${isEn ? 'Inspect 19 HD Studio Photos' : '19 HD स्टूडियो फोटो देखें'}
           </button>
         ` : ''}
       </div>
@@ -633,7 +628,7 @@ window.openCarModal = function(carId) {
         <div>
           <h2 style="font-size: 1.65rem; color: var(--text-main); font-weight: 800; line-height: 1.2;">${car.name}</h2>
           <p style="color: var(--text-muted); font-size: 0.92rem; font-weight: 500; margin-top: 2px;">
-            ${car.year} ${isEn ? 'Model' : 'मॉडल'} • ${owners} • ${reg}
+            ${car.year} Model • ${owners} • Certified Pre-Owned
           </p>
         </div>
         <div style="text-align: right;">
@@ -647,10 +642,10 @@ window.openCarModal = function(carId) {
         ${desc}
       </p>
 
-      <!-- 210-Point Technical Checklist -->
+      <!-- Technical Checklist -->
       <h4 style="font-size: 1.08rem; color: var(--text-main); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-weight: 700;">
         <i data-lucide="check-circle-2" style="color: #059669; width: 20px; height: 20px;"></i> 
-        ${isEn ? '210-Point Certified Technical Inspection Report (Sadguru Shield)' : '210-प्वाइंट सर्टिफाइड इन्स्पेक्शन रिपोर्ट (सद्गुरु शील्ड)'}
+        ${isEn ? 'Certified Multi-Point Technical Inspection Report (Sadguru Shield)' : 'सर्टिफाइड इन्स्पेक्शन रिपोर्ट (सद्गुरु शील्ड)'}
       </h4>
       
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px;">
@@ -677,7 +672,7 @@ window.openCarModal = function(carId) {
             ${isEn ? 'RC & Legal Documentation' : 'आरसी और सरकारी पेपर्स'}
           </strong>
           <span style="font-size: 0.82rem; color: var(--text-body);">
-            ${isEn ? 'Clean Gurugram RC, bank NOC verified, zero challans' : 'क्लीन एचआर-26 आरसी, बैंक एनओसी क्लियर, नो चालान'}
+            ${isEn ? 'Clean Gurugram RC, bank NOC verified, zero challans' : 'क्लीन आरसी, बैंक एनओसी क्लियर, नो चालान'}
           </span>
         </div>
 
