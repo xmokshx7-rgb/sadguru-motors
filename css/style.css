@@ -127,7 +127,7 @@ body {
   will-change: transform;
 }
 
-/* High-Performance Liquid Aura in Background (GPU Composited, Zero Filter Overhead) */
+/* High-Performance Liquid Aura in Background (Inspired by Titanium/Platinum Glass Reference) */
 body::before {
   content: '';
   position: fixed;
@@ -135,10 +135,10 @@ body::before {
   pointer-events: none;
   z-index: -2;
   background:
-    radial-gradient(ellipse 65% 50% at 15% 15%, rgba(37, 99, 235, 0.22) 0%, rgba(37, 99, 235, 0.06) 35%, transparent 65%),
-    radial-gradient(ellipse 60% 45% at 85% 30%, rgba(6, 182, 212, 0.16) 0%, rgba(6, 182, 212, 0.04) 30%, transparent 60%),
-    radial-gradient(ellipse 75% 60% at 50% 85%, rgba(139, 92, 246, 0.12) 0%, rgba(139, 92, 246, 0.03) 35%, transparent 65%),
-    radial-gradient(ellipse 45% 45% at 80% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 55%);
+    radial-gradient(ellipse 70% 55% at 50% 10%, rgba(175, 184, 186, 0.12) 0%, rgba(175, 184, 186, 0.03) 40%, transparent 70%),
+    radial-gradient(ellipse 60% 45% at 15% 35%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 65%, rgba(37, 99, 235, 0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 50% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
   transform: translateZ(0);
   will-change: transform;
 }
@@ -2343,69 +2343,115 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 /* --------------------------------------------------------------------------
-   15. FLOATING MOBILE BOTTOM DOCK (NATIVE APP EXPERIENCE)
+   15. FLOATING MOBILE BOTTOM DOCK (LIQUID GLASS CAPSULE AS PER REFERENCE)
    -------------------------------------------------------------------------- */
 .mobile-bottom-dock {
   display: none;
   position: fixed;
-  bottom: 14px;
-  left: 14px;
-  right: 14px;
-  height: 64px;
-  background: rgba(9, 15, 30, 0.88);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: var(--radius-pill);
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.35),
-    0 16px 40px rgba(0, 0, 0, 0.65),
-    0 0 20px rgba(56, 189, 248, 0.2);
-  z-index: 999;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
-  padding: 0 8px;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.dock-container {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 390px;
+  height: 66px;
+  background: rgba(10, 11, 16, 0.88);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  padding: 5px 6px;
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.6);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .dock-item {
+  position: relative;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.45);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dock-glass-bubble {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: var(--radius-pill);
-  transition: all var(--transition-fast);
-  flex: 1;
-  text-align: center;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.dock-item svg {
+.dock-glass-bubble i,
+.dock-glass-bubble svg {
   width: 20px;
   height: 20px;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-.dock-item:active svg {
-  transform: scale(0.9);
+.dock-glass-bubble span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: color 0.2s ease;
 }
 
+/* Active 3D Liquid Glass Lens (Exact match to reference image) */
 .dock-item.active {
   color: #ffffff;
-  background: rgba(37, 99, 235, 0.3);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
-.dock-call {
-  color: #93c5fd !important;
+.dock-item.active .dock-glass-bubble {
+  background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 60%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    inset 0 2.5px 5px rgba(255, 255, 255, 0.75),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+    0 10px 24px rgba(0, 0, 0, 0.55),
+    0 0 16px rgba(255, 255, 255, 0.25);
+  transform: scale(1.04);
 }
 
-.dock-wa {
-  color: #4ade80 !important;
+.dock-item.active .dock-glass-bubble i,
+.dock-item.active .dock-glass-bubble svg {
+  color: #ffffff;
+  filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.7));
+  transform: translateY(-1px);
+}
+
+.dock-item.active .dock-glass-bubble span {
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.dock-item:active .dock-glass-bubble {
+  transform: scale(0.95);
 }
 
 /* --------------------------------------------------------------------------

@@ -983,27 +983,39 @@
   </div>
 
   <!-- Floating Mobile Quick Action Dock (Visible ONLY on mobile devices) -->
-  <nav class="mobile-bottom-dock" aria-label="Mobile Quick Navigation">
-    <a href="#virtual-showroom" class="dock-item active" title="Showroom">
-      <i data-lucide="sparkles"></i>
-      <span data-i18n="dock_3d">Showroom</span>
-    </a>
-    <a href="#inventory" class="dock-item" title="Certified Inventory">
-      <i data-lucide="car"></i>
-      <span data-i18n="dock_cars">Cars</span>
-    </a>
-    <a href="#sell-car" class="dock-item" title="Sell Car">
-      <i data-lucide="banknote"></i>
-      <span>Sell Car</span>
-    </a>
-    <a href="tel:+919911922050" class="dock-item dock-call" title="Call Now">
-      <i data-lucide="phone-call"></i>
-      <span data-i18n="dock_call">Call</span>
-    </a>
-    <a href="https://wa.me/919911922050?text=Hello Sadguru Motors, I want to buy/sell a certified car." target="_blank" class="dock-item dock-wa" title="Chat on WhatsApp">
-      <i data-lucide="message-circle"></i>
-      <span>WhatsApp</span>
-    </a>
+  <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Mobile Quick Navigation">
+    <div class="dock-container">
+      <a href="#virtual-showroom" class="dock-item active" data-dock="showroom" title="Home">
+        <div class="dock-glass-bubble">
+          <i data-lucide="home"></i>
+          <span>Home</span>
+        </div>
+      </a>
+      <a href="#inventory" class="dock-item" data-dock="inventory" title="Certified Inventory">
+        <div class="dock-glass-bubble">
+          <i data-lucide="car"></i>
+          <span>Cars</span>
+        </div>
+      </a>
+      <a href="#sell-car" class="dock-item" data-dock="sell" title="Sell Car">
+        <div class="dock-glass-bubble">
+          <i data-lucide="banknote"></i>
+          <span>Sell</span>
+        </div>
+      </a>
+      <a href="tel:+919911922050" class="dock-item" data-dock="call" title="Call Now">
+        <div class="dock-glass-bubble">
+          <i data-lucide="phone"></i>
+          <span>Call</span>
+        </div>
+      </a>
+      <a href="https://wa.me/919911922050?text=Hello Sadguru Motors, I am interested in exploring certified cars." target="_blank" class="dock-item" data-dock="chat" title="Chat on WhatsApp">
+        <div class="dock-glass-bubble">
+          <i data-lucide="message-circle"></i>
+          <span>Chat</span>
+        </div>
+      </a>
+    </div>
   </nav>
 
   <!-- Client-side Scripts -->

@@ -85,7 +85,56 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) {
     lucide.createIcons();
   }
+
+  // 11. Initialize Mobile Liquid Glass Dock
+  initMobileLiquidDock();
 });
+
+function initMobileLiquidDock() {
+  const dockItems = document.querySelectorAll('.mobile-bottom-dock .dock-item');
+  if (!dockItems || dockItems.length === 0) return;
+
+  dockItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const href = item.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        dockItems.forEach(d => d.classList.remove('active'));
+        item.classList.add('active');
+      }
+    });
+  });
+
+  // Track scroll position to update active dock item smoothly
+  const sections = [
+    { id: 'virtual-showroom', tab: 'showroom' },
+    { id: 'inventory', tab: 'inventory' },
+    { id: 'sell-car', tab: 'sell' }
+  ];
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+          const matched = sections.find(s => s.id === entry.target.id);
+          if (matched) {
+            dockItems.forEach(d => {
+              if (d.getAttribute('data-dock') === matched.tab) {
+                d.classList.add('active');
+              } else if (['showroom', 'inventory', 'sell'].includes(d.getAttribute('data-dock'))) {
+                d.classList.remove('active');
+              }
+            });
+          }
+        }
+      });
+    }, { threshold: [0.25] });
+
+    sections.forEach(s => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+  }
+}
 
 /**
  * 100% Comprehensive Language Switcher
