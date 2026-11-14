@@ -7,28 +7,6 @@
 // Website language is fixed to English
 window.currentAppLang = 'en';
 
-// ==========================================================================
-// 120Hz ULTRA-SMOOTH HIGH REFRESH RATE OPTIMIZATION ENGINE
-// ==========================================================================
-(function init120HzHighRefresh() {
-  if (typeof window === 'undefined') return;
-
-  // Guarantee non-blocking scrolling on 120Hz / ProMotion displays
-  const passiveConfig = { passive: true, capture: false };
-  ['wheel', 'mousewheel', 'touchstart', 'touchmove', 'scroll'].forEach(evt => {
-    try {
-      window.addEventListener(evt, () => {}, passiveConfig);
-    } catch (e) {}
-  });
-
-  // Keep display pipeline warm & synchronized with high-refresh display timing
-  let frameId = null;
-  function highRefreshLoop() {
-    frameId = requestAnimationFrame(highRefreshLoop);
-  }
-  frameId = requestAnimationFrame(highRefreshLoop);
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize 3D Showroom & Sound Engine
   if (typeof THREE !== 'undefined' && document.getElementById('canvas-container') && typeof CarShowroom3D !== 'undefined') {

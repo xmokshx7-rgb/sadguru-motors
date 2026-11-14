@@ -77,7 +77,6 @@ html {
   scroll-padding-top: 76px;
   font-size: 16px;
   background-color: var(--liquid-obsidian);
-  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   text-rendering: optimizeLegibility;
 }
@@ -92,13 +91,10 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
-  overscroll-behavior-y: none;
+  width: 100%;
 }
 
 /* 120Hz Hardware Composite Acceleration across key UI blocks */
-.navbar,
-.top-bar,
-.hero-banner,
 .hero-showcase-glass-card,
 .hero-deal-card,
 .car-card,
@@ -109,12 +105,10 @@ body {
 .spec-pill,
 .category-btn,
 .dock-item {
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  perspective: 1000px;
-  -webkit-perspective: 1000px;
 }
 
 /* Zero Jank Transform Transitions */
