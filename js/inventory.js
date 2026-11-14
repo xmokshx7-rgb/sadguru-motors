@@ -491,7 +491,7 @@ class InventoryManager {
               </div>
               <div class="benefit-block" style="text-align: right;">
                 <span class="price-label" style="color: #4ade80; font-weight: 700;">✓ Free RC Transfer</span>
-                <div style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">1-Yr Warranty</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: #C5A46D;">1-Yr Warranty</div>
               </div>
             </div>
 
@@ -601,7 +601,7 @@ window.openCarModal = function(carId) {
   body.innerHTML = `
     <div style="margin-bottom: 20px;">
       <!-- Top Image with verified overlay -->
-      <div style="height: 300px; border-radius: 14px; overflow: hidden; margin-bottom: 12px; border: 1.5px solid var(--border-light); position: relative; background: #0b1528;">
+      <div style="height: 300px; border-radius: 14px; overflow: hidden; margin-bottom: 12px; border: 1.5px solid var(--border-light); position: relative; background: #FAF8F5;">
         <img id="modal-active-img" src="${car.image}" alt="${car.name}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80';" />
         <div style="position: absolute; top: 12px; left: 12px; background: #059669; color: #fff; font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
           ✓ ${isEn ? 'Grade A+ Certified' : 'ग्रेड A+ सर्टिफाइड'}

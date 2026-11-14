@@ -6,6 +6,7 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+scratch/
 
 # Local Dev Servers (Kept locally for start-node.bat & start-python.bat)
 requirements.txt
