@@ -97,7 +97,7 @@ const APP_TRANSLATIONS = {
     stat_clients_title: '10,000+ ग्राहक',
     stat_clients_sub: 'गुड़गांव और दिल्ली एनसीआर में खुश परिवार',
     stat_location_title: 'सेक्टर 14 गुड़गांव',
-    stat_location_sub: 'मेन ओल्ड दिल्ली रोड पर विशाल शोरूम',
+    stat_location_sub: 'मेन ओल्ड दिल्ली रोड',
 
     // Inventory Section
     inv_tag: 'सर्टिफाइड स्टॉक',
@@ -290,7 +290,7 @@ const APP_TRANSLATIONS = {
     stat_clients_title: '10,000+ Owners',
     stat_clients_sub: 'Happy Families in Gurugram & Delhi NCR',
     stat_location_title: 'Sector 14 Gurugram',
-    stat_location_sub: 'Grand Showroom on Main Old Delhi Road',
+    stat_location_sub: 'Main Old Delhi Road',
 
     // Inventory Section
     inv_tag: 'Certified Stock',

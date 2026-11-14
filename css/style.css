@@ -78,6 +78,8 @@ html {
   font-size: 16px;
   background-color: var(--liquid-obsidian);
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -90,6 +92,39 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  overscroll-behavior-y: none;
+}
+
+/* 120Hz Hardware Composite Acceleration across key UI blocks */
+.navbar,
+.top-bar,
+.hero-banner,
+.hero-showcase-glass-card,
+.hero-deal-card,
+.car-card,
+.promise-card,
+.location-info-card,
+.modal-content-card,
+.btn,
+.spec-pill,
+.category-btn,
+.dock-item {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Zero Jank Transform Transitions */
+.car-card,
+.promise-card,
+.btn,
+.category-btn,
+.angle-tab,
+.hero-deal-card {
+  will-change: transform;
 }
 
 /* High-Performance Liquid Aura in Background (GPU Composited, Zero Filter Overhead) */
@@ -1714,12 +1749,26 @@ input[type="range"]::-webkit-slider-thumb:hover {
   padding: 40px 0 60px;
 }
 
-/* Promise Section Cards Grid */
+/* Promise Section Cards Grid (Symmetric 4-Pillar Layout) */
 .promise-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   margin-top: 32px;
+}
+
+@media (max-width: 1100px) {
+  .promise-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .promise-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
 }
 
 .promise-card {
@@ -2037,8 +2086,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 30px;
+  grid-template-columns: 1.5fr 1fr 1.2fr;
+  gap: 36px;
   margin-bottom: 36px;
 }
 
