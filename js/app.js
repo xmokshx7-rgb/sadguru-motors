@@ -4,8 +4,8 @@
  * Bulletproof Bilingual Switching & Modal Control
  */
 
-// Initialize default language from localStorage or default to English
-window.currentAppLang = localStorage.getItem('sadguru_lang') || 'en';
+// Website language is fixed to English
+window.currentAppLang = 'en';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize 3D Showroom & Sound Engine
@@ -72,33 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
  * 100% Comprehensive Language Switcher
  */
 function initLanguageSwitcher() {
-  const btnHi = document.getElementById('lang-hi');
-  const btnEn = document.getElementById('lang-en');
-
-  if (btnHi) {
-    btnHi.addEventListener('click', () => {
-      applyLanguage('hi');
-    });
-  }
-
-  if (btnEn) {
-    btnEn.addEventListener('click', () => {
-      applyLanguage('en');
-    });
-  }
+  // Pure English mode - language switcher removed per user request
 }
 
 function applyLanguage(lang) {
-  window.currentAppLang = lang;
-  localStorage.setItem('sadguru_lang', lang);
+  lang = 'en';
+  window.currentAppLang = 'en';
+  localStorage.setItem('sadguru_lang', 'en');
 
-  const btnHi = document.getElementById('lang-hi');
-  const btnEn = document.getElementById('lang-en');
-  if (btnHi) btnHi.classList.toggle('active', lang === 'hi');
-  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
-
-  const dict = APP_TRANSLATIONS[lang] || APP_TRANSLATIONS['hi'];
-  const isEn = lang === 'en';
+  const dict = (typeof APP_TRANSLATIONS !== 'undefined' && APP_TRANSLATIONS['en']) ? APP_TRANSLATIONS['en'] : {};
+  const isEn = true;
 
   // 1. Update text content for [data-i18n]
   document.querySelectorAll('[data-i18n]').forEach(el => {

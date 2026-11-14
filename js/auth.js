@@ -1,13 +1,14 @@
 /**
- * Sadguru Motors - Google 1-Click Authentication & Lead Capture
- * Supports Google Identity Services (GIS), Google One Tap, and instant lead recording
+ * Sadguru Motors - Google Authentication & Lead Capture
+ * Secure client authentication, Supabase lead recording & Owner access control
+ * Sector 14, Gurugram (HR-26)
  */
 
 (function () {
   'use strict';
 
-  // Configurable Google OAuth Client ID (Can be set in Admin panel)
-  const DEFAULT_GOOGLE_CLIENT_ID = '384918294719-k7m9l8h2n3p4q5r6s7t8u9v0w1x2y3z4.apps.googleusercontent.com';
+  // Configurable Google OAuth Client ID (Set in Admin panel if valid Google Cloud ID exists)
+  const DEFAULT_GOOGLE_CLIENT_ID = '';
 
   function getGoogleClientId() {
     return localStorage.getItem('sadguru_google_client_id') || DEFAULT_GOOGLE_CLIENT_ID;
@@ -72,7 +73,7 @@
       id: payload.sub || ('usr_' + Date.now()),
       name: payload.name || payload.given_name || 'Google User',
       email: payload.email,
-      picture: payload.picture || '',
+      picture: payload.picture || `https://ui-avatars.com/api/?name=${encodeURIComponent(payload.name || 'User')}&background=2563eb&color=fff&rounded=true&bold=true`,
       provider: 'google',
       created_at: new Date().toISOString(),
       last_login: new Date().toISOString()
@@ -81,21 +82,28 @@
     setCurrentUser(userData);
     recordLead(userData);
     closeGoogleLoginModal();
+
     if (isOwnerAuthenticated()) {
-      showAuthToast(`Welcome Owner ${userData.name}! Dealer portal is unlocked.`);
+      localStorage.setItem('sadguru_owner_auth', 'true');
+      applyOwnerAccessUI();
+      showAuthToast(`Welcome Owner ${userData.name}! Dealer portal is active.`);
     } else {
-      showAuthToast(`Hello ${userData.name}! Successfully connected.`);
+      showAuthToast(`Welcome, ${userData.name}! Signed in with Google.`);
     }
   };
 
-  // Initialize Google Identity Services
+  // Initialize Google Identity Services (only if a valid custom client ID is configured)
   function initGoogleGSI() {
+    const clientId = getGoogleClientId();
+    if (!clientId || clientId.length < 25) {
+      // No Google Cloud OAuth Client ID configured - skip GIS to prevent Error 401: invalid_client
+      return;
+    }
+
     if (typeof google === 'undefined' || !google.accounts || !google.accounts.id) {
       setTimeout(initGoogleGSI, 500);
       return;
     }
-
-    const clientId = getGoogleClientId();
 
     try {
       google.accounts.id.initialize({
@@ -104,33 +112,6 @@
         auto_select: false,
         cancel_on_tap_outside: true
       });
-
-      // Render official Google button inside login modal
-      const btnContainer = document.getElementById('g_id_signin_render');
-      if (btnContainer) {
-        google.accounts.id.renderButton(btnContainer, {
-          type: 'standard',
-          shape: 'pill',
-          theme: 'outline',
-          text: 'continue_with',
-          size: 'large',
-          logo_alignment: 'left',
-          width: 280
-        });
-      }
-
-      // If user is not logged in, show Google One Tap after 3 seconds
-      if (!getCurrentUser()) {
-        setTimeout(() => {
-          try {
-            google.accounts.id.prompt((notification) => {
-              if (notification.isNotDisplayed()) {
-                console.log('Google One Tap suppressed:', notification.getNotDisplayedReason());
-              }
-            });
-          } catch (e) {}
-        }, 3000);
-      }
     } catch (err) {
       console.warn('Google GSI Init warning:', err);
     }
@@ -142,18 +123,19 @@
     const user = getCurrentUser();
     const topSlot = document.getElementById('user-auth-top-slot');
     const navSlot = document.getElementById('user-auth-nav-slot');
-    const isEn = (window.currentAppLang === 'en');
     const isOwner = isOwnerAuthenticated();
 
     const defaultAvatar = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%232563eb'/><text x='50%' y='55%' font-size='42' font-family='sans-serif' fill='white' text-anchor='middle' dominant-baseline='middle'>👤</text></svg>";
 
     if (user) {
+      const firstName = (user.name || 'User').split(' ')[0];
+
       // Logged in UI for Topbar
       if (topSlot) {
         topSlot.innerHTML = `
           <div class="user-logged-pill" onclick="window.toggleUserMenu(event)">
             <img src="${user.picture || defaultAvatar}" alt="${user.name}" class="user-avatar-tiny" onerror="this.src='${defaultAvatar}'" />
-            <span class="user-name-short">${user.name.split(' ')[0]}</span>
+            <span class="user-name-short">${firstName}</span>
             ${isOwner ? '<span class="user-owner-badge" title="Showroom Owner">👑</span>' : ''}
             <i data-lucide="chevron-down" style="width: 12px; height: 12px;"></i>
           </div>
@@ -167,8 +149,8 @@
             <button class="user-profile-btn" onclick="window.toggleUserMenu(event)">
               <img src="${user.picture || defaultAvatar}" alt="${user.name}" class="user-avatar-img" onerror="this.src='${defaultAvatar}'" />
               <div class="user-btn-details">
-                <span class="user-greeting">${isEn ? 'Hello,' : 'नमस्ते,'}</span>
-                <span class="user-display-name">${user.name.split(' ')[0]}</span>
+                <span class="user-greeting">Hello,</span>
+                <span class="user-display-name">${firstName}</span>
               </div>
               <i data-lucide="chevron-down" style="width: 14px; height: 14px; color: #94a3b8;"></i>
             </button>
@@ -190,11 +172,11 @@
               ` : ''}
               <a href="#inventory" class="dropdown-item" onclick="window.toggleUserMenu(event)">
                 <i data-lucide="car" style="width: 16px; height: 16px;"></i>
-                <span>${isEn ? 'Browse Certified Cars' : 'सर्टिफाइड कार्स ब्राउज़ करें'}</span>
+                <span>Browse Certified Cars</span>
               </a>
               <button class="dropdown-item" onclick="window.openTestDriveModal('verna-hr26-sport'); window.toggleUserMenu(event);">
                 <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
-                <span>${isEn ? 'Book My Test Drive' : 'मेरी टेस्ट ड्राइव बुक करें'}</span>
+                <span>Book My Test Drive</span>
               </button>
               ${isOwner ? `
               <div class="dropdown-divider"></div>
@@ -206,14 +188,14 @@
               <div class="dropdown-divider"></div>
               <button class="dropdown-item dropdown-logout" onclick="window.logoutSadguruUser()">
                 <i data-lucide="log-out" style="width: 16px; height: 16px;"></i>
-                <span>${isEn ? 'Logout' : 'लॉगआउट (Logout)'}</span>
+                <span>Logout</span>
               </button>
             </div>
           </div>
         `;
       }
     } else {
-      // Logged out UI for Topbar (Clean layout without redundant login)
+      // Logged out UI for Topbar
       if (topSlot) {
         topSlot.innerHTML = '';
       }
@@ -221,7 +203,7 @@
       // Logged out UI for Main Navbar
       if (navSlot) {
         navSlot.innerHTML = `
-          <button class="btn-navbar-google" onclick="window.openGoogleLoginModal()" title="Google 1-Click Login">
+          <button class="btn-navbar-google" onclick="window.openGoogleLoginModal()" title="Sign In with Google">
             <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.3 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5.1 3.7-8.8z"/><path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 12.3 0 15s.7 5.3 1.9 7.7l3.7-2.9z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.3-6.4-5.2L1.9 16c1.8 3.7 5.6 7 10.1 7z"/></svg>
             <span>Google Login</span>
           </button>
@@ -261,20 +243,9 @@
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
 
-      // Attempt to re-render button if container exists
-      const btnContainer = document.getElementById('g_id_signin_render');
-      if (btnContainer && typeof google !== 'undefined' && google.accounts && google.accounts.id) {
-        try {
-          google.accounts.id.renderButton(btnContainer, {
-            type: 'standard',
-            shape: 'pill',
-            theme: 'outline',
-            text: 'continue_with',
-            size: 'large',
-            logo_alignment: 'left',
-            width: 280
-          });
-        } catch (e) {}
+      const emailInput = document.getElementById('google-modal-input-email');
+      if (emailInput && !emailInput.value) {
+        setTimeout(() => emailInput.focus(), 150);
       }
     }
     if (window.lucide) lucide.createIcons();
@@ -289,52 +260,49 @@
     }
   };
 
-  // Quick 1-Click Fast Profile Login (For instant one-click login from modal)
-  window.fastOneClickGoogleLogin = function (customName, customEmail) {
-    const names = ['राहुल शर्मा', 'अमित वर्मा', 'मोहित गुप्ता', 'रोहित यादव', 'विकास चौधरी'];
-    const randomName = customName || names[Math.floor(Math.random() * names.length)];
-    const randomEmail = customEmail || (randomName.toLowerCase().replace(/\s+/g, '.') + Math.floor(Math.random() * 89 + 10) + '@gmail.com');
-
-    const sampleUser = {
-      id: 'google_user_' + Date.now(),
-      name: randomName,
-      email: randomEmail,
-      picture: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(randomName)}&backgroundColor=1e40af`,
-      provider: 'google',
-      created_at: new Date().toISOString(),
-      last_login: new Date().toISOString()
-    };
-
-    setCurrentUser(sampleUser);
-    recordLead(sampleUser);
-    closeGoogleLoginModal();
-    showAuthToast(`नमस्ते ${sampleUser.name}! आपका गूगल अकाउंट कनेक्ट हो गया है।`);
-  };
-
   // Custom Form Login inside modal
   window.handleCustomGoogleFormLogin = function (e) {
-    e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     const nameInput = document.getElementById('google-modal-input-name');
     const emailInput = document.getElementById('google-modal-input-email');
     const phoneInput = document.getElementById('google-modal-input-phone');
 
-    if (!nameInput || !emailInput) return;
-
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
+    const email = emailInput ? emailInput.value.trim() : '';
+    let name = nameInput ? nameInput.value.trim() : '';
     const phone = phoneInput ? phoneInput.value.trim() : '';
 
-    if (!name || !email) {
-      alert('कृपया अपना नाम और ईमेल आईडी दर्ज करें।');
+    if (!email) {
+      alert('Please enter your Google Email address (e.g. name@gmail.com).');
+      if (emailInput) emailInput.focus();
       return;
     }
+
+    if (!email.includes('@') || !email.includes('.')) {
+      alert('Please enter a valid email address (e.g. name@gmail.com).');
+      if (emailInput) emailInput.focus();
+      return;
+    }
+
+    // Auto-derive full name from email prefix if left blank
+    if (!name) {
+      const emailPrefix = email.split('@')[0];
+      name = emailPrefix
+        .replace(/[._-]+/g, ' ')
+        .split(' ')
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ')
+        .trim();
+      if (!name) name = 'Google User';
+    }
+
+    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=2563eb&color=fff&rounded=true&bold=true`;
 
     const newUser = {
       id: 'guser_' + Date.now(),
       name: name,
       email: email,
       phone: phone,
-      picture: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(name)}&backgroundColor=1e40af`,
+      picture: avatarUrl,
       provider: 'google',
       created_at: new Date().toISOString(),
       last_login: new Date().toISOString()
@@ -343,15 +311,24 @@
     setCurrentUser(newUser);
     recordLead(newUser);
     closeGoogleLoginModal();
-    showAuthToast(`नमस्ते ${name}! आपका लॉगिन सफलतापूर्वक पूरा हुआ।`);
+
+    if (isOwnerAuthenticated()) {
+      localStorage.setItem('sadguru_owner_auth', 'true');
+      applyOwnerAccessUI();
+      showAuthToast(`Welcome Owner ${name}! Dealer Portal is active.`);
+    } else {
+      showAuthToast(`Welcome, ${name}! Signed in with Google successfully.`);
+    }
   };
 
   // Logout
   window.logoutSadguruUser = function () {
     const user = getCurrentUser();
-    const userName = user ? user.name : 'ग्राहक';
+    const userName = user ? user.name : 'Customer';
     setCurrentUser(null);
-    showAuthToast(`${userName}, आप सफलतापूर्वक लॉगआउट हो गए हैं।`);
+    localStorage.removeItem('sadguru_owner_auth');
+    applyOwnerAccessUI();
+    showAuthToast(`${userName}, you have successfully signed out.`);
   };
 
   // Toast Notification
