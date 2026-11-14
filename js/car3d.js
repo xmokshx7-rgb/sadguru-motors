@@ -97,10 +97,10 @@ class CarShowroom3D {
       },
       {
         id: 'plate',
-        title_hi: 'सरकारी रजिस्ट्रेशन HR-26-EV-1479',
-        title_en: 'Govt Registration HR-26-EV-1479',
-        desc_hi: 'SDM गुरुग्राम नॉर्थ रजिस्टर्ड, 1st ओनर (रजनी सरदाना), वैलिडिटी अगस्त 2037 तक, 100% वेरिफाइड RC।',
-        desc_en: 'SDM Gurugram North registered, 1st Owner (Rajni Sardana), Valid till August 2037, 100% verified RC.',
+        title_hi: 'सद्गुरु सर्टिफाइड रजिस्ट्रेशन',
+        title_en: 'Sadguru Certified Registration',
+        desc_hi: 'गुरुग्राम SDM ऑथराइज्ड, 1st ओनर, वैलिडिटी अगस्त 2037 तक, 100% वेरिफाइड RC और फ्री ट्रांसफर।',
+        desc_en: 'Gurugram SDM authorized, 1st Owner, Valid till August 2037, 100% verified RC & free transfer.',
         pos: new THREE.Vector3(0, 0.38, 2.22),
         camPos: new THREE.Vector3(0, 0.65, 3.2),
         lookAt: new THREE.Vector3(0, 0.38, 2.1)
@@ -116,54 +116,44 @@ class CarShowroom3D {
    * PROCEDURAL TEXTURE GENERATORS (HSRP Plate, Cluster, Infotainment, etc.)
    * ========================================================================= */
   
-  createNumberPlateTexture(plateNumber = 'HR 26 EV 1479', isFront = false) {
+  createNumberPlateTexture(plateNumber = 'SADGURU MOTORS', isFront = false) {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = isFront ? 110 : 130;
     const ctx = canvas.getContext('2d');
 
-    // Reflective white background
-    ctx.fillStyle = '#ffffff';
+    // Deep Luxury Emerald / Dark Showroom Plate Background
+    ctx.fillStyle = '#123D32';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Black outer border
-    ctx.strokeStyle = '#111827';
+    // Champagne Gold Double Outer Border
+    ctx.strokeStyle = '#C5A46D';
     ctx.lineWidth = 6;
-    ctx.strokeRect(3, 3, canvas.width - 6, canvas.height - 6);
+    ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
 
-    // Left Blue IND strip
-    const blueStripWidth = 56;
-    ctx.fillStyle = '#1d4ed8';
-    ctx.fillRect(4, 4, blueStripWidth, canvas.height - 8);
+    ctx.strokeStyle = '#E8D5B5';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(8, 8, canvas.width - 16, canvas.height - 16);
 
-    // Ashok Chakra circle simulation
-    ctx.strokeStyle = '#93c5fd';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.arc(32, 34, 14, 0, Math.PI * 2);
-    ctx.stroke();
+    // Left Luxury Strip
+    const brandStripWidth = 48;
+    ctx.fillStyle = '#0d2821';
+    ctx.fillRect(9, 9, brandStripWidth, canvas.height - 18);
 
-    // "IND" text
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 22px Arial, sans-serif';
+    // Mini star icon
+    ctx.fillStyle = '#C5A46D';
+    ctx.font = 'bold 20px Arial, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('IND', 32, canvas.height - 32);
+    ctx.fillText('SM', 33, canvas.height / 2);
 
-    // Hologram square
-    ctx.fillStyle = '#cbd5e1';
-    ctx.fillRect(68, 12, 18, 18);
-    ctx.strokeStyle = '#64748b';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(68, 12, 18, 18);
-
-    // Plate number
-    ctx.fillStyle = '#0f172a';
-    ctx.font = '900 64px "Arial Black", Impact, sans-serif';
+    // Plate text "SADGURU MOTORS" in Champagne Gold
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '900 48px "Arial Black", "Montserrat", Impact, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    const textCenterX = blueStripWidth + (canvas.width - blueStripWidth) / 2;
-    ctx.fillText(plateNumber, textCenterX, canvas.height / 2 + 2);
+    const textCenterX = brandStripWidth + (canvas.width - brandStripWidth) / 2;
+    ctx.fillText(plateNumber, textCenterX, canvas.height / 2);
 
     const texture = new THREE.CanvasTexture(canvas);
     texture.minFilter = THREE.LinearFilter;
@@ -869,8 +859,8 @@ class CarShowroom3D {
     emblemRing.position.set(0, bodyHeight * 0.52, bodyLength / 2 + 0.09);
     this.carGroup.add(emblemRing);
 
-    // Front HSRP Number Plate: "HR 26 EV 1479"
-    const frontPlateTex = this.createNumberPlateTexture('HR 26 EV 1479', true);
+    // Front Showroom Plate: "SADGURU MOTORS"
+    const frontPlateTex = this.createNumberPlateTexture('SADGURU MOTORS', true);
     const frontPlateGeo = new THREE.PlaneGeometry(0.55, 0.12);
     const frontPlateMat = new THREE.MeshStandardMaterial({
       map: frontPlateTex,
@@ -946,8 +936,8 @@ class CarShowroom3D {
     vernaBar.position.set(0, bodyHeight * 0.58, -bodyLength / 2 - 0.025);
     this.carGroup.add(vernaBar);
 
-    // Rear Gurgaon Number Plate "HR 26 EV 1479"
-    const rearPlateTex = this.createNumberPlateTexture('HR 26 EV 1479', false);
+    // Rear Showroom Plate: "SADGURU MOTORS"
+    const rearPlateTex = this.createNumberPlateTexture('SADGURU MOTORS', false);
     const rearPlateGeo = new THREE.PlaneGeometry(0.55, 0.14);
     rearPlateGeo.rotateY(Math.PI);
     const rearPlate = new THREE.Mesh(rearPlateGeo, new THREE.MeshStandardMaterial({
