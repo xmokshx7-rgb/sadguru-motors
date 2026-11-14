@@ -6,551 +6,724 @@
 
 const CAR_INVENTORY_DATA = [
   {
-    id: 'verna-hr26-sport',
-    name: '2022 Hyundai Verna 1.5 CRDi AT SX (Sport Edition)',
-    brand: 'Hyundai',
-    year: 2022,
-    price: 10.85, // in Lakhs
-    emi: '₹16,900',
-    type: 'sedan',
-    fuel_hi: 'डीजल (1.5 CRDi Turbo)',
-    fuel_en: 'Diesel (1.5 CRDi Turbo)',
-    trans_hi: '6-स्पीड ऑटोमैटिक (AT)',
-    trans_en: '6-Speed Automatic (AT)',
-    km: '67,861 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर (राज्नी सरदाना)',
-    owners_en: '1st Owner (Single Handed)',
-    color_hi: 'पोलर व्हाइट (ब्लैक रूफ & जीटी किट)',
-    color_en: 'Polar White (Black Roof & GT Kit)',
-    inspectionGrade: 'A+ (99/100)',
-    warranty_hi: '1 साल की सद्गुरु शील्ड वारंटी',
-    warranty_en: '1 Year Sadguru Shield Warranty',
-    image: 'assets/car-photos/verna-hero-34.jpg',
-    allPhotos: [
-      { url: 'assets/car-photos/verna-hero-34.jpg', label_hi: 'फ्रंट 3/4 हीरो व्यू', label_en: 'Front 3/4 Hero Stance' },
-      { url: 'assets/car-photos/verna-side.jpg', label_hi: 'फुल साइड प्रोफाइल', label_en: 'Side Profile Stance' },
-      { url: 'assets/car-photos/verna-rear-gt.jpg', label_hi: 'रियर जीटी विंग & क्वाड एग्जॉस्ट', label_en: 'Rear GT Wing & Quad Exhaust' },
-      { url: 'assets/car-photos/verna-front-straight.jpg', label_hi: 'फ्रंट सीधा फेस', label_en: 'Front Direct Face' },
-      { url: 'assets/car-photos/verna-interior-sunroof.jpg', label_hi: 'कॉकपिट, सनरूफ & नियॉन लाइट', label_en: 'Cockpit, Electric Sunroof & Ambient Light' },
-      { url: 'assets/car-photos/verna-steering-dash.jpg', label_hi: 'स्टीयरिंग व्हील & डिजिटल क्लस्टर', label_en: 'Steering Wheel & Digital Cluster' },
-      { url: 'assets/car-photos/verna-front-seats.jpg', label_hi: 'स्पार्को कुशन वाली बकेट सीट्स', label_en: 'Front Bucket Seats with Sparco Cushions' },
-      { url: 'assets/car-photos/verna-rear-seats.jpg', label_hi: 'रियर लेदर सीट्स & सनशेड', label_en: 'Rear Leather Seats & Sunshade' },
-      { url: 'assets/car-photos/verna-passenger-dash.jpg', label_hi: 'पैसेंजर साइड केबिन व्यू', label_en: 'Passenger Cabin & Ambient Lighting' },
-      { url: 'assets/car-photos/verna-scuff-plate.jpg', label_hi: 'हुंडई इल्यूमिनेटेड स्कफ प्लेट', label_en: 'Hyundai Illuminated Scuff Plate' },
-      { url: 'assets/car-photos/verna-speedometer.jpg', label_hi: 'सर्टिफाइड ओडोमीटर (67,861 KM)', label_en: 'Certified Odometer (67,861 KM)' },
-      { url: 'assets/car-photos/verna-scuff-plate.jpg', label_hi: 'वाहन विवरण', label_en: 'Vehicle Details & Inspection' },
-      { url: 'assets/car-photos/verna-front-left-34.jpg', label_hi: 'फ्रंट-लेफ्ट एंगल 2', label_en: 'Front-Left 3/4 Stance' },
-      { url: 'assets/car-photos/verna-rear-straight.jpg', label_hi: 'रियर सीधा एंगल', label_en: 'Rear Straight View' },
-      { url: 'assets/car-photos/verna-hero-angle2.jpg', label_hi: 'फ्रंट डायनेमिक एंगल', label_en: 'Front Dynamic Angle' },
-      { url: 'assets/car-photos/verna-front-angle2.jpg', label_hi: 'फ्रंट एलीवेशन व्यू', label_en: 'Front Elevation View' },
-      { url: 'assets/car-photos/verna-rear-angle2.jpg', label_hi: 'जीटी विंग टॉप एंगल', label_en: 'GT Wing Top Angle' },
-      { url: 'assets/car-photos/verna-seats-detail.jpg', label_hi: 'लेदर सीट्स व ब्राइड पैड', label_en: 'Leather Seats & Bride Pad' },
-      { url: 'assets/car-photos/verna-front-angle3.jpg', label_hi: 'फ्रंट प्रोफाइल क्लोजअप', label_en: 'Front Profile Stance' }
+    "id": "verna-hr26-sport",
+    "name": "2022 Hyundai Verna 1.5 CRDi AT SX (Sport Edition)",
+    "brand": "Hyundai",
+    "year": 2022,
+    "price": 10.85,
+    "type": "sedan",
+    "fuel_hi": "डीजल (1.5 CRDi Turbo)",
+    "fuel_en": "Diesel (1.5 CRDi Turbo)",
+    "trans_hi": "6-स्पीड ऑटोमैटिक (AT)",
+    "trans_en": "6-Speed Automatic (AT)",
+    "km": "67,861 km",
+    "reg_hi": "सर्टिफाइड (गुड़गांव नॉर्थ)",
+    "reg_en": "Certified Pre-Owned (Gurugram North)",
+    "owners_hi": "1st ओनर (सिंगल हैंडेड)",
+    "owners_en": "1st Owner (Single Handed)",
+    "color_hi": "पोलर व्हाइट (ब्लैक रूफ & जीटी किट)",
+    "color_en": "Polar White (Black Roof & GT Kit)",
+    "inspectionGrade": "A+ (99/100)",
+    "warranty_hi": "1 साल की सद्गुरु शील्ड वारंटी",
+    "warranty_en": "1 Year Sadguru Shield Warranty",
+    "image": "assets/car-photos/verna-hero-34.jpg",
+    "allPhotos": [
+      {
+        "url": "assets/car-photos/verna-hero-34.jpg",
+        "label_hi": "फ्रंट 3/4 हीरो व्यू",
+        "label_en": "Front 3/4 Hero Stance"
+      },
+      {
+        "url": "assets/car-photos/verna-side.jpg",
+        "label_hi": "फुल साइड प्रोफाइल",
+        "label_en": "Side Profile Stance"
+      },
+      {
+        "url": "assets/car-photos/verna-rear-gt.jpg",
+        "label_hi": "रियर जीटी विंग & क्वाड एग्जॉस्ट",
+        "label_en": "Rear GT Wing & Quad Exhaust"
+      },
+      {
+        "url": "assets/car-photos/verna-front-straight.jpg",
+        "label_hi": "फ्रंट सीधा फेस",
+        "label_en": "Front Direct Face"
+      },
+      {
+        "url": "assets/car-photos/verna-interior-sunroof.jpg",
+        "label_hi": "कॉकपिट, सनरूफ & नियॉन लाइट",
+        "label_en": "Cockpit, Electric Sunroof & Ambient Light"
+      },
+      {
+        "url": "assets/car-photos/verna-steering-dash.jpg",
+        "label_hi": "स्टीयरिंग व्हील & डिजिटल क्लस्टर",
+        "label_en": "Steering Wheel & Digital Cluster"
+      },
+      {
+        "url": "assets/car-photos/verna-front-seats.jpg",
+        "label_hi": "स्पार्को कुशन वाली बकेट सीट्स",
+        "label_en": "Front Bucket Seats with Sparco Cushions"
+      },
+      {
+        "url": "assets/car-photos/verna-rear-seats.jpg",
+        "label_hi": "रियर लेदर सीट्स & सनशेड",
+        "label_en": "Rear Leather Seats & Sunshade"
+      },
+      {
+        "url": "assets/car-photos/verna-passenger-dash.jpg",
+        "label_hi": "पैसेंजर साइड केबिन व्यू",
+        "label_en": "Passenger Cabin & Ambient Lighting"
+      },
+      {
+        "url": "assets/car-photos/verna-scuff-plate.jpg",
+        "label_hi": "हुंडई इल्यूमिनेटेड स्कफ प्लेट",
+        "label_en": "Hyundai Illuminated Scuff Plate"
+      },
+      {
+        "url": "assets/car-photos/verna-speedometer.jpg",
+        "label_hi": "सर्टिफाइड ओडोमीटर (67,861 KM)",
+        "label_en": "Certified Odometer (67,861 KM)"
+      },
+      {
+        "url": "assets/car-photos/verna-rc-card.jpg",
+        "label_hi": "हरियाणा सरकारी आरसी कार्ड (वेरिफाइड)",
+        "label_en": "Govt RC Card (Verified Gurugram)"
+      },
+      {
+        "url": "assets/car-photos/verna-front-left-34.jpg",
+        "label_hi": "फ्रंट-लेफ्ट एंगल 2",
+        "label_en": "Front-Left 3/4 Stance"
+      },
+      {
+        "url": "assets/car-photos/verna-rear-straight.jpg",
+        "label_hi": "रियर सीधा एंगल",
+        "label_en": "Rear Straight View"
+      },
+      {
+        "url": "assets/car-photos/verna-hero-angle2.jpg",
+        "label_hi": "फ्रंट डायनेमिक एंगल",
+        "label_en": "Front Dynamic Angle"
+      },
+      {
+        "url": "assets/car-photos/verna-front-angle2.jpg",
+        "label_hi": "फ्रंट एलीवेशन व्यू",
+        "label_en": "Front Elevation View"
+      },
+      {
+        "url": "assets/car-photos/verna-rear-angle2.jpg",
+        "label_hi": "जीटी विंग टॉप एंगल",
+        "label_en": "GT Wing Top Angle"
+      },
+      {
+        "url": "assets/car-photos/verna-seats-detail.jpg",
+        "label_hi": "लेदर सीट्स व ब्राइड पैड",
+        "label_en": "Leather Seats & Bride Pad"
+      },
+      {
+        "url": "assets/car-photos/verna-front-angle3.jpg",
+        "label_hi": "फ्रंट प्रोफाइल क्लोजअप",
+        "label_en": "Front Profile Stance"
+      }
     ],
-    features_hi: [
-      'इलेक्ट्रिक सनरूफ',
-      'हाई-डाउनफ़ोर्स जीटी विंग स्पॉइलर',
-      'क्वाड क्रोम एग्जॉस्ट डिफ्यूज़र',
-      'पर्पल/मैजेंटा एम्बिएंट नियॉन इंटीरियर',
-      '1.5L CRDi टर्बो डीजल इंजन (115 PS)',
-      '6-स्पीड स्मूथ ऑटोमैटिक ट्रांसमिशन',
-      'स्पार्को हेडरेस्ट & ब्राइड पैड्स',
-      '10.25" एचडी टचस्क्रीन + एप्पल कारप्ले',
-      'हुंडई इल्यूमिनेटेड डोर स्कफ प्लेट्स',
-      'डिजिटल टीएफटी स्पीडोमीटर क्लस्टर',
-      'क्रूज़ कंट्रोल & स्टीयरिंग कंट्रोल्स',
-      'सर्टिफाइड 67,861 KM (नॉन-टैम्पर्ड)'
+    "features_hi": [
+      "इलेक्ट्रिक सनरूफ",
+      "हाई-डाउनफ़ोर्स जीटी विंग स्पॉइलर",
+      "क्वाड क्रोम एग्जॉस्ट डिफ्यूज़र",
+      "पर्पल/मैजेंटा एम्बिएंट नियॉन इंटीरियर",
+      "1.5L CRDi टर्बो डीजल इंजन (115 PS)",
+      "6-स्पीड स्मूथ ऑटोमैटिक ट्रांसमिशन",
+      "स्पार्को हेडरेस्ट & ब्राइड पैड्स",
+      "10.25\" एचडी टचस्क्रीन + एप्पल कारप्ले",
+      "हुंडई इल्यूमिनेटेड डोर स्कफ प्लेट्स",
+      "डिजिटल टीएफटी स्पीडोमीटर क्लस्टर",
+      "क्रूज़ कंट्रोल & स्टीयरिंग कंट्रोल्स",
+      "सर्टिफाइड 67,861 KM (नॉन-टैम्पर्ड)"
     ],
-    features_en: [
-      'Electric Sunroof',
-      'High-Downforce GT Wing Spoiler',
-      'Quad Chrome Exhaust Diffuser',
-      'Purple/Magenta Ambient Neon Lighting',
-      '1.5L CRDi Turbo Diesel Engine (115 PS)',
-      '6-Speed Smooth Automatic Transmission',
-      'Sparco Headrests & Bride Cushions',
-      '10.25" HD Touchscreen with Apple CarPlay',
-      'Hyundai Illuminated Door Scuff Plates',
-      'Digital TFT Speedometer Instrument Cluster',
-      'Cruise Control & Multi-function Steering',
-      'Certified 67,861 KM (Non-tampered)'
+    "features_en": [
+      "Electric Sunroof",
+      "High-Downforce GT Wing Spoiler",
+      "Quad Chrome Exhaust Diffuser",
+      "Purple/Magenta Ambient Neon Lighting",
+      "1.5L CRDi Turbo Diesel Engine (115 PS)",
+      "6-Speed Smooth Automatic Transmission",
+      "Sparco Headrests & Bride Cushions",
+      "10.25\" HD Touchscreen with Apple CarPlay",
+      "Hyundai Illuminated Door Scuff Plates",
+      "Digital TFT Speedometer Instrument Cluster",
+      "Cruise Control & Multi-function Steering",
+      "Certified 67,861 KM (Non-tampered)"
     ],
-    desc_hi: 'गुड़गांव (Certified) में रजिस्टर्ड 2022 हुंडई वरना 1.5 CRDi डीजल ऑटोमैटिक SX स्पोर्ट्स एडिशन। 1st ओनर गाड़ी है, 67,861 किमी चली है। इसमें हाई-डाउनफ़ोर्स GT विंग, क्वाड क्रोम एग्जॉस्ट, सनरूफ, स्पार्को सीट कुशन, एम्बिएंट नियॉन लाइटिंग और नई कंडीशन टायर्स लगे हैं। ओरिजिनल सरकारी आरसी कार्ड वेरिफाइड है। 1 साल की वारंटी और फ्री आरसी ट्रांसफर शामिल है।',
-    desc_en: 'Gurugram registered (Certified) 2022 Hyundai Verna 1.5 CRDi Diesel Automatic SX Sport Edition. 1st single owner, genuine 67,861 km with verified service records. Customized with GT wing spoiler, quad exhaust diffuser, electric sunroof, Sparco headrests, custom ambient neon lighting and black alloy wheels. 100% verified non-accidental with 1-Year Warranty and free RC transfer.'
+    "desc_hi": "गुड़गांव (Certified) में रजिस्टर्ड 2022 हुंडई वरना 1.5 CRDi डीजल ऑटोमैटिक SX स्पोर्ट्स एडिशन। 1st ओनर गाड़ी है, 67,861 किमी चली है। इसमें हाई-डाउनफ़ोर्स GT विंग, क्वाड क्रोम एग्जॉस्ट, सनरूफ, स्पार्को सीट कुशन, एम्बिएंट नियॉन लाइटिंग और नई कंडीशन टायर्स लगे हैं। ओरिजिनल सरकारी आरसी कार्ड वेरिफाइड है। 1 साल की वारंटी और फ्री आरसी ट्रांसफर शामिल है।",
+    "desc_en": "Gurugram registered (Certified) 2022 Hyundai Verna 1.5 CRDi Diesel Automatic SX Sport Edition. 1st single owner, genuine 67,861 km with verified service records. Customized with GT wing spoiler, quad exhaust diffuser, electric sunroof, Sparco headrests, custom ambient neon lighting and black alloy wheels. 100% verified non-accidental with 1-Year Warranty and free RC transfer."
   },
   {
-      "id": "sonet-2022-htx-at",
-      "name": "2022 Kia Sonet HTX 1.5 CRDi Automatic",
-      "brand": "Kia",
-      "year": 2022,
-      "price": 9.9,
-      "type": "suv",
-      "fuel_hi": "डीजल (1.5L CRDi Turbo)",
-      "fuel_en": "Diesel (1.5L CRDi Turbo)",
-      "trans_hi": "6-स्पीड टॉर्क कन्वर्टर ऑटोमैटिक (AT)",
-      "trans_en": "6-Speed Torque Converter Automatic (AT)",
-      "km": "85,000 km",
-      "reg_hi": "सर्टिफाइड (गुड़गांव HR-98)",
-      "reg_en": "Certified Pre-Owned (Gurugram)",
-      "owners_hi": "1st सिंगल ओनर",
-      "owners_en": "1st Single Owner",
-      "color_hi": "ग्लेशियर व्हाइट पर्ल",
-      "color_en": "Glacier White Pearl",
-      "inspectionGrade": "A+ (99/100)",
-      "warranty_hi": "1 साल की सद्गुरु शील्ड वारंटी",
-      "warranty_en": "1 Year Sadguru Shield Warranty",
-      "image": "assets/car-photos/sonet-2022/sonet-2022-hero.jpg",
-      "allPhotos": [
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-hero.jpg",
-              "label_hi": "फ्रंट 3/4 हीरो स्टांस (टाइगर नोज)",
-              "label_en": "Front 3/4 Hero Stance (Tiger Nose)"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-side-profile.jpg",
-              "label_hi": "फुल साइड प्रोफाइल & रूफ रेल्स",
-              "label_en": "Full Side Profile & Roof Rails"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-rear-34.jpg",
-              "label_hi": "रियर 3/4 स्टांस & कनेक्टेड टेललैंप्स",
-              "label_en": "Rear 3/4 Stance & Connected LED Lights"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-rear-straight.jpg",
-              "label_hi": "रियर सीधा व्यू & डिफ्यूज़र",
-              "label_en": "Rear Profile & Sport Diffuser"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-cockpit.jpg",
-              "label_hi": "कॉकपिट, 10.25\" स्क्रीन & पैडल शिफ्टर्स",
-              "label_en": "Cockpit, 10.25\" Display & Paddle Shifters"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-front-seats.jpg",
-              "label_hi": "प्रीमियम डुअल-टोन लेदरेट सीट्स",
-              "label_en": "Premium Dual-Tone Leatherette Seats"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-rear-seats.jpg",
-              "label_hi": "रियर केबिन स्पेस & एसी वेंट्स",
-              "label_en": "Rear Cabin Comfort & AC Vents"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-sunroof-cabin.jpg",
-              "label_hi": "इलेक्ट्रिक सनरूफ & पैनोरमिक केबिन",
-              "label_en": "Electric Sunroof & Panoramic Cabin View"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-gear-console.jpg",
-              "label_hi": "ऑटोमैटिक गियरबॉक्स & ड्राइव मोड्स",
-              "label_en": "Automatic Shifter & Traction Modes"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-engine.jpg",
-              "label_hi": "1.5L CRDi टर्बो डीजल इंजन (ओरिजिनल)",
-              "label_en": "1.5L CRDi Turbo Diesel Engine"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-push-start.jpg",
-              "label_hi": "इंजन स्टार्ट/स्टॉप & ट्रैक्शन कंट्रोल",
-              "label_en": "Engine Push Start & Traction Control"
-          },
-          {
-              "url": "assets/car-photos/sonet-2022/sonet-2022-door-console.jpg",
-              "label_hi": "ड्राइवर डोर पावर विंडो कंट्रोल्स",
-              "label_en": "Driver Door Power Window Controls"
-          }
-      ],
-      "features_hi": [
-          "1.5L CRDi टर्बो डीजल पावरफुल इंजन (115 PS)",
-          "6-स्पीड टॉर्क कन्वर्टर ऑटोमैटिक गियरबॉक्स",
-          "स्पोर्टी पैडल शिफ्टर्स (Paddle Shifters)",
-          "इलेक्ट्रिक सनरूफ (Electric Sunroof)",
-          "10.25\" एचडी टचस्क्रीन + एप्पल कारप्ले & एंड्रॉइड ऑटो",
-          "ड्राइव मोड्स (Eco, Normal, Sport) & ट्रैक्शन मोड्स",
-          "पुश बटन स्टार्ट/स्टॉप & स्मार्ट कीलेस एंट्री",
-          "16\" क्रिस्टल कट डायमंड अलॉय व्हील्स",
-          "स्मार्ट प्योर एयर प्यूरीफायर",
-          "रियर एसी वेंट्स & रियर सनशेड्स",
-          "वैलिड कॉम्प्रिहेंसिव इंश्योरेंस",
-          "1 साल की वारंटी & फ्री RC ट्रांसफर"
-      ],
-      "features_en": [
-          "1.5L CRDi Turbo Diesel Engine (115 PS / 250 Nm)",
-          "6-Speed Torque Converter Automatic Transmission",
-          "Sport Steering Paddle Shifters",
-          "Electric One-Touch Sunroof",
-          "10.25\" HD Touchscreen with Apple CarPlay & Android Auto",
-          "Multi-Drive Modes (Eco, Normal, Sport) & Traction Modes",
-          "Push Button Start/Stop & Smart Keyless Entry",
-          "16\" Crystal-Cut Diamond Alloy Wheels",
-          "Smart Pure Air Purifier with Virus Protection",
-          "Rear AC Vents & Integrated Sunshade Blinds",
-          "Valid Comprehensive Insurance",
-          "1-Year Sadguru Shield Warranty & Free RC Transfer"
-      ],
-      "desc_hi": "2022 किआ सोनेट HTX 1.5 CRDi डीजल ऑटोमैटिक। 1st ओनर गाड़ी है, 85,000 किमी चली है और वैलिड इंश्योरेंस के साथ उपलब्ध है। इसमें इलेक्ट्रिक सनरूफ, 10.25\" टचस्क्रीन, स्टीयरिंग पैडल शिफ्टर्स, ड्राइव & ट्रैक्शन मोड्स, डायमंड कट अलॉय व्हील्स, पुश बटन स्टार्ट और रियर एसी वेंट्स शामिल हैं। 100% नॉन-एक्सीडेंटल गारंटी, फ्री आरसी ट्रांसफर और 1 साल की वारंटी उपलब्ध है।",
-      "desc_en": "2022 Kia Sonet HTX 1.5 CRDi Diesel Automatic. 1st single owner, genuine 85,000 km with valid comprehensive insurance. Top-tier equipment including electric sunroof, 10.25\" HD touchscreen with smartphone connectivity, steering-mounted paddle shifters, multi-drive and traction modes, crystal-cut alloy wheels, push button start, and rear AC vents. Certified 100% non-accidental with 1-Year Warranty and free RC transfer."
+    "id": "sonet-2022-htx-at",
+    "name": "2022 Kia Sonet HTX 1.5 CRDi Automatic",
+    "brand": "Kia",
+    "year": 2022,
+    "price": 9.9,
+    "type": "suv",
+    "fuel_hi": "डीजल (1.5L CRDi Turbo)",
+    "fuel_en": "Diesel (1.5L CRDi Turbo)",
+    "trans_hi": "6-स्पीड टॉर्क कन्वर्टर ऑटोमैटिक (AT)",
+    "trans_en": "6-Speed Torque Converter Automatic (AT)",
+    "km": "85,000 km",
+    "reg_hi": "सर्टिफाइड (गुड़गांव HR-98)",
+    "reg_en": "Certified Pre-Owned (Gurugram)",
+    "owners_hi": "1st सिंगल ओनर",
+    "owners_en": "1st Single Owner",
+    "color_hi": "ग्लेशियर व्हाइट पर्ल",
+    "color_en": "Glacier White Pearl",
+    "inspectionGrade": "A+ (99/100)",
+    "warranty_hi": "1 साल की सद्गुरु शील्ड वारंटी",
+    "warranty_en": "1 Year Sadguru Shield Warranty",
+    "image": "assets/car-photos/sonet-2022/sonet-2022-hero.jpg",
+    "allPhotos": [
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-hero.jpg",
+        "label_hi": "फ्रंट 3/4 हीरो स्टांस (टाइगर नोज)",
+        "label_en": "Front 3/4 Hero Stance (Tiger Nose)"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-side-profile.jpg",
+        "label_hi": "फुल साइड प्रोफाइल & रूफ रेल्स",
+        "label_en": "Full Side Profile & Roof Rails"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-rear-34.jpg",
+        "label_hi": "रियर 3/4 स्टांस & कनेक्टेड टेललैंप्स",
+        "label_en": "Rear 3/4 Stance & Connected LED Lights"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-rear-straight.jpg",
+        "label_hi": "रियर सीधा व्यू & डिफ्यूज़र",
+        "label_en": "Rear Profile & Sport Diffuser"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-cockpit.jpg",
+        "label_hi": "कॉकपिट, 10.25\" स्क्रीन & पैडल शिफ्टर्स",
+        "label_en": "Cockpit, 10.25\" Display & Paddle Shifters"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-front-seats.jpg",
+        "label_hi": "प्रीमियम डुअल-टोन लेदरेट सीट्स",
+        "label_en": "Premium Dual-Tone Leatherette Seats"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-rear-seats.jpg",
+        "label_hi": "रियर केबिन स्पेस & एसी वेंट्स",
+        "label_en": "Rear Cabin Comfort & AC Vents"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-sunroof-cabin.jpg",
+        "label_hi": "इलेक्ट्रिक सनरूफ & पैनोरमिक केबिन",
+        "label_en": "Electric Sunroof & Panoramic Cabin View"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-gear-console.jpg",
+        "label_hi": "ऑटोमैटिक गियरबॉक्स & ड्राइव मोड्स",
+        "label_en": "Automatic Shifter & Traction Modes"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-engine.jpg",
+        "label_hi": "1.5L CRDi टर्बो डीजल इंजन (ओरिजिनल)",
+        "label_en": "1.5L CRDi Turbo Diesel Engine"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-push-start.jpg",
+        "label_hi": "इंजन स्टार्ट/स्टॉप & ट्रैक्शन कंट्रोल",
+        "label_en": "Engine Push Start & Traction Control"
+      },
+      {
+        "url": "assets/car-photos/sonet-2022/sonet-2022-door-console.jpg",
+        "label_hi": "ड्राइवर डोर पावर विंडो कंट्रोल्स",
+        "label_en": "Driver Door Power Window Controls"
+      }
+    ],
+    "features_hi": [
+      "1.5L CRDi टर्बो डीजल पावरफुल इंजन (115 PS)",
+      "6-स्पीड टॉर्क कन्वर्टर ऑटोमैटिक गियरबॉक्स",
+      "स्पोर्टी पैडल शिफ्टर्स (Paddle Shifters)",
+      "इलेक्ट्रिक सनरूफ (Electric Sunroof)",
+      "10.25\" एचडी टचस्क्रीन + एप्पल कारप्ले & एंड्रॉइड ऑटो",
+      "ड्राइव मोड्स (Eco, Normal, Sport) & ट्रैक्शन मोड्स",
+      "पुश बटन स्टार्ट/स्टॉप & स्मार्ट कीलेस एंट्री",
+      "16\" क्रिस्टल कट डायमंड अलॉय व्हील्स",
+      "स्मार्ट प्योर एयर प्यूरीफायर",
+      "रियर एसी वेंट्स & रियर सनशेड्स",
+      "वैलिड कॉम्प्रिहेंसिव इंश्योरेंस",
+      "1 साल की वारंटी & फ्री RC ट्रांसफर"
+    ],
+    "features_en": [
+      "1.5L CRDi Turbo Diesel Engine (115 PS / 250 Nm)",
+      "6-Speed Torque Converter Automatic Transmission",
+      "Sport Steering Paddle Shifters",
+      "Electric One-Touch Sunroof",
+      "10.25\" HD Touchscreen with Apple CarPlay & Android Auto",
+      "Multi-Drive Modes (Eco, Normal, Sport) & Traction Modes",
+      "Push Button Start/Stop & Smart Keyless Entry",
+      "16\" Crystal-Cut Diamond Alloy Wheels",
+      "Smart Pure Air Purifier with Virus Protection",
+      "Rear AC Vents & Integrated Sunshade Blinds",
+      "Valid Comprehensive Insurance",
+      "1-Year Sadguru Shield Warranty & Free RC Transfer"
+    ],
+    "desc_hi": "2022 किआ सोनेट HTX 1.5 CRDi डीजल ऑटोमैटिक। 1st ओनर गाड़ी है, 85,000 किमी चली है और वैलिड इंश्योरेंस के साथ उपलब्ध है। इसमें इलेक्ट्रिक सनरूफ, 10.25\" टचस्क्रीन, स्टीयरिंग पैडल शिफ्टर्स, ड्राइव & ट्रैक्शन मोड्स, डायमंड कट अलॉय व्हील्स, पुश बटन स्टार्ट और रियर एसी वेंट्स शामिल हैं। 100% नॉन-एक्सीडेंटल गारंटी, फ्री आरसी ट्रांसफर और 1 साल की वारंटी उपलब्ध है।",
+    "desc_en": "2022 Kia Sonet HTX 1.5 CRDi Diesel Automatic. 1st single owner, genuine 85,000 km with valid comprehensive insurance. Top-tier equipment including electric sunroof, 10.25\" HD touchscreen with smartphone connectivity, steering-mounted paddle shifters, multi-drive and traction modes, crystal-cut alloy wheels, push button start, and rear AC vents. Certified 100% non-accidental with 1-Year Warranty and free RC transfer."
   },
   {
-      "id": "verna-2015-sx-at",
-      "name": "2015 Hyundai Verna 1.6 VTVT SX Automatic",
-      "brand": "Hyundai",
-      "year": 2015,
-      "price": 4.75,
-      "type": "sedan",
-      "fuel_hi": "पेट्रोल (1.6L VTVT)",
-      "fuel_en": "Petrol (1.6L VTVT)",
-      "trans_hi": "स्मूथ ऑटोमैटिक (AT)",
-      "trans_en": "Smooth Automatic (AT)",
-      "km": "80,000 km",
-      "reg_hi": "सर्टिफाइड (गुड़गांव HR-26)",
-      "reg_en": "Certified Pre-Owned (Gurugram)",
-      "owners_hi": "1st सिंगल ओनर",
-      "owners_en": "1st Single Owner",
-      "color_hi": "स्लीक सिल्वर मैटेलिक",
-      "color_en": "Sleek Silver Metallic",
-      "inspectionGrade": "A+ (98/100)",
-      "warranty_hi": "1 साल की सद्गुरु शील्ड वारंटी",
-      "warranty_en": "1 Year Sadguru Shield Warranty",
-      "image": "assets/car-photos/verna-2015/verna-2015-hero.jpg",
-      "allPhotos": [
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-hero.jpg",
-              "label_hi": "फ्रंट 3/4 हीरो व्यू",
-              "label_en": "Front 3/4 Hero View"
-          },
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-side.jpg",
-              "label_hi": "फुल साइड प्रोफाइल व्यू",
-              "label_en": "Full Side Profile"
-          },
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-rear-34.jpg",
-              "label_hi": "रियर 3/4 प्रोफाइल",
-              "label_en": "Rear 3/4 Profile"
-          },
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-rear-left.jpg",
-              "label_hi": "रियर लेफ्ट एंगल",
-              "label_en": "Rear Left Angle"
-          },
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-interior-dash.jpg",
-              "label_hi": "फुल डैशबोर्ड & कॉकपिट",
-              "label_en": "Full Dashboard & Cockpit"
-          },
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-front-seats.jpg",
-              "label_hi": "फ्रंट सीट्स & केबिन",
-              "label_en": "Front Seats & Clean Cabin"
-          },
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-speedometer.jpg",
-              "label_hi": "ओडोमीटर (80,463 KM) & स्टार्ट बटन",
-              "label_en": "Odometer (80,463 KM) & Push Start"
-          },
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-audio-system.jpg",
-              "label_hi": "ओरिजिनल म्यूजिक सिस्टम & क्लाइमेट AC",
-              "label_en": "Original Audio System & Climate Control"
-          },
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-gear-console.jpg",
-              "label_hi": "ऑटोमैटिक गियरबॉक्स & स्मार्ट की",
-              "label_en": "Automatic Gear Shifter & Smart Key"
-          },
-          {
-              "url": "assets/car-photos/verna-2015/verna-2015-wheels.jpg",
-              "label_hi": "डायमंड कट अलॉय व्हील्स & टायर्स",
-              "label_en": "Diamond Cut Alloys & Tyres"
-          }
-      ],
-      "features_hi": [
-          "1.6L VTVT 4-सिलेंडर पावरफुल पेट्रोल इंजन",
-          "स्मूथ ऑटोमैटिक ट्रांसमिशन (Gated AT)",
-          "पुश बटन स्टार्ट/स्टॉप & कीलेस स्मार्ट एंट्री",
-          "100% ऑल ओरिजिनल - नो रीपेंट, नो पार्ट चेंज",
-          "1st सिंगल ओनर कार (वेल-मेंटेंड)",
-          "ऑटोमैटिक क्लाइमेट कंट्रोल AC + क्लीन एयर",
-          "डायमंड कट ओरिजिनल अलॉय व्हील्स",
-          "स्टीयरिंग माउंटेड ऑडियो & कॉलिंग कंट्रोल्स",
-          "इलेक्ट्रिकली एडजस्टेबल & फोल्डेबल ORVMs",
-          "रिवर्स पार्किंग सेंसर्स & असिस्टेंस",
-          "वैलिड कॉम्प्रिहेंसिव इंश्योरेंस",
-          "1 साल की वारंटी & फ्री RC ट्रांसफर"
-      ],
-      "features_en": [
-          "1.6L VTVT 4-Cylinder Petrol Engine",
-          "Smooth Automatic Transmission (Gated AT)",
-          "Push Button Start/Stop & Keyless Smart Entry",
-          "100% All Original - Zero Repaint, No Part Change",
-          "1st Single Owner Vehicle (Immaculate Condition)",
-          "Automatic Climate Control AC with Clean Air Ionizer",
-          "OEM Diamond Cut Alloy Wheels",
-          "Steering-Mounted Audio & Call Controls",
-          "Electrically Adjustable & Folding Outside Mirrors",
-          "Reverse Parking Sensors",
-          "Valid Comprehensive Insurance",
-          "1-Year Sadguru Shield Warranty & Free RC Transfer"
-      ],
-      "desc_hi": "2015 हुंडई वरना 1.6 VTVT SX पेट्रोल ऑटोमैटिक। फर्स्ट ओनर, 80,000 किमी चली हुई, ऑल ओरिजिनल कंडीशन में (नो पेंट, नो पार्ट चेंज)। पुश बटन स्टार्ट, स्मार्ट की, ऑटोमैटिक क्लाइमेट कंट्रोल, अलॉय व्हील्स और वैलिड इंश्योरेंस के साथ उपलब्ध है। 100% नॉन-एक्सीडेंटल गारंटी, फ्री आरसी ट्रांसफर और 1 साल की वारंटी शामिल है।",
-      "desc_en": "2015 Hyundai Verna 1.6 VTVT SX Petrol Automatic. 1st single owner, genuine 80,000 km, 100% all original vehicle (zero repaint, no part changed). Features push button start, smart keyless entry, automatic transmission, automatic climate control with Clean Air, diamond cut alloy wheels, and valid comprehensive insurance. Includes 1-Year Warranty and free RC transfer."
+    "id": "verna-2015-sx-at",
+    "name": "2015 Hyundai Verna 1.6 VTVT SX Automatic",
+    "brand": "Hyundai",
+    "year": 2015,
+    "price": 4.75,
+    "type": "sedan",
+    "fuel_hi": "पेट्रोल (1.6L VTVT)",
+    "fuel_en": "Petrol (1.6L VTVT)",
+    "trans_hi": "स्मूथ ऑटोमैटिक (AT)",
+    "trans_en": "Smooth Automatic (AT)",
+    "km": "80,000 km",
+    "reg_hi": "सर्टिफाइड (गुड़गांव HR-26)",
+    "reg_en": "Certified Pre-Owned (Gurugram)",
+    "owners_hi": "1st सिंगल ओनर",
+    "owners_en": "1st Single Owner",
+    "color_hi": "स्लीक सिल्वर मैटेलिक",
+    "color_en": "Sleek Silver Metallic",
+    "inspectionGrade": "A+ (98/100)",
+    "warranty_hi": "1 साल की सद्गुरु शील्ड वारंटी",
+    "warranty_en": "1 Year Sadguru Shield Warranty",
+    "image": "assets/car-photos/verna-2015/verna-2015-hero.jpg",
+    "allPhotos": [
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-hero.jpg",
+        "label_hi": "फ्रंट 3/4 हीरो व्यू",
+        "label_en": "Front 3/4 Hero View"
+      },
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-side.jpg",
+        "label_hi": "फुल साइड प्रोफाइल व्यू",
+        "label_en": "Full Side Profile"
+      },
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-rear-34.jpg",
+        "label_hi": "रियर 3/4 प्रोफाइल",
+        "label_en": "Rear 3/4 Profile"
+      },
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-rear-left.jpg",
+        "label_hi": "रियर लेफ्ट एंगल",
+        "label_en": "Rear Left Angle"
+      },
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-interior-dash.jpg",
+        "label_hi": "फुल डैशबोर्ड & कॉकपिट",
+        "label_en": "Full Dashboard & Cockpit"
+      },
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-front-seats.jpg",
+        "label_hi": "फ्रंट सीट्स & केबिन",
+        "label_en": "Front Seats & Clean Cabin"
+      },
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-speedometer.jpg",
+        "label_hi": "ओडोमीटर (80,463 KM) & स्टार्ट बटन",
+        "label_en": "Odometer (80,463 KM) & Push Start"
+      },
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-audio-system.jpg",
+        "label_hi": "ओरिजिनल म्यूजिक सिस्टम & क्लाइमेट AC",
+        "label_en": "Original Audio System & Climate Control"
+      },
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-gear-console.jpg",
+        "label_hi": "ऑटोमैटिक गियरबॉक्स & स्मार्ट की",
+        "label_en": "Automatic Gear Shifter & Smart Key"
+      },
+      {
+        "url": "assets/car-photos/verna-2015/verna-2015-wheels.jpg",
+        "label_hi": "डायमंड कट अलॉय व्हील्स & टायर्स",
+        "label_en": "Diamond Cut Alloys & Tyres"
+      }
+    ],
+    "features_hi": [
+      "1.6L VTVT 4-सिलेंडर पावरफुल पेट्रोल इंजन",
+      "स्मूथ ऑटोमैटिक ट्रांसमिशन (Gated AT)",
+      "पुश बटन स्टार्ट/स्टॉप & कीलेस स्मार्ट एंट्री",
+      "100% ऑल ओरिजिनल - नो रीपेंट, नो पार्ट चेंज",
+      "1st सिंगल ओनर कार (वेल-मेंटेंड)",
+      "ऑटोमैटिक क्लाइमेट कंट्रोल AC + क्लीन एयर",
+      "डायमंड कट ओरिजिनल अलॉय व्हील्स",
+      "स्टीयरिंग माउंटेड ऑडियो & कॉलिंग कंट्रोल्स",
+      "इलेक्ट्रिकली एडजस्टेबल & फोल्डेबल ORVMs",
+      "रिवर्स पार्किंग सेंसर्स & असिस्टेंस",
+      "वैलिड कॉम्प्रिहेंसिव इंश्योरेंस",
+      "1 साल की वारंटी & फ्री RC ट्रांसफर"
+    ],
+    "features_en": [
+      "1.6L VTVT 4-Cylinder Petrol Engine",
+      "Smooth Automatic Transmission (Gated AT)",
+      "Push Button Start/Stop & Keyless Smart Entry",
+      "100% All Original - Zero Repaint, No Part Change",
+      "1st Single Owner Vehicle (Immaculate Condition)",
+      "Automatic Climate Control AC with Clean Air Ionizer",
+      "OEM Diamond Cut Alloy Wheels",
+      "Steering-Mounted Audio & Call Controls",
+      "Electrically Adjustable & Folding Outside Mirrors",
+      "Reverse Parking Sensors",
+      "Valid Comprehensive Insurance",
+      "1-Year Sadguru Shield Warranty & Free RC Transfer"
+    ],
+    "desc_hi": "2015 हुंडई वरना 1.6 VTVT SX पेट्रोल ऑटोमैटिक। फर्स्ट ओनर, 80,000 किमी चली हुई, ऑल ओरिजिनल कंडीशन में (नो पेंट, नो पार्ट चेंज)। पुश बटन स्टार्ट, स्मार्ट की, ऑटोमैटिक क्लाइमेट कंट्रोल, अलॉय व्हील्स और वैलिड इंश्योरेंस के साथ उपलब्ध है। 100% नॉन-एक्सीडेंटल गारंटी, फ्री आरसी ट्रांसफर और 1 साल की वारंटी शामिल है।",
+    "desc_en": "2015 Hyundai Verna 1.6 VTVT SX Petrol Automatic. 1st single owner, genuine 80,000 km, 100% all original vehicle (zero repaint, no part changed). Features push button start, smart keyless entry, automatic transmission, automatic climate control with Clean Air, diamond cut alloy wheels, and valid comprehensive insurance. Includes 1-Year Warranty and free RC transfer."
   },
   {
-    id: 'car-1',
-    name: 'Hyundai Creta SX (O) 1.5 Turbo',
-    brand: 'Hyundai',
-    year: 2022,
-    price: 14.85, // in Lakhs
-    emi: '₹22,950',
-    type: 'suv',
-    fuel_hi: 'पेट्रोल',
-    fuel_en: 'Petrol',
-    trans_hi: 'ऑटोमैटिक (DCT)',
-    trans_en: 'Automatic (DCT)',
-    km: '24,500 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर',
-    owners_en: '1st Owner',
-    color_hi: 'टाइटन ग्रे मैटेलिक',
-    color_en: 'Titan Grey Metallic',
-    inspectionGrade: 'A+ (98/100)',
-    warranty_hi: '1 साल की पूरी वारंटी',
-    warranty_en: '1 Year Comprehensive Warranty',
-    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80',
-    features_hi: ['पैनोरमिक सनरूफ', 'वेंटिलेटेड फ्रंट सीट्स', '10.25" टचस्क्रीन', 'बोस 8-स्पीकर साउंड', 'ब्लूलिंक कनेक्टेड कार', '6 एयरबैग्स'],
-    features_en: ['Panoramic Sunroof', 'Ventilated Front Seats', '10.25" Touchscreen', 'Bose 8-Speaker Audio', 'BlueLink Connected Car', '6 Airbags'],
-    desc_hi: 'गुड़गांव रजिस्टर्ड (Certified) सिंगल ओनर हुंडई क्रेटा। कंपनी सर्विस रिकॉर्ड्स के साथ, कोई एक्सीडेंट नहीं। 1 साल की वारंटी और फ्री आरसी ट्रांसफर उपलब्ध।',
-    desc_en: 'Gurugram registered (Certified) single owner Hyundai Creta. Complete company service records, 100% non-accidental. Free RC transfer included.'
+    "id": "dzire-2018-zdi-at",
+    "name": "2018 Maruti Suzuki Dzire ZDi Automatic",
+    "brand": "Maruti Suzuki",
+    "year": 2018,
+    "price": 5.65,
+    "type": "sedan",
+    "fuel_hi": "डीजल (1.3L DDiS Turbo)",
+    "fuel_en": "Diesel (1.3L DDiS Turbo)",
+    "trans_hi": "5-स्पीड एजीएस ऑटोमैटिक (AT)",
+    "trans_en": "5-Speed AGS Automatic (AT)",
+    "km": "93,000 km",
+    "reg_hi": "सर्टिफाइड (गुड़गांव HR-51)",
+    "reg_en": "Certified Pre-Owned (Gurugram)",
+    "owners_hi": "1st सिंगल ओनर",
+    "owners_en": "1st Single Owner",
+    "color_hi": "ऑक्सफोर्ड ब्लू मैटेलिक",
+    "color_en": "Oxford Blue Metallic",
+    "inspectionGrade": "A+ (99/100)",
+    "warranty_hi": "1 साल की सद्गुरु शील्ड वारंटी",
+    "warranty_en": "1 Year Sadguru Shield Warranty",
+    "image": "assets/car-photos/dzire-2018/dzire-2018-hero.jpg",
+    "allPhotos": [
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-hero.jpg",
+        "label_hi": "फ्रंट 3/4 हीरो स्टांस",
+        "label_en": "Front 3/4 Hero Stance"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-front-straight.jpg",
+        "label_hi": "फ्रंट सीधा फेस & क्रोम ग्रिल",
+        "label_en": "Front Profile & Chrome Grille"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-rear-profile.jpg",
+        "label_hi": "रियर प्रोफाइल & एलईडी टेललैंप्स",
+        "label_en": "Rear Profile & LED Taillamps"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-side-profile.jpg",
+        "label_hi": "फुल साइड सेडान प्रोफाइल",
+        "label_en": "Full Side Sedan Stance"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-rear-34.jpg",
+        "label_hi": "रियर 3/4 एंगल",
+        "label_en": "Rear 3/4 Angle"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-front-left-34.jpg",
+        "label_hi": "फ्रंट लेफ्ट 3/4 स्टांस",
+        "label_en": "Front Left 3/4 Stance"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-front-angle.jpg",
+        "label_hi": "फ्रंट डायनेमिक एंगल",
+        "label_en": "Front Dynamic Angle"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-cockpit.jpg",
+        "label_hi": "प्रीमियम डुअल-टोन कॉकपिट व वुडन ट्रिम",
+        "label_en": "Dual-Tone Cockpit & Wooden Trim"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-gear-console.jpg",
+        "label_hi": "स्मूथ एजीएस ऑटोमैटिक गियरबॉक्स",
+        "label_en": "Smooth AGS Automatic Shifter"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-steering-pushstart.jpg",
+        "label_hi": "फ्लैट बॉटम स्टीयरिंग & पुश बटन स्टार्ट",
+        "label_en": "Flat-Bottom Steering & Push Start"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-odometer.jpg",
+        "label_hi": "सर्टिफाइड ओडोमीटर (93,000 KM)",
+        "label_en": "Certified Odometer (93,000 KM)"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-audio-system.jpg",
+        "label_hi": "स्मार्ट ऑडियो सिस्टम & ऑटोमैटिक एसी",
+        "label_en": "Smart Audio & Auto Climate Control"
+      },
+      {
+        "url": "assets/car-photos/dzire-2018/dzire-2018-engine.jpg",
+        "label_hi": "1.3L DDiS डीजल इंजन (28.4 km/l माइलेज)",
+        "label_en": "1.3L DDiS Diesel Engine (28.4 km/l)"
+      }
+    ],
+    "features_hi": [
+      "1.3L DDiS टर्बो डीजल इंजन (28.4 kmpl माइलेज)",
+      "स्मूथ 5-स्पीड एजीएस ऑटोमैटिक (AT) गियरबॉक्स",
+      "इंजन पुश बटन स्टार्ट/स्टॉप & स्मार्ट की",
+      "ऑटोमैटिक क्लाइमेट कंट्रोल एसी",
+      "15\" प्रिसिजन कट अलॉय व्हील्स",
+      "प्रीमियम डुअल-टोन बेज व वुडन इंटीरियर",
+      "डुअल एयरबैग्स & ABS विथ EBD",
+      "स्टीयरिंग माउंटेड ऑडियो व कॉलिंग कंट्रोल्स",
+      "इलेक्ट्रिकली फोल्डेबल ORVMs टर्न इंडिकेटर्स के साथ",
+      "रिवर्स पार्किंग सेंसर्स",
+      "1st सिंगल ओनर, ओरिजिनल पेंट कंडीशन",
+      "1 साल की सद्गुरु शील्ड वारंटी & फ्री RC ट्रांसफर"
+    ],
+    "features_en": [
+      "1.3L DDiS Turbo Diesel Engine (28.4 kmpl Mileage)",
+      "Smooth 5-Speed AGS Automatic Transmission",
+      "Engine Push Button Start/Stop & Smart Keyless Entry",
+      "Automatic Climate Control AC",
+      "15\" Precision-Cut Alloy Wheels",
+      "Premium Dual-Tone Beige & Burl Wood Cabin",
+      "Dual Front Airbags & ABS with EBD",
+      "Steering Mounted Audio & Phone Controls",
+      "Electrically Foldable ORVMs with Turn Indicators",
+      "Rear Parking Sensors",
+      "1st Single Handed Owner, All-Original Paint",
+      "1-Year Sadguru Shield Warranty & Free RC Transfer"
+    ],
+    "desc_hi": "2018 मारुति सुजुकी डिजायर ZDi ऑटोमैटिक डीजल। 1st सिंगल ओनर गाड़ी, सर्टिफाइड 93,000 किमी रनिंग। यह टॉप-एंड ZDi ऑटोमैटिक वैरिएंट है जिसमें पुश-बटन स्टार्ट, कीलेस एंट्री, ऑटोमैटिक क्लाइमेट कंट्रोल, फ्लैट-बॉटम स्टीयरिंग, अलॉय व्हील्स और 28 किमी/लीटर की बेहतरीन माइलेज मिलती है। 100% नॉन-एक्सीडेंटल, ऑल-ओरिजिनल पेंट, 1 साल की वारंटी और फ्री आरसी ट्रांसफर शामिल है।",
+    "desc_en": "2018 Maruti Suzuki Dzire ZDi Automatic Diesel. 1st single owner, genuine 93,000 km with full verification. Top-of-the-line ZDi variant equipped with Push-Button Start, Smart Keyless Entry, Automatic Climate Control, flat-bottom leatherette steering, factory alloys, and segment-best 28 km/l fuel economy. Certified 100% non-accidental with 1-Year Warranty and free RC transfer."
   },
   {
-    id: 'car-2',
-    name: 'Mahindra XUV700 AX7 Luxury Pack',
-    brand: 'Mahindra',
-    year: 2022,
-    price: 19.40,
-    emi: '₹29,800',
-    type: 'suv',
-    fuel_hi: 'डीजल',
-    fuel_en: 'Diesel',
-    trans_hi: 'ऑटोमैटिक',
-    trans_en: 'Automatic',
-    km: '31,000 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर',
-    owners_en: '1st Owner',
-    color_hi: 'मिडनाइट ब्लैक',
-    color_en: 'Midnight Black',
-    inspectionGrade: 'A+ (99/100)',
-    warranty_hi: '1 साल की पूरी वारंटी',
-    warranty_en: '1 Year Comprehensive Warranty',
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
-    features_hi: ['ADAS लेवल 2 ऑटोनॉमस सेफ्टी', 'सोनी 12-स्पीकर 3D ऑडियो', 'डुअल 10.25" स्क्रीन', 'स्काईरूफ (पैनोरमिक)', 'स्मार्ट डोर हैंडल्स', 'वायरलेस चार्जिंग'],
-    features_en: ['ADAS Level 2 Autonomous Safety', 'Sony 12-Speaker 3D Audio', 'Dual 10.25" Screens', 'Panoramic Skyroof', 'Smart Flush Handles', 'Wireless Charger'],
-    desc_hi: 'महिंद्रा XUV700 लक्ज़री पैक डीजल ऑटोमैटिक। ADAS सेफ्टी और पैनोरमिक सनरूफ के साथ बिल्कुल शोरूम कंडीशन में।',
-    desc_en: 'Mahindra XUV700 Luxury Pack Diesel Automatic. Mint showroom condition with ADAS Level 2 safety and largest panoramic skyroof.'
+    "id": "crysta-2021-g-mt",
+    "name": "2021 Toyota Innova Crysta 2.4 G Manual",
+    "brand": "Toyota",
+    "year": 2021,
+    "price": 14.25,
+    "type": "suv",
+    "fuel_hi": "डीजल (2.4L GD Turbo Diesel)",
+    "fuel_en": "Diesel (2.4L GD Turbo Diesel)",
+    "trans_hi": "5-स्पीड मैनुअल ट्रांसमिशन (MT)",
+    "trans_en": "5-Speed Manual Transmission (MT)",
+    "km": "2,06,000 km",
+    "reg_hi": "सर्टिफाइड (गुड़गांव HR-51)",
+    "reg_en": "Certified Pre-Owned (Gurugram)",
+    "owners_hi": "2nd ओनर (वेल-मेंटेंड)",
+    "owners_en": "2nd Owner (Well Maintained)",
+    "color_hi": "सुपर व्हाइट",
+    "color_en": "Super White",
+    "inspectionGrade": "A+ (98/100)",
+    "warranty_hi": "1 साल की सद्गुरु शील्ड वारंटी",
+    "warranty_en": "1 Year Sadguru Shield Warranty",
+    "image": "assets/car-photos/crysta-2021/crysta-2021-hero.jpg",
+    "allPhotos": [
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-hero.jpg",
+        "label_hi": "फ्रंट 3/4 हीरो स्टांस (क्रिस्टा बोल्ड)",
+        "label_en": "Front 3/4 Hero Stance (Crysta Bold)"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-side-profile.jpg",
+        "label_hi": "फुल साइड व्यू & टूरिंग प्रोफाइल",
+        "label_en": "Full Side Stance & Touring Profile"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-rear-34.jpg",
+        "label_hi": "रियर 3/4 प्रोफाइल & बम्पर गार्ड",
+        "label_en": "Rear 3/4 Profile & Bumper Protector"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-rear-angle2.jpg",
+        "label_hi": "रियर एंगल 2 & क्रिस्टा क्रोम बैजिंग",
+        "label_en": "Rear Elevation & Crysta Chrome Badge"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-front-grille.jpg",
+        "label_hi": "पियानो ब्लैक फ्रंट ग्रिल & क्रोम फिनिश",
+        "label_en": "Piano Black Grille & Chrome Inserts"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-hero-angle2.jpg",
+        "label_hi": "फ्रंट 3/4 अल्टरनेट एंगल",
+        "label_en": "Front 3/4 Alternate Stance"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-cockpit.jpg",
+        "label_hi": "कॉकपिट, डैशबोर्ड & स्टीयरिंग कंट्रोल्स",
+        "label_en": "Ergonomic Cockpit & Steering Controls"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-front-seats.jpg",
+        "label_hi": "आलीशान फैब्रिक फ्रंट सीट्स व आर्मरेस्ट",
+        "label_en": "Plush Front Bucket Seats & Armrest"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-rear-seats.jpg",
+        "label_hi": "7/8 सीटर स्पेशियस रियर लाउंज",
+        "label_en": "7/8 Seater Spacious Rear Cabin"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-boot-open.jpg",
+        "label_hi": "बड़ा बूट स्पेस (ओपन टेलगेट)",
+        "label_en": "Massive Luggage Space (Tailgate Open)"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-spacious-boot.jpg",
+        "label_hi": "फ्लेक्सिबल फोल्डिंग सीट्स बूट स्पेस",
+        "label_en": "Flexible Folding 3rd Row Luggage Bay"
+      },
+      {
+        "url": "assets/car-photos/crysta-2021/crysta-2021-engine.jpg",
+        "label_hi": "टोयोटा 2.4L GD बुलेटप्रूफ डीजल इंजन",
+        "label_en": "Toyota 2.4L GD Bulletproof Diesel Engine"
+      }
+    ],
+    "features_hi": [
+      "टोयोटा का लीजेंडरी 2.4L GD 4-सिलेंडर डीजल इंजन (150 PS / 343 Nm)",
+      "स्मूथ 5-स्पीड मैनुअल गियरबॉक्स",
+      "इको (ECO) & पावर (POWER) ड्यूल ड्राइविंग मोड्स",
+      "7/8 सीटर अल्ट्रा कम्फर्टेबल सीटिंग अरेंजमेंट",
+      "3-रो रियर एयर कंडीशनिंग इंडिविजुअल रूफ वेंट्स के साथ",
+      "3 एयरबैग्स (ड्राइवर, पैसेंजर + ड्राइवर नी एयरबैग)",
+      "ABS विथ EBD & ब्रेक असिस्ट (BA)",
+      "वेहिकल स्टेबिलिटी कंट्रोल & हिल-स्टार्ट असिस्ट",
+      "टिल्ट & टेलीस्कोपिक एडजस्टेबल स्टीयरिंग व्हील",
+      "लॉन्ग टूरिंग हैवी-ड्यूटी कम्फर्टेबल सस्पेंशन",
+      "100% नॉन-एक्सीडेंटल, टोयोटा सर्विस रिकॉर्ड्स",
+      "1 साल की सद्गुरु शील्ड वारंटी & फ्री RC ट्रांसफर"
+    ],
+    "features_en": [
+      "Legendary Toyota 2.4L GD Turbo Diesel Engine (150 PS / 343 Nm)",
+      "Smooth 5-Speed Manual Transmission",
+      "Dual Drive Modes: ECO Mode & POWER Mode",
+      "7/8 Seater Ultra-Comfortable Touring Lounge",
+      "Triple-Row AC with Individual Ceiling Air Vents",
+      "3 Airbags (Front Dual + Driver Knee Airbag)",
+      "ABS with EBD & Emergency Brake Assist (BA)",
+      "Vehicle Stability Control (VSC) & Hill-Start Assist (HAC)",
+      "Tilt & Telescopic Adjustable Multi-function Steering",
+      "Heavy-Duty Long Distance Touring Suspension",
+      "100% Non-Accidental Verified, Full Toyota Service History",
+      "1-Year Sadguru Shield Warranty & Free RC Transfer"
+    ],
+    "desc_hi": "2021 टोयोटा इनोवा क्रिस्टा 2.4 G डीजल मैनुअल। 2nd ओनर गाड़ी, 2,06,000 किमी रनिंग। टोयोटा का प्रसिद्ध 2.4L GD बुलेटप्रूफ इंजन जो 5 लाख किमी बिना किसी परेशानी के चलने के लिए विश्वप्रसिद्ध है। इको और पावर मोड्स, रूफ माउंटेड रियर एसी वेंट्स, ड्राइवर नी-एयरबैग, और विशाल बूट स्पेस। फैमिली टूरिंग और हाईवे ड्राइविंग के लिए नंबर 1 विकल्प। 1 साल की वारंटी और फ्री आरसी ट्रांसफर शामिल।",
+    "desc_en": "2021 Toyota Innova Crysta 2.4 G Diesel Manual. 2nd owner, genuine 2,06,000 highway km with immaculate Toyota maintenance. Renowned worldwide for its indestructible 2.4L GD diesel engine that easily lasts 500,000+ km. Equipped with ECO/POWER drive modes, 3-row ceiling AC vents, knee airbag protection, and massive luggage capacity. Certified 100% non-accidental with 1-Year Warranty and free RC transfer."
   },
   {
-    id: 'car-3',
-    name: 'Honda City ZX 5th Gen',
-    brand: 'Honda',
-    year: 2021,
-    price: 10.45,
-    emi: '₹16,200',
-    type: 'sedan',
-    fuel_hi: 'पेट्रोल',
-    fuel_en: 'Petrol',
-    trans_hi: 'CVT ऑटोमैटिक',
-    trans_en: 'CVT Automatic',
-    km: '28,200 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर',
-    owners_en: '1st Owner',
-    color_hi: 'प्लैटिनम व्हाइट पर्ल',
-    color_en: 'Platinum White Pearl',
-    inspectionGrade: 'A+ (97/100)',
-    warranty_hi: '1 साल की पूरी वारंटी',
-    warranty_en: '1 Year Comprehensive Warranty',
-    image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
-    features_hi: ['फुल एलईडी हेडलाइट्स', 'लेन-वॉच कैमरा', 'इलेक्ट्रिक सनरूफ', 'लेदर अपहोल्स्ट्री', 'पैडल शिफ्टर्स', 'पुश बटन स्टार्ट'],
-    features_en: ['Full LED Headlights', 'LaneWatch Blindspot Camera', 'Electric Sunroof', 'Perforated Leather Seats', 'Paddle Shifters', 'Push Button Start'],
-    desc_hi: 'बेस्ट-इन-क्लास सेडान होंडा सिटी 5th जेन। स्मूथ सीवीटी गियरबॉक्स, आरामदायक लेदर सीट्स और शानदार माइलेज।',
-    desc_en: 'Best-in-class executive sedan Honda City 5th Gen. Smooth CVT automatic, ultra comfortable cabin, and excellent fuel mileage.'
-  },
-  {
-    id: 'car-4',
-    name: 'Tata Safari XZA+ Dark Edition',
-    brand: 'Tata',
-    year: 2022,
-    price: 18.25,
-    emi: '₹28,100',
-    type: 'suv',
-    fuel_hi: 'डीजल',
-    fuel_en: 'Diesel',
-    trans_hi: 'ऑटोमैटिक',
-    trans_en: 'Automatic',
-    km: '26,000 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर',
-    owners_en: '1st Owner',
-    color_hi: 'ओबेरॉन ब्लैक',
-    color_en: 'Oberon Black',
-    inspectionGrade: 'A+ (98/100)',
-    warranty_hi: '1 साल की पूरी वारंटी',
-    warranty_en: '1 Year Comprehensive Warranty',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
-    features_hi: ['स्टेल्थ ब्लैक एक्सटीरियर', 'कैप्टन सीट्स (6-सीटर)', 'JBL 9-स्पीकर साउंड', 'एकॉस्टिक ग्लास', 'डार्क बैजिंग', 'टेरेन रिस्पॉन्स मोड्स'],
-    features_en: ['Stealth Black Exterior', 'Captain Seats (6-Seater)', 'JBL 9-Speaker Audio', 'Acoustic Glass', 'Signature Dark Badging', 'Terrain Modes'],
-    desc_hi: 'टाटा सफारी डार्क एडिशन 6-सीटर लग्जरी एसयूवी। पावरफुल क्रायोटेक 170 डीजल इंजन और अल्टीमेट रोड प्रेजेंस।',
-    desc_en: 'Tata Safari Dark Edition 6-seater luxury SUV. Powerful Kryotec 170 diesel engine with commanding road presence.'
-  },
-  {
-    id: 'car-5',
-    name: 'BMW 3 Series 320d Luxury Line',
-    brand: 'BMW',
-    year: 2019,
-    price: 27.90,
-    emi: '₹42,500',
-    type: 'luxury',
-    fuel_hi: 'डीजल',
-    fuel_en: 'Diesel',
-    trans_hi: 'स्टेपट्रॉनिक ऑटोमैटिक',
-    trans_en: 'Steptronic Automatic',
-    km: '42,000 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर',
-    owners_en: '1st Owner',
-    color_hi: 'मेडिटेरेनियन ब्लू',
-    color_en: 'Mediterranean Blue',
-    inspectionGrade: 'A+ (99/100)',
-    warranty_hi: '1 साल की लक्ज़री शील्ड',
-    warranty_en: '1 Year Luxury Shield Warranty',
-    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80',
-    features_hi: ['लाइव कॉकपिट प्रोफेशनल', 'कॉग्नेक वर्नास्का लेदर सीट्स', '6-कलर एम्बिएंट लाइटिंग', 'रिवर्स असिस्टेंट', 'हरमन कार्डन साउंड सिस्टम'],
-    features_en: ['BMW Live Cockpit Professional', 'Cognac Vernasca Leather', 'Ambient Lighting with 6 Colors', 'Reverse Assistant', 'Harman Kardon Audio'],
-    desc_hi: 'गुड़गांव की मशहूर लक्जरी सेडान BMW 320d। फुल बीएमडब्ल्यू डीलर सर्विस हिस्ट्री, 100% नॉन-एक्सीडेंटल सर्टिफिकेट।',
-    desc_en: 'Gurugram VIP luxury sedan BMW 320d. Complete BMW dealership service history, certified 100% non-accidental.'
-  },
-  {
-    id: 'car-6',
-    name: 'Maruti Suzuki Swift ZXi+ AMT',
-    brand: 'Maruti',
-    year: 2021,
-    price: 6.85,
-    emi: '₹10,500',
-    type: 'hatchback',
-    fuel_hi: 'पेट्रोल',
-    fuel_en: 'Petrol',
-    trans_hi: 'ऑटोमैटिक (AMT)',
-    trans_en: 'Automatic (AMT)',
-    km: '22,400 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर',
-    owners_en: '1st Owner',
-    color_hi: 'सॉलिड फायर रेड',
-    color_en: 'Solid Fire Red',
-    inspectionGrade: 'A+ (96/100)',
-    warranty_hi: '1 साल की पूरी वारंटी',
-    warranty_en: '1 Year Comprehensive Warranty',
-    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
-    features_hi: ['स्मार्टप्ले स्टूडियो टचस्क्रीन', 'एलईडी प्रोजेक्टर हेडलैंप्स', 'कीलेस एंट्री & स्टार्ट', 'क्रूज़ कंट्रोल', 'डुअल एयरबैग्स & ABS'],
-    features_en: ['SmartPlay Studio Touchscreen', 'LED Projector Headlights', 'Keyless Entry & Push Start', 'Cruise Control', 'Dual Airbags & ABS'],
-    desc_hi: 'शहर के ट्रैफिक और रोज़ाना इस्तेमाल के लिए सबसे किफायती मारुति स्विफ्ट टॉप मॉडल। 22+ Kmpl माइलेज।',
-    desc_en: 'Highly economical Maruti Swift top model for city driving and daily commute. 22+ kmpl verified mileage.'
-  },
-  {
-    id: 'car-7',
-    name: 'Toyota Fortuner 4x2 AT',
-    brand: 'Toyota',
-    year: 2020,
-    price: 29.50,
-    emi: '₹45,900',
-    type: 'suv',
-    fuel_hi: 'डीजल',
-    fuel_en: 'Diesel',
-    trans_hi: 'ऑटोमैटिक',
-    trans_en: 'Automatic',
-    km: '54,000 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर',
-    owners_en: '1st Owner',
-    color_hi: 'सुपर व्हाइट',
-    color_en: 'Super White',
-    inspectionGrade: 'A+ (99/100)',
-    warranty_hi: '1 साल की पूरी वारंटी',
-    warranty_en: '1 Year Comprehensive Warranty',
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
-    features_hi: ['2.8L D-4D पावरफुल डीजल', 'चामोइस लेदर इंटीरियर', 'पावर टेलगेट', 'वेंटिलेटेड फ्रंट सीट्स', 'इको व स्पोर्ट मोड्स'],
-    features_en: ['Indestructible 2.8L D-4D Diesel', 'Chamois Leather Interior', 'Power Tailgate', 'Ventilated Front Seats', 'Eco & Sport Driving Modes'],
-    desc_hi: 'भारत की सबसे पॉपुलर फुल-साइज़ एसयूवी टोयोटा फॉर्च्यूनर। शानदार रीसेल वैल्यू और जीरो मेंटेनेंस प्रॉमिस।',
-    desc_en: 'India\'s most sought-after full-size SUV Toyota Fortuner. Bulletproof reliability, zero maintenance hassle, high resale.'
-  },
-  {
-    id: 'car-8',
-    name: 'Maruti Grand Vitara Alpha Hybrid',
-    brand: 'Maruti',
-    year: 2023,
-    price: 16.90,
-    emi: '₹25,800',
-    type: 'suv',
-    fuel_hi: 'हाइब्रिड (Electric+Petrol)',
-    fuel_en: 'Strong Hybrid (EV+Petrol)',
-    trans_hi: 'e-CVT ऑटोमैटिक',
-    trans_en: 'e-CVT Automatic',
-    km: '14,200 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर',
-    owners_en: '1st Owner',
-    color_hi: 'रेड & ब्लैक डुअल टोन',
-    color_en: 'Opulent Red / Black Dual Tone',
-    inspectionGrade: 'A+ (100/100)',
-    warranty_hi: 'कंपनी वारंटी एक्टिव',
-    warranty_en: 'Active Factory Warranty + Sadguru Shield',
-    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80',
-    features_hi: ['27.97 km/l अल्ट्रा हाई माइलेज', 'EV प्योर इलेक्ट्रिक मोड', 'हेड-अप डिस्प्ले (HUD)', '360° व्यू कैमरा', 'वायरलेस कारप्ले'],
-    features_en: ['27.97 km/l Ultra High Mileage', 'EV Pure Electric Mode', 'Head-Up Display (HUD)', '360 View Camera', 'Wireless Apple CarPlay'],
-    desc_hi: 'लगभग नई कंडीशन 2023 ग्रैंड विटारा स्ट्रॉन्ग हाइब्रिड। 28 किमी/लीटर की माइलेज और कंपनी वारंटी एक्टिव।',
-    desc_en: 'Like-new 2023 Grand Vitara Strong Hybrid. Delivers up to 28 kmpl in city traffic, active factory warranty.'
-  },
-  {
-    id: 'car-9',
-    name: 'Audi A4 40 TFSI Technology',
-    brand: 'Audi',
-    year: 2021,
-    price: 33.50,
-    emi: '₹51,200',
-    type: 'luxury',
-    fuel_hi: 'पेट्रोल',
-    fuel_en: 'Petrol',
-    trans_hi: 'एस-ट्रॉनिक 7-स्पीड ऑटोमैटिक',
-    trans_en: 'S-Tronic 7-Speed Automatic',
-    km: '29,000 km',
-    reg_hi: 'सर्टिफाइड (गुड़गांव)',
-    reg_en: 'Certified Pre-Owned',
-    owners_hi: '1st ओनर',
-    owners_en: '1st Owner',
-    color_hi: 'इबिस व्हाइट',
-    color_en: 'Ibis White',
-    inspectionGrade: 'A+ (99/100)',
-    warranty_hi: '1 साल की लक्ज़री शील्ड',
-    warranty_en: '1 Year Luxury Shield Warranty',
-    image: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80',
-    features_hi: ['ऑडी वर्चुअल कॉकपिट प्लस', 'MMI नेविगेशन टच', 'B&O 3D साउंड सिस्टम', 'मैट्रिक्स एलईडी हेडलैंप्स', 'क्वाट्रो स्टाइलिंग'],
-    features_en: ['Audi Virtual Cockpit Plus', 'MMI Navigation Plus with Touch', 'B&O 3D Sound System', 'Matrix LED Headlamps', 'Quattro Sport Styling'],
-    desc_hi: 'ऑडी A4 40 टीएफएसआई टेक्नोलॉजी पैक। गुड़गांव शोरूम कंडीशन, 1st ओनर और जीरो क्लेम रिकॉर्ड।',
-    desc_en: 'Audi A4 40 TFSI Technology Pack. Gurugram showroom condition, 1st owner, zero claim record.'
+    "id": "creta-2020-sx-diesel",
+    "name": "2020 Hyundai Creta 1.5 CRDi SX Manual",
+    "brand": "Hyundai",
+    "year": 2020,
+    "price": 10.75,
+    "type": "suv",
+    "fuel_hi": "डीजल (1.5L CRDi U2 VGT)",
+    "fuel_en": "Diesel (1.5L CRDi U2 VGT)",
+    "trans_hi": "6-स्पीड मैनुअल ट्रांसमिशन (MT)",
+    "trans_en": "6-Speed Manual Transmission (MT)",
+    "km": "1,18,282 km",
+    "reg_hi": "सर्टिफाइड (गुड़गांव HR-51)",
+    "reg_en": "Certified Pre-Owned (Gurugram)",
+    "owners_hi": "1st सिंगल ओनर",
+    "owners_en": "1st Single Owner",
+    "color_hi": "फैंटम ब्लैक",
+    "color_en": "Phantom Black",
+    "inspectionGrade": "A+ (99/100)",
+    "warranty_hi": "1 साल की सद्गुरु शील्ड वारंटी",
+    "warranty_en": "1 Year Sadguru Shield Warranty",
+    "image": "assets/car-photos/creta-2020/creta-2020-hero.jpg",
+    "allPhotos": [
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-hero.jpg",
+        "label_hi": "फ्रंट 3/4 हीरो स्टांस (फैंटम ब्लैक)",
+        "label_en": "Front 3/4 Hero Stance (Phantom Black)"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-side-profile.jpg",
+        "label_hi": "फुल साइड एसयूवी प्रोफाइल",
+        "label_en": "Full Side SUV Stance"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-rear-34.jpg",
+        "label_hi": "रियर 3/4 प्रोफाइल & बूमरैंग टेललैंप्स",
+        "label_en": "Rear 3/4 Profile & Boomerang LED Tail Lamps"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-side-rear.jpg",
+        "label_hi": "रियर साइड क्वार्टर एंगल",
+        "label_en": "Rear Quarter Stance"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-front-straight.jpg",
+        "label_hi": "फ्रंट कैस्केडिंग ग्रिल & ट्रायो-बीम एलईडी",
+        "label_en": "Front Cascading Grille & Trio-Beam LED"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-rear-straight.jpg",
+        "label_hi": "रियर सीधा व्यू & क्रेटा सिग्नेचर बैज",
+        "label_en": "Rear Profile & Creta Signature Badge"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-cockpit.jpg",
+        "label_hi": "पैनोरमिक कॉकपिट & 10.25\" एचडी टचस्क्रीन",
+        "label_en": "Panoramic Cockpit & 10.25\" HD Touchscreen"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-driver-cockpit.jpg",
+        "label_hi": "ड्राइवर सीट व्यू & डी-कट लेदर स्टीयरिंग",
+        "label_en": "Driver Cockpit & D-Cut Leather Steering"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-odometer.jpg",
+        "label_hi": "सर्टिफाइड ओडोमीटर (1,18,282 KM)",
+        "label_en": "Certified Odometer (1,18,282 KM)"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-push-start.jpg",
+        "label_hi": "इंजन स्टार्ट/स्टॉप & ट्रैक्शन टॉगल",
+        "label_en": "Push Button Start & Traction Toggle"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-gear-console.jpg",
+        "label_hi": "6-स्पीड मैनुअल गियरबॉक्स & ऑटो होल्ड",
+        "label_en": "6-Speed Manual Shifter & Auto Hold"
+      },
+      {
+        "url": "assets/car-photos/creta-2020/creta-2020-interior-front.jpg",
+        "label_hi": "लक्ज़री डुअल-टोन प्रीमियम लेदरेट केबिन",
+        "label_en": "Luxury Dual-Tone Leatherette Cabin"
+      }
+    ],
+    "features_hi": [
+      "1.5L CRDi U2 VGT डीजल इंजन (115 PS / 250 Nm)",
+      "6-स्पीड स्मूथ मैनुअल ट्रांसमिशन (MT)",
+      "वॉइस-इनेबल्ड स्मार्ट पैनोरमिक सनरूफ",
+      "10.25\" एडवांस्ड एचडी इंफोटेनमेंट टचस्क्रीन विथ एप्पल कारप्ले",
+      "ट्रायो-बीम एलईडी हेडलैंप्स विथ क्रिसेंट एलईडी DRLs",
+      "इलेक्ट्रॉनिक पार्किंग ब्रेक (EPB) विथ ऑटो होल्ड",
+      "पुश बटन इंजन स्टार्ट/स्टॉप & स्मार्ट कीलेस एंट्री",
+      "17\" क्लीन कट डायमंड अलॉय व्हील्स",
+      "रियर एसी वेंट्स & रियर विंडो प्राइवेसी सनशेड्स",
+      "सर्टिफाइड 1,18,282 KM (ओरिजिनल सर्विस रिकॉर्ड्स)",
+      "1st सिंगल ओनर, 100% नॉन-एक्सीडेंटल गारंटी",
+      "1 साल की सद्गुरु शील्ड वारंटी & फ्री RC ट्रांसफर"
+    ],
+    "features_en": [
+      "1.5L CRDi U2 VGT Diesel Engine (115 PS / 250 Nm)",
+      "6-Speed Smooth Manual Transmission (MT)",
+      "Voice-Enabled Smart Panoramic Sunroof",
+      "10.25\" Advanced HD Touchscreen with Apple CarPlay & Android Auto",
+      "Trio-Beam LED Headlamps with Crescent LED DRLs",
+      "Electronic Parking Brake (EPB) with Auto Hold",
+      "Push Button Engine Start/Stop & Smart Keyless Entry",
+      "17\" Clean-Cut Diamond Alloy Wheels",
+      "Rear AC Vents & Rear Door Window Privacy Sunshades",
+      "Certified 1,18,282 KM with Full Service History",
+      "1st Single Owner, 100% Non-Accidental Guarantee",
+      "1-Year Sadguru Shield Warranty & Free RC Transfer"
+    ],
+    "desc_hi": "2020 हुंडई क्रेटा 1.5 CRDi डीजल SX मैनुअल। 1st सिंगल ओनर गाड़ी, सर्टिफाइड 1,18,282 किमी रनिंग। न्यू-जेन क्रेटा का सबसे पसंदीदा SX वैरिएंट जिसमें पैनोरमिक सनरूफ, 10.25\" एचडी टचस्क्रीन, ट्रायो-बीम एलईडी हेडलैंप्स, इलेक्ट्रॉनिक पार्किंग ब्रेक विथ ऑटो होल्ड, पुश बटन स्टार्ट और डायमंड-कट अलॉय व्हील्स मिलते हैं। 100% नॉन-एक्सीडेंटल गारंटी, 1 साल की वारंटी और फ्री आरसी ट्रांसफर उपलब्ध।",
+    "desc_en": "2020 Hyundai Creta 1.5 CRDi Diesel SX Manual. 1st single owner, genuine 1,18,282 km with complete verified service records. 2nd Generation Creta SX featuring Panoramic Sunroof, 10.25\" HD Touchscreen infotainment, Trio-Beam LED headlights with signature crescent DRLs, Electronic Parking Brake with Auto Hold, push-button start and diamond-cut alloys. Certified 100% non-accidental with 1-Year Warranty and free RC transfer."
   }
 ];
 
@@ -566,17 +739,19 @@ class InventoryManager {
     // Load from localStorage cache if available
     let cached = null;
     try {
-      const stored = localStorage.getItem('sadguru_inventory');
+      const stored = localStorage.getItem('sadguru_inventory_v3');
       if (stored) cached = JSON.parse(stored);
     } catch (e) {}
 
     // Ensure all bundled cars from CAR_INVENTORY_DATA are included even if user has older cached data
     if (Array.isArray(cached) && cached.length > 0) {
+      // Remove any legacy dummy/sample cars (car-1 to car-9)
+      cached = cached.filter(c => c && c.id && !c.id.startsWith('car-'));
       const cachedIds = new Set(cached.map(c => c.id));
       const missingCars = CAR_INVENTORY_DATA.filter(c => !cachedIds.has(c.id));
       if (missingCars.length > 0) {
         cached = [...missingCars, ...cached];
-        try { localStorage.setItem('sadguru_inventory', JSON.stringify(cached)); } catch (e) {}
+        try { localStorage.setItem('sadguru_inventory_v3', JSON.stringify(cached)); } catch (e) {}
       }
       this.cars = cached;
     } else {
@@ -596,7 +771,7 @@ class InventoryManager {
         if (Array.isArray(cloudCars) && cloudCars.length > 0) {
           this.cars = cloudCars;
           window.SADGURU_CARS = cloudCars;
-          localStorage.setItem('sadguru_inventory', JSON.stringify(cloudCars));
+          localStorage.setItem('sadguru_inventory_v3', JSON.stringify(cloudCars));
           this.applyFilters();
           this.populateTestDriveOptions();
           return;
@@ -615,7 +790,7 @@ class InventoryManager {
         if (Array.isArray(liveCars) && liveCars.length > 0) {
           this.cars = liveCars;
           window.SADGURU_CARS = liveCars;
-          localStorage.setItem('sadguru_inventory', JSON.stringify(liveCars));
+          localStorage.setItem('sadguru_inventory_v3', JSON.stringify(liveCars));
           this.applyFilters();
           this.populateTestDriveOptions();
         }
