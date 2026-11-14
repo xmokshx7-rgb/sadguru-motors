@@ -358,6 +358,7 @@
   // =========================================================================
   const OWNER_PIN = '9911';
   const OWNER_EMAILS = [
+    'sumitgulati.sas@gmail.com',
     'xmokshx7@gmail.com',
     'sadgurumotors@gmail.com',
     'mokshgulati@gmail.com',
@@ -371,7 +372,7 @@
     const user = getCurrentUser();
     if (user && user.email) {
       const emailLower = user.email.toLowerCase();
-      if (OWNER_EMAILS.includes(emailLower) || emailLower.includes('moksh') || emailLower.endsWith('@sadgurumotors.com')) {
+      if (OWNER_EMAILS.includes(emailLower) || emailLower.includes('moksh') || emailLower.includes('sumit') || emailLower.endsWith('@sadgurumotors.com')) {
         return true;
       }
     }
