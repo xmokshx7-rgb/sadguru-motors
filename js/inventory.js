@@ -494,9 +494,9 @@ class InventoryManager {
                 <span class="price-label">${priceLabel}</span>
                 <div class="price-val">₹${priceNum.toFixed(2)} Lakh</div>
               </div>
-              <div class="emi-block">
-                <span class="emi-label">${emiLabel}</span>
-                <div class="emi-val">${car.emi}${perMonth}</div>
+              <div class="benefit-block" style="text-align: right;">
+                <span class="price-label" style="color: #4ade80; font-weight: 700;">✓ Free RC Transfer</span>
+                <div style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">1-Yr Warranty</div>
               </div>
             </div>
 
@@ -638,7 +638,7 @@ window.openCarModal = function(carId) {
         </div>
         <div style="text-align: right;">
           <div style="font-size: 1.8rem; font-weight: 800; color: var(--royal-blue-primary);">₹${priceNum.toFixed(2)} Lakh</div>
-          <span style="font-size: 0.85rem; color: #0284c7; font-weight: 600;">${isEn ? 'EMI Starts at' : 'आसान EMI'} ${car.emi}${isEn ? '/mo' : '/माह'}</span>
+          <span style="font-size: 0.85rem; color: #10b981; font-weight: 700;">✓ Free RC Transfer & 1-Yr Comprehensive Warranty</span>
         </div>
       </div>
 

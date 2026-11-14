@@ -1262,14 +1262,11 @@
             <!-- Asking Price -->
             <div class="form-group">
               <label for="car-price">नकद कीमत (₹ Lakhs में) <span class="req">*</span></label>
-              <input type="number" id="car-price" class="form-control" step="0.05" min="1" max="150" placeholder="10.85" required oninput="calculateEMIFromPrice(this.value)" />
+              <input type="number" id="car-price" class="form-control" step="0.05" min="1" max="150" placeholder="10.85" required />
             </div>
 
-            <!-- Monthly EMI -->
-            <div class="form-group">
-              <label for="car-emi">मासिक EMI (अनुमानित) <span class="req">*</span></label>
-              <input type="text" id="car-emi" class="form-control" placeholder="₹16,900" required />
-            </div>
+            <!-- Hidden EMI field (Maintained for Supabase schema compatibility) -->
+            <input type="hidden" id="car-emi" value="Direct Sale" />
 
             <!-- KM Driven -->
             <div class="form-group">
@@ -2161,8 +2158,8 @@ CREATE POLICY "Public Full Leads" ON customer_leads FOR ALL USING (true);</div>
                     <div class="card-price">₹${parseFloat(car.price).toFixed(2)} Lakh</div>
                   </div>
                   <div style="text-align: right;">
-                    <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">EMI शुरू</span>
-                    <div class="card-emi">${car.emi}/माह</div>
+                    <span style="font-size: 0.72rem; color: #10b981; font-weight: 600;">वारंटी व आरसी</span>
+                    <div style="font-size: 0.85rem; font-weight: 700; color: #0284c7;">1 वर्ष शामिल</div>
                   </div>
                 </div>
 
@@ -2377,10 +2374,8 @@ CREATE POLICY "Public Full Leads" ON customer_leads FOR ALL USING (true);</div>
 
     // 8. Helper Functions
     function calculateEMIFromPrice(priceVal) {
-      const p = parseFloat(priceVal);
-      if (!p || isNaN(p)) return;
-      const emi = Math.round(p * 1550);
-      document.getElementById('car-emi').value = `₹${emi.toLocaleString('en-IN')}`;
+      const el = document.getElementById('car-emi');
+      if (el) el.value = 'Direct Sale';
     }
 
     function updateImagePreview(url) {

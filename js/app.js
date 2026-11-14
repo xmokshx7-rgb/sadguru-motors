@@ -43,10 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageSwitcher();
   applyLanguage(window.currentAppLang);
 
-  // 4. Initialize EMI Calculator
-  initEMICalculator();
-
-  // 5. Initialize Car Valuation (Sell Car)
+  // 4. Car Valuation (Sell Car)
   initSellCarCalculator();
 
   // 6. Initialize Test Drive Booking
@@ -172,60 +169,10 @@ function updateDropdownsLanguage(isEn) {
 }
 
 /**
- * Real-time Automotive Loan EMI Calculator
+ * EMI Calculator (Disabled - Sadguru Motors focuses on direct cash sales)
  */
 function initEMICalculator() {
-  const priceInput = document.getElementById('emi-price-range');
-  const downPaymentInput = document.getElementById('emi-down-range');
-  const tenureInput = document.getElementById('emi-tenure-range');
-  const interestInput = document.getElementById('emi-rate-range');
-
-  const priceDisp = document.getElementById('emi-price-val');
-  const downDisp = document.getElementById('emi-down-val');
-  const tenureDisp = document.getElementById('emi-tenure-val');
-  const interestDisp = document.getElementById('emi-rate-val');
-
-  const monthlyEmiDisp = document.getElementById('calculated-monthly-emi');
-  const principalDisp = document.getElementById('calculated-principal');
-  const interestTotalDisp = document.getElementById('calculated-interest');
-  const totalPayableDisp = document.getElementById('calculated-total');
-
-  function calculate() {
-    const totalCost = parseFloat(priceInput.value) * 100000;
-    const downPercent = parseFloat(downPaymentInput.value);
-    const downAmount = (totalCost * downPercent) / 100;
-    const loanPrincipal = totalCost - downAmount;
-    
-    const tenureYears = parseFloat(tenureInput.value);
-    const tenureMonths = tenureYears * 12;
-    
-    const annualRate = parseFloat(interestInput.value);
-    const monthlyRate = annualRate / (12 * 100);
-
-    const isEn = window.currentAppLang === 'en';
-
-    if (priceDisp) priceDisp.innerText = `₹${parseFloat(priceInput.value).toFixed(1)} Lakh`;
-    if (downDisp) downDisp.innerText = `${downPercent}% (₹${(downAmount / 100000).toFixed(2)} L)`;
-    if (tenureDisp) tenureDisp.innerText = isEn ? `${tenureYears} Years (${tenureMonths} Mo)` : `${tenureYears} वर्ष (${tenureMonths} माह)`;
-    if (interestDisp) interestDisp.innerText = `${annualRate.toFixed(1)}% p.a.`;
-
-    const emi = (loanPrincipal * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths)) / (Math.pow(1 + monthlyRate, tenureMonths) - 1);
-    const totalPayable = emi * tenureMonths;
-    const totalInterest = totalPayable - loanPrincipal;
-
-    if (monthlyEmiDisp) monthlyEmiDisp.innerText = `₹${Math.round(emi).toLocaleString('en-IN')}`;
-    if (principalDisp) principalDisp.innerText = `₹${Math.round(loanPrincipal).toLocaleString('en-IN')}`;
-    if (interestTotalDisp) interestTotalDisp.innerText = `₹${Math.round(totalInterest).toLocaleString('en-IN')}`;
-    if (totalPayableDisp) totalPayableDisp.innerText = `₹${Math.round(totalPayable).toLocaleString('en-IN')}`;
-  }
-
-  [priceInput, downPaymentInput, tenureInput, interestInput].forEach(input => {
-    if (input) {
-      input.addEventListener('input', calculate);
-    }
-  });
-
-  calculate();
+  // Car loan / EMI features removed per dealership policy
 }
 
 /**
