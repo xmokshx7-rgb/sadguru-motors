@@ -471,7 +471,6 @@ function initTranslucentInteractionsAndSmoothUI() {
     button, 
     .btn, 
     a.btn, 
-    .dock-item, 
     .category-btn, 
     .category-pill, 
     .gallery-tab-btn, 
