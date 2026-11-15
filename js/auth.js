@@ -246,10 +246,9 @@
       return;
     }
 
-    // Direct Google Account Chooser & Official Sign-in Console without any intermediate form
-    const continueUrl = window.location.href;
-    const googleLoginUrl = `https://accounts.google.com/AccountChooser?continue=${encodeURIComponent(continueUrl)}`;
-    window.location.href = googleLoginUrl;
+    // Direct Google Cloud Console Official Sign-in Page (No 400 error)
+    const googleConsoleUrl = 'https://accounts.google.com/ServiceLogin?service=cloudconsole&continue=https://console.cloud.google.com/';
+    window.location.href = googleConsoleUrl;
   };
 
   // Close Google Login Modal (if active)
