@@ -840,7 +840,7 @@ class InventoryManager {
             ${isEn ? 'No Matching Cars Found' : 'कोई कार नहीं मिली'}
           </h3>
           <p style="color: var(--text-muted); font-size: 0.95rem;">
-            ${isEn ? 'Please try resetting your filters or search keyword. 50+ cars available at Sector 14 showroom.' : 'कृपया अन्य फ़िल्टर या सर्च कीवर्ड का उपयोग करें। सद्गुरु मोटर्स सेक्टर 14 में 50+ गाड़ियां उपलब्ध हैं।'}
+            ${isEn ? 'Please try resetting your filters or search keyword. Explore our certified showroom collection.' : 'कृपया अन्य फ़िल्टर या सर्च कीवर्ड का उपयोग करें। सद्गुरु मोटर्स शोरूम में सभी सर्टिफाइड गाड़ियां उपलब्ध हैं।'}
           </p>
           <button class="btn btn-secondary" style="margin-top: 16px;" onclick="window.resetInventoryFilters()">
             ${isEn ? 'Reset All Filters' : 'सारे फ़िल्टर हटाएं'}
@@ -1059,7 +1059,7 @@ window.openCarModal = function(carId) {
         ${isEn ? 'Certified Multi-Point Technical Inspection Report (Sadguru Shield)' : 'सर्टिफाइड इन्स्पेक्शन रिपोर्ट (सद्गुरु शील्ड)'}
       </h4>
       
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px;">
+      <div class="modal-checklist-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px;">
         <div style="background: var(--royal-blue-subtle); border: 1px solid var(--royal-blue-border); padding: 14px; border-radius: 10px;">
           <strong style="display: block; font-size: 0.88rem; color: var(--royal-blue-primary); margin-bottom: 2px;">
             ${isEn ? 'Engine & Transmission' : 'इंजन और ट्रांसमिशन'}
@@ -1110,7 +1110,7 @@ window.openCarModal = function(carId) {
       </div>
 
       <!-- Action Buttons -->
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <div class="modal-btn-row" style="display: flex; gap: 12px; flex-wrap: wrap;">
         <button class="btn btn-primary" onclick="window.openTestDriveModal('${car.id}'); window.closeAllModals();" style="flex: 1.2;">
           <i data-lucide="calendar"></i> ${isEn ? 'Book Test Drive (Sector 14 or Home)' : 'टेस्ट ड्राइव बुक करें (सेक्टर 14 या घर पर)'}
         </button>

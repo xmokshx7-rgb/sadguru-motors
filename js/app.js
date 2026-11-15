@@ -577,27 +577,27 @@ function initSellCarCalculator() {
             <strong>${brand} ${model}</strong> (${year} • ${km.toLocaleString()} KM)
           </p>
           
-          <div style="background: var(--royal-blue-subtle); border: 1.5px solid var(--royal-blue-primary); padding: 22px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);">
-            <div style="font-size: 0.8rem; letter-spacing: 0.5px; color: #93c5fd; text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">
+          <div style="background: #FAF8F5; border: 1.5px solid #C5A46D; padding: 22px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(18, 61, 50, 0.08);">
+            <div style="font-size: 0.82rem; letter-spacing: 0.5px; color: #123D32; text-transform: uppercase; font-weight: 800; margin-bottom: 4px;">
               ${isEn ? 'Sadguru Motors Live Market Deal Offer' : 'सद्गुरु मोटर्स लाइव मार्केट डील ऑफर'}
             </div>
-            <div style="font-size: 2.35rem; font-weight: 800; color: #60a5fa; margin-top: 4px; letter-spacing: -0.5px;">
+            <div style="font-size: 2.35rem; font-weight: 800; color: #123D32; margin-top: 4px; letter-spacing: -0.5px;">
               ₹${minVal} - ₹${maxVal} Lakh
             </div>
             <div style="display: flex; gap: 8px; justify-content: center; margin-top: 12px; flex-wrap: wrap;">
-              <span style="background: rgba(37, 99, 235, 0.2); border: 1px solid rgba(59, 130, 246, 0.3); color: #bfdbfe; font-size: 0.74rem; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">
+              <span style="background: rgba(18, 61, 50, 0.08); border: 1px solid rgba(18, 61, 50, 0.2); color: #123D32; font-size: 0.74rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">
                 ✓ NCR Market Verified
               </span>
-              <span style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.35); color: #86efac; font-size: 0.74rem; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">
+              <span style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); color: #065f46; font-size: 0.74rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">
                 ✓ 45-Min Bank Transfer
               </span>
-              <span style="background: rgba(251, 191, 36, 0.2); border: 1px solid rgba(251, 191, 36, 0.35); color: #fde68a; font-size: 0.74rem; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">
+              <span style="background: rgba(197, 164, 109, 0.18); border: 1px solid #C5A46D; color: #785a28; font-size: 0.74rem; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">
                 ✓ Free RC Transfer
               </span>
             </div>
           </div>
 
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <div class="modal-btn-row" style="display: flex; gap: 12px; flex-wrap: wrap;">
             <a href="https://wa.me/919911922050?text=${encodeURIComponent(isEn ? `Hello Sadguru Motors, I want to sell my ${brand} ${model} (${year}, ${km} km). Online estimated offer: ₹${minVal}-₹${maxVal} Lakh. Phone: ${phone}. Please schedule free doorstep inspection in Gurugram.` : `नमस्ते सद्गुरु मोटर्स, मुझे अपनी ${brand} ${model} (${year}, ${km} km) बेचनी है। ऑनलाइन अनुमानित ऑफर: ₹${minVal}-₹${maxVal} लाख। फोन: ${phone}। कृपया गुड़गांव में फ्री इंस्पेक्शन शेड्यूल करें।`)}" target="_blank" class="btn btn-whatsapp" style="flex: 1.2; padding: 12px 18px;">
               <i data-lucide="message-circle"></i> ${isEn ? 'Schedule Inspection in Sector 14' : 'सेक्टर 14 इंस्पेक्शन शेड्यूल करें'}
             </a>
