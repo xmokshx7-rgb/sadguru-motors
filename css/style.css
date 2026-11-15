@@ -111,7 +111,9 @@ html {
 
 body {
   font-family: var(--font-family);
-  background-color: var(--liquid-obsidian);
+  background-color: #F5F2EA;
+  background-image: linear-gradient(180deg, #FAF8F5 0%, #F5F2EA 35%, #EFECE3 100%);
+  background-attachment: fixed;
   color: var(--text-body);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -149,20 +151,15 @@ body {
   will-change: transform;
 }
 
-/* High-Performance Liquid Aura in Background (Inspired by Titanium/Platinum Glass Reference) */
+/* High-Performance Liquid Aura in Background (Ultra-smooth seamless Ivory) */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -2;
-  background:
-    radial-gradient(ellipse 70% 55% at 50% 10%, rgba(197, 164, 109, 0.12) 0%, rgba(197, 164, 109, 0.02) 40%, transparent 70%),
-    radial-gradient(ellipse 60% 45% at 15% 35%, rgba(18, 61, 50, 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 50% at 85% 65%, rgba(197, 164, 109, 0.09) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 45% at 50% 90%, rgba(18, 61, 50, 0.06) 0%, transparent 60%);
+  background: transparent;
   transform: translateZ(0);
-  will-change: transform;
 }
 
 .container {
@@ -781,22 +778,12 @@ body.owner-authenticated li.owner-only-element {
   display: flex;
   align-items: center;
   padding: 40px 0 54px;
-  background: radial-gradient(circle at 80% 25%, rgba(197, 164, 109, 0.14) 0%, transparent 65%),
-              radial-gradient(circle at 20% 75%, rgba(18, 61, 50, 0.08) 0%, transparent 60%), #F5F2EA;
+  background: transparent;
   overflow: hidden;
 }
 
 .hero-banner-ambient-glow {
-  position: absolute;
-  top: 10%;
-  right: 8%;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(37, 99, 235, 0.06) 45%, transparent 70%);
-  pointer-events: none;
-  transform: translateZ(0);
-  z-index: 1;
+  display: none !important;
 }
 
 .hero-banner-container {
@@ -1400,7 +1387,9 @@ body.owner-authenticated li.owner-only-element {
   align-items: center;
   gap: 8px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  padding: 8px 6px;
+  margin-top: -6px;
+  margin-bottom: -6px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
@@ -1421,6 +1410,8 @@ body.owner-authenticated li.owner-only-element {
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
+  box-sizing: border-box;
+  outline: none !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 2px 6px rgba(18, 61, 50, 0.05);
 }
@@ -1430,8 +1421,15 @@ body.owner-authenticated li.owner-only-element {
   background: #FAF8F5 !important;
   color: #123D32 !important;
   border-color: #C5A46D !important;
-  transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(18, 61, 50, 0.1);
+}
+
+.category-btn:focus,
+.category-btn:focus-visible,
+.category-pill:focus,
+.category-pill:focus-visible {
+  outline: none !important;
+  border-color: #C5A46D !important;
 }
 
 .category-btn.active,
@@ -1440,6 +1438,7 @@ body.owner-authenticated li.owner-only-element {
   color: #FFFFFF !important;
   border-color: #C5A46D !important;
   box-shadow: 0 4px 14px rgba(18, 61, 50, 0.35);
+  transform: none;
 }
 
 .category-btn.active:hover,

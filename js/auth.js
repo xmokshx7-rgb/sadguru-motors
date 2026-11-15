@@ -236,22 +236,23 @@
     }
   });
 
-  // Open Google Login Modal
+  // Direct Google Console / Google Account Sign In
   window.openGoogleLoginModal = function () {
-    const modal = document.getElementById('google-login-modal');
-    if (modal) {
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-
-      const emailInput = document.getElementById('google-modal-input-email');
-      if (emailInput && !emailInput.value) {
-        setTimeout(() => emailInput.focus(), 150);
-      }
+    const clientId = getGoogleClientId();
+    if (clientId && clientId.length > 20) {
+      const redirectUri = window.location.origin + window.location.pathname;
+      const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=email%20profile&prompt=select_account`;
+      window.location.href = oauthUrl;
+      return;
     }
-    if (window.lucide) lucide.createIcons();
+
+    // Direct Google Account Chooser & Official Sign-in Console without any intermediate form
+    const continueUrl = window.location.href;
+    const googleLoginUrl = `https://accounts.google.com/AccountChooser?continue=${encodeURIComponent(continueUrl)}`;
+    window.location.href = googleLoginUrl;
   };
 
-  // Close Google Login Modal
+  // Close Google Login Modal (if active)
   window.closeGoogleLoginModal = function () {
     const modal = document.getElementById('google-login-modal');
     if (modal) {
@@ -260,66 +261,52 @@
     }
   };
 
-  // Custom Form Login inside modal
-  window.handleCustomGoogleFormLogin = function (e) {
-    if (e && e.preventDefault) e.preventDefault();
-    const nameInput = document.getElementById('google-modal-input-name');
-    const emailInput = document.getElementById('google-modal-input-email');
-    const phoneInput = document.getElementById('google-modal-input-phone');
+  // Handle Google OAuth 2.0 Token callback from URL Hash
+  function checkUrlOAuthResponse() {
+    try {
+      if (!window.location.hash || !window.location.hash.includes('access_token=')) {
+        return;
+      }
+      const hash = window.location.hash.substring(1);
+      const params = new URLSearchParams(hash);
+      const accessToken = params.get('access_token');
 
-    const email = emailInput ? emailInput.value.trim() : '';
-    let name = nameInput ? nameInput.value.trim() : '';
-    const phone = phoneInput ? phoneInput.value.trim() : '';
-
-    if (!email) {
-      alert('Please enter your Google Email address (e.g. name@gmail.com).');
-      if (emailInput) emailInput.focus();
-      return;
+      if (accessToken) {
+        window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
+        fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        })
+          .then(res => res.json())
+          .then(profile => {
+            if (profile && profile.email) {
+              const userData = {
+                id: profile.sub || 'guser_' + Date.now(),
+                name: profile.name || profile.email.split('@')[0],
+                email: profile.email,
+                phone: '',
+                picture: profile.picture || `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name || 'User')}&background=123D32&color=fff&rounded=true&bold=true`,
+                provider: 'google',
+                created_at: new Date().toISOString(),
+                last_login: new Date().toISOString()
+              };
+              setCurrentUser(userData);
+              recordLead(userData);
+              updateAuthUI();
+              if (isOwnerAuthenticated()) {
+                localStorage.setItem('sadguru_owner_auth', 'true');
+                applyOwnerAccessUI();
+                showAuthToast(`Welcome Owner ${userData.name}! Dealer Portal is active.`);
+              } else {
+                showAuthToast(`Welcome, ${userData.name}! Signed in with Google.`);
+              }
+            }
+          })
+          .catch(err => console.warn('OAuth fetch error:', err));
+      }
+    } catch (e) {
+      console.warn('OAuth response error:', e);
     }
-
-    if (!email.includes('@') || !email.includes('.')) {
-      alert('Please enter a valid email address (e.g. name@gmail.com).');
-      if (emailInput) emailInput.focus();
-      return;
-    }
-
-    // Auto-derive full name from email prefix if left blank
-    if (!name) {
-      const emailPrefix = email.split('@')[0];
-      name = emailPrefix
-        .replace(/[._-]+/g, ' ')
-        .split(' ')
-        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(' ')
-        .trim();
-      if (!name) name = 'Google User';
-    }
-
-    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=2563eb&color=fff&rounded=true&bold=true`;
-
-    const newUser = {
-      id: 'guser_' + Date.now(),
-      name: name,
-      email: email,
-      phone: phone,
-      picture: avatarUrl,
-      provider: 'google',
-      created_at: new Date().toISOString(),
-      last_login: new Date().toISOString()
-    };
-
-    setCurrentUser(newUser);
-    recordLead(newUser);
-    closeGoogleLoginModal();
-
-    if (isOwnerAuthenticated()) {
-      localStorage.setItem('sadguru_owner_auth', 'true');
-      applyOwnerAccessUI();
-      showAuthToast(`Welcome Owner ${name}! Dealer Portal is active.`);
-    } else {
-      showAuthToast(`Welcome, ${name}! Signed in with Google successfully.`);
-    }
-  };
+  }
 
   // Logout
   window.logoutSadguruUser = function () {
@@ -488,6 +475,7 @@
 
   // Auto-init on page load
   document.addEventListener('DOMContentLoaded', function () {
+    checkUrlOAuthResponse();
     applyOwnerAccessUI();
     updateAuthUI();
     initGoogleGSI();
@@ -496,6 +484,7 @@
 
   // Re-run if DOM is already ready
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    checkUrlOAuthResponse();
     applyOwnerAccessUI();
     updateAuthUI();
     initGoogleGSI();
