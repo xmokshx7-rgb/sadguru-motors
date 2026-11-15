@@ -1191,11 +1191,11 @@ body.owner-authenticated li.owner-only-element {
 }
 
 .angle-tab {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #FFFFFF;
+  border: 1.5px solid rgba(18, 61, 50, 0.15);
   border-radius: 12px;
   padding: 8px 6px;
-  color: #cbd5e1;
+  color: #123D32;
   font-size: 0.75rem;
   font-weight: 600;
   display: flex;
@@ -1204,34 +1204,36 @@ body.owner-authenticated li.owner-only-element {
   gap: 4px;
   cursor: pointer;
   transition: all 0.25s ease;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   outline: none;
 }
 
 .angle-tab i {
   width: 16px;
   height: 16px;
-  color: #94a3b8;
+  color: #123D32;
   transition: color 0.2s ease;
 }
 
 .angle-tab:hover {
-  background: rgba(37, 99, 235, 0.25);
-  border-color: rgba(56, 189, 248, 0.5);
-  color: #ffffff;
+  background: #FAF8F5;
+  border-color: #C5A46D;
+  color: #123D32;
   transform: translateY(-1px);
 }
 
+.angle-tab:hover i {
+  color: #C5A46D;
+}
+
 .angle-tab.active {
-  background: rgba(37, 99, 235, 0.4);
-  border-color: rgba(56, 189, 248, 0.75);
-  color: #ffffff;
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #0A241D 0%, #123D32 50%, #184F41 100%) !important;
+  border-color: #C5A46D !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(18, 61, 50, 0.35);
 }
 
 .angle-tab.active i {
-  color: #38bdf8;
+  color: #C5A46D !important;
 }
 
 .showcase-footer-action {
@@ -1410,24 +1412,24 @@ body.owner-authenticated li.owner-only-element {
 
 .category-btn,
 .category-pill {
-  background: #FFFFFF;
-  border: 1.5px solid rgba(18, 61, 50, 0.15);
-  color: #123D32;
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(18, 61, 50, 0.2) !important;
+  color: #123D32 !important;
   padding: 8px 18px;
   border-radius: var(--radius-pill);
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
-  transition: all var(--transition-fast);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 2px 6px rgba(18, 61, 50, 0.05);
 }
 
 .category-btn:hover,
 .category-pill:hover {
-  background: #FAF8F5;
-  color: #123D32;
-  border-color: #C5A46D;
+  background: #FAF8F5 !important;
+  color: #123D32 !important;
+  border-color: #C5A46D !important;
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(18, 61, 50, 0.1);
 }
@@ -1436,8 +1438,14 @@ body.owner-authenticated li.owner-only-element {
 .category-pill.active {
   background: linear-gradient(135deg, #0A241D 0%, #123D32 50%, #184F41 100%) !important;
   color: #FFFFFF !important;
-  border-color: #C5A46D;
+  border-color: #C5A46D !important;
   box-shadow: 0 4px 14px rgba(18, 61, 50, 0.35);
+}
+
+.category-btn.active:hover,
+.category-pill.active:hover {
+  background: linear-gradient(135deg, #0A241D 0%, #123D32 50%, #184F41 100%) !important;
+  color: #FFFFFF !important;
 }
 
 /* Car Cards Grid */
@@ -1464,30 +1472,32 @@ body.owner-authenticated li.owner-only-element {
 
 .car-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(56, 189, 248, 0.45);
-  box-shadow:
-    var(--liquid-bevel-inner),
-    0 22px 48px rgba(0, 0, 0, 0.6),
-    var(--liquid-glow-cyan);
+  border-color: #C5A46D;
+  box-shadow: 0 16px 36px rgba(18, 61, 50, 0.15);
 }
 
 .car-image-box {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 230px;
   overflow: hidden;
   background: #FAF8F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .car-image-box img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+  object-fit: contain !important;
+  object-position: center;
+  transition: transform 0.35s ease;
+  padding: 6px;
 }
 
 .car-card:hover .car-image-box img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .car-badge-top-left {

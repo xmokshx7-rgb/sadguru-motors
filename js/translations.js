@@ -6,7 +6,7 @@
 const APP_TRANSLATIONS = {
   hi: {
     // Top Bar
-    top_address: 'सेक्टर 14, ओल्ड दिल्ली रोड, गुड़गांव',
+    top_address: 'एससीओ 27, अनामिका एन्क्लेव, सेक्टर 14, गुरुग्राम',
     top_timing: 'सोम - रवि: 10:00 AM - 8:30 PM (7 दिन खुला)',
     top_call: '+91 99119 22050',
     top_whatsapp: 'WhatsApp चैट',
@@ -166,8 +166,8 @@ const APP_TRANSLATIONS = {
     loc_name: 'सद्गुरु मोटर्स (Sadguru Motors)',
     loc_desc: 'गुड़गांव का सबसे प्रतिष्ठित व भरोसेमंद सेकंड हैंड कार शोरूम',
     loc_lbl_address: 'शोरूम का पूरा पता:',
-    loc_address_val: 'एससीओ 45-48, मेन ओल्ड दिल्ली रोड, अपोजिट विशाल मेगा मार्ट, सेक्टर 14, गुड़गांव, हरियाणा - 122001',
-    loc_landmark: '(लैंडमार्क: हुडा मार्केट सेक्टर 14 के ठीक सामने)',
+    loc_address_val: 'एससीओ 27, अनामिका एन्क्लेव, सेक्टर 14, गुरुग्राम, हरियाणा - 122007',
+    loc_landmark: '(लैंडमार्क: अनामिका एन्क्लेव, सेक्टर 14)',
     loc_lbl_phone: 'हेल्पलाइन व इंक्वायरी फोन:',
     loc_lbl_timing: 'शोरूम का समय:',
     loc_timing_val1: 'सोमवार से रविवार (सप्ताह के सातों दिन खुला)',
@@ -199,7 +199,7 @@ const APP_TRANSLATIONS = {
 
   en: {
     // Top Bar
-    top_address: 'Sector 14, Old Delhi Road, Gurugram',
+    top_address: 'Sco 27, Anamika Enclave, Sector 14, Gurugram',
     top_timing: 'Mon - Sun: 10:00 AM - 8:30 PM (Open 7 Days)',
     top_call: '+91 99119 22050',
     top_whatsapp: 'WhatsApp Chat',
@@ -359,8 +359,8 @@ const APP_TRANSLATIONS = {
     loc_name: 'Sadguru Motors',
     loc_desc: 'Gurugram\'s most prestigious & trusted pre-owned car showroom',
     loc_lbl_address: 'Showroom Full Address:',
-    loc_address_val: 'SCO 45-48, Main Old Delhi Road, Opp. Vishal Mega Mart, Sector 14, Gurugram, Haryana - 122001',
-    loc_landmark: '(Landmark: Directly opposite HUDA Market Sector 14)',
+    loc_address_val: 'Sco 27, Anamika Enclave, Sector 14, Gurugram, Haryana - 122007',
+    loc_landmark: '(Landmark: Anamika Enclave, Sector 14)',
     loc_lbl_phone: 'Helpline & Inquiry Phone:',
     loc_lbl_timing: 'Visiting Hours:',
     loc_timing_val1: 'Monday to Sunday (Open 7 Days a Week)',
