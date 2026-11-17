@@ -28,11 +28,11 @@ const APP_TRANSLATIONS = {
     dock_call: 'कॉल',
 
     // Hero Banner & Real Car Showcase
-    hero_pill_tag: 'सर्टिफाइड लक्ज़री कार्स • सेक्टर 14 ओल्ड दिल्ली रोड, गुड़गांव',
-    hero_title_sub: 'सद्गुरु मोटर्स गुड़गांव',
-    hero_title_main: 'सर्टिफाइड लक्ज़री व सेडान कार्स 100% भरोसे के साथ',
-    hero_banner_desc: 'गुड़गांव में 15+ वर्षों से सर्टिफाइड सेकंड हैंड गाड़ियों का सबसे विश्वसनीय शोरूम। हर कार कड़े क्वालिटी इंस्पेक्शन, 100% नॉन-एक्सीडेंटल गारंटी और 1 साल की वारंटी के साथ उपलब्ध।',
-    cta_explore_cars: 'सर्टिफाइड कार कलेक्शन देखें',
+    hero_pill_tag: 'सर्टिफाइड लक्ज़री कार्स • सेक्टर 14, गुरुग्राम',
+    hero_title_sub: 'सद्गुरु मोटर्स गुरुग्राम',
+    hero_title_main: 'सर्टिफाइड लक्ज़री कार्स 100% भरोसे के साथ',
+    hero_banner_desc: 'सेक्टर 14 गुरुग्राम में सर्टिफाइड सेकंड हैंड लक्ज़री सेडान व एसयूवी गाड़ियां। हर कार 100% नॉन-एक्सीडेंटल गारंटी और 1 साल की वारंटी के साथ उपलब्ध।',
+    cta_explore_cars: 'सर्टिफाइड कार्स देखें ↓',
     deal_tag_week: '⭐ फीचर डील ऑफ द वीक',
     deal_in_stock: '✓ शोरूम पर तैयार',
     trust_bullet_1: '100% नॉन-एक्सीडेंटल',
@@ -221,11 +221,11 @@ const APP_TRANSLATIONS = {
     dock_call: 'Call',
 
     // Hero Banner & Real Car Showcase
-    hero_pill_tag: 'Certified Luxury Cars • Sector 14 Old Delhi Road, Gurugram',
+    hero_pill_tag: 'Certified Luxury Cars • Sector 14, Gurugram',
     hero_title_sub: 'Sadguru Motors Gurugram',
-    hero_title_main: 'Certified Pre-Owned Luxury & Sedan Cars with 100% Trust',
-    hero_banner_desc: 'Gurugram\'s most trusted certified pre-owned car showroom for 15+ years. Every car backed by comprehensive quality inspection, 100% non-accidental guarantee, and 1-Year Comprehensive Warranty.',
-    cta_explore_cars: 'Explore Certified Collection',
+    hero_title_main: 'Certified Pre-Owned Luxury Cars with 100% Trust',
+    hero_banner_desc: 'Handpicked, rigorously certified pre-owned luxury sedans & SUVs in Sector 14 Gurugram. 100% non-accidental with 1-Year Comprehensive Warranty.',
+    cta_explore_cars: 'Explore Certified Cars ↓',
     deal_tag_week: '⭐ Featured Deal of the Week',
     deal_in_stock: '✓ In Stock at Showroom',
     trust_bullet_1: '100% Non-Accidental',

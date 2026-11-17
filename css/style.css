@@ -107,6 +107,7 @@ html {
   background-color: var(--liquid-obsidian);
   -webkit-overflow-scrolling: touch;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 
 body {
@@ -118,7 +119,7 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   min-height: 100vh;
   width: 100%;
@@ -769,15 +770,18 @@ body.owner-authenticated li.owner-only-element {
 }
 
 /* --------------------------------------------------------------------------
-   7. LUXURY LIQUID GLASS HERO BANNER: SADGURU MOTORS FEATURED SHOWCASE
+   7. LUXURY FRONT HERO BANNER: SADGURU MOTORS (CLEAN, MINIMAL, FLUID)
    -------------------------------------------------------------------------- */
 .hero-banner-section {
   position: relative;
   width: 100%;
-  min-height: 84vh;
+  min-height: calc(100vh - 72px);
+  min-height: calc(100dvh - 72px);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 40px 0 54px;
+  padding: 48px 0 28px;
   background: transparent;
   overflow: hidden;
 }
@@ -788,15 +792,15 @@ body.owner-authenticated li.owner-only-element {
 
 .hero-banner-container {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 44px;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 48px;
   align-items: center;
   position: relative;
   z-index: 2;
   width: 100%;
 }
 
-/* Left Column */
+/* Left Column: Refined Typography & Actions */
 .hero-banner-left {
   display: flex;
   flex-direction: column;
@@ -814,9 +818,10 @@ body.owner-authenticated li.owner-only-element {
   font-size: 0.82rem;
   font-weight: 600;
   color: #123D32;
-  box-shadow: 0 4px 16px rgba(18, 61, 50, 0.08);
-  margin-bottom: 16px;
+  box-shadow: 0 4px 16px rgba(18, 61, 50, 0.06);
+  margin-bottom: 18px;
   align-self: flex-start;
+  animation: fluidFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 .pulsing-live-dot {
@@ -825,34 +830,35 @@ body.owner-authenticated li.owner-only-element {
   border-radius: 50%;
   background: #34d399;
   box-shadow: 0 0 10px #34d399;
-  animation: pulseGlow 2s infinite;
+  animation: fluidPulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
   flex-shrink: 0;
 }
 
-@keyframes pulseGlow {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.45; transform: scale(1.25); }
+@keyframes fluidPulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+  50% { opacity: 0.85; transform: scale(1.18); box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
 }
 
 .hero-banner-title {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  animation: fluidFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
 }
 
 .hero-banner-title .title-sub {
   display: block;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #123D32;
-  letter-spacing: 0.05em;
+  color: #C5A46D;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .hero-banner-title .title-main {
   display: block;
-  font-size: clamp(2.1rem, 3.6vw, 3.1rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.3rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.14;
   letter-spacing: -0.025em;
   color: #123D32 !important;
   background: none !important;
@@ -862,229 +868,109 @@ body.owner-authenticated li.owner-only-element {
 }
 
 .hero-banner-desc {
-  font-size: 1.02rem;
-  line-height: 1.62;
-  color: #333333;
-  margin-bottom: 22px;
-  max-width: 620px;
-}
-
-/* Featured Deal Card - Ultra Liquid Glass */
-.hero-deal-card {
-  position: relative;
-  background: #FFFFFF;
-  backdrop-filter: blur(16px) saturate(160%);
-  border: 1.5px solid rgba(197, 164, 109, 0.4);
-  border-radius: 20px;
-  padding: 18px 22px;
-  box-shadow: 0 16px 40px rgba(18, 61, 50, 0.08);
-  margin-bottom: 22px;
-  overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-}
-
-.hero-deal-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 32px rgba(56, 189, 248, 0.22);
-}
-
-.deal-card-glow {
-  position: absolute;
-  top: 0;
-  left: 20%;
-  right: 20%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.75), transparent);
-  pointer-events: none;
-}
-
-.deal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.deal-tag {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #fbbf24;
-  background: rgba(251, 191, 36, 0.12);
-  border: 1px solid rgba(251, 191, 36, 0.32);
-  padding: 3px 10px;
-  border-radius: var(--radius-pill);
-}
-
-.deal-status {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #34d399;
-  background: rgba(52, 211, 153, 0.12);
-  border: 1px solid rgba(52, 211, 153, 0.28);
-  padding: 3px 10px;
-  border-radius: var(--radius-pill);
-}
-
-.deal-car-name {
-  font-size: 1.22rem;
-  font-weight: 700;
-  color: #123D32;
-  margin-bottom: 10px;
-  line-height: 1.35;
-}
-
-.deal-specs-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.deal-specs-pills span {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: #242424;
-  background: #F5F2EA;
-  border: 1px solid rgba(197, 164, 109, 0.35);
-  padding: 4px 10px;
-  border-radius: 8px;
-}
-
-.deal-specs-pills span i {
-  width: 14px;
-  height: 14px;
-  color: #C5A46D;
-}
-
-.deal-pricing-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  flex-wrap: wrap;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.deal-pricing-row .price-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.deal-pricing-row .price-lbl {
-  font-size: 0.72rem;
-  color: #94a3b8;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.deal-pricing-row .price-val {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #123D32;
-  letter-spacing: -0.01em;
-}
-
-.deal-pricing-row .emi-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.deal-pricing-row .emi-lbl {
-  font-size: 0.72rem;
-  color: #94a3b8;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.deal-pricing-row .emi-val {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #34d399;
-}
-
-.deal-pricing-row .emi-val small {
-  font-size: 0.75rem;
-  color: #94a3b8;
-  font-weight: 500;
-}
-
-.btn-sm-glass {
-  padding: 7px 14px !important;
-  font-size: 0.82rem !important;
-  border-radius: 10px !important;
+  font-size: 1.04rem;
+  line-height: 1.65;
+  color: #444444;
+  margin-bottom: 26px;
+  max-width: 580px;
+  animation: fluidFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
 }
 
 /* CTAs Cluster */
 .hero-cta-cluster {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  animation: fluidFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both;
 }
 
 .btn-hero-cta {
-  padding: 12px 22px;
-  font-size: 0.94rem;
-  font-weight: 600;
+  padding: 13px 26px;
+  font-size: 0.95rem;
+  font-weight: 700;
   border-radius: var(--radius-pill);
+}
+
+.btn-pulse-subtle {
+  position: relative;
+  box-shadow: 0 6px 20px rgba(18, 61, 50, 0.25);
+}
+
+.btn-pulse-subtle::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 1.5px solid rgba(197, 164, 109, 0.65);
+  animation: fluidBtnPulse 2.8s infinite cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+@keyframes fluidBtnPulse {
+  0% { transform: scale(0.98); opacity: 0.85; }
+  70% { transform: scale(1.08); opacity: 0; }
+  100% { transform: scale(1.08); opacity: 0; }
 }
 
 /* Trust Bullets */
 .hero-trust-bullets {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: center;
+  gap: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(197, 164, 109, 0.28);
+  animation: fluidFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.58s both;
 }
 
 .hero-trust-bullets span {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.84rem;
+  gap: 7px;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #242424;
 }
 
 .hero-trust-bullets span i {
-  width: 15px;
-  height: 15px;
-  color: #34d399;
+  width: 16px;
+  height: 16px;
+  color: #123D32;
   flex-shrink: 0;
 }
 
-/* Right Column: Liquid Glass HD Showcase Stage */
+/* Right Column: Floating Luxury Hero Car Showcase Stage */
 .hero-banner-right {
   display: flex;
   justify-content: center;
   position: relative;
+  animation: fluidFadeInRight 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
 .hero-showcase-glass-card {
   width: 100%;
-  max-width: 540px;
+  max-width: 530px;
   background: #FFFFFF;
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1.5px solid rgba(197, 164, 109, 0.45);
   border-radius: 24px;
-  padding: 16px;
-  box-shadow: 0 24px 60px rgba(18, 61, 50, 0.12);
+  padding: 14px;
+  box-shadow: 0 20px 50px rgba(18, 61, 50, 0.1), 0 2px 10px rgba(197, 164, 109, 0.15);
   position: relative;
   overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.hero-car-floating-stage {
+  animation: fluidCarFloat 6s ease-in-out infinite;
 }
 
 .hero-showcase-glass-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 45px rgba(56, 189, 248, 0.28);
+  transform: translateY(-4px);
+  box-shadow: 0 28px 65px rgba(18, 61, 50, 0.18), 0 0 0 1px rgba(197, 164, 109, 0.5);
 }
 
 .showcase-card-reflection {
@@ -1093,14 +979,14 @@ body.owner-authenticated li.owner-only-element {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.04) 50%, transparent 60%);
+  background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.08) 50%, transparent 60%);
   pointer-events: none;
 }
 
 .showcase-image-viewport {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10.6;
+  aspect-ratio: 16 / 10.4;
   border-radius: 16px;
   overflow: hidden;
   background: #FAF8F5;
@@ -1111,7 +997,11 @@ body.owner-authenticated li.owner-only-element {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-showcase-glass-card:hover .showcase-car-img {
+  transform: scale(1.02);
 }
 
 .showcase-stage-gradient {
@@ -1119,8 +1009,8 @@ body.owner-authenticated li.owner-only-element {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40%;
-  background: linear-gradient(180deg, transparent 0%, rgba(4, 9, 20, 0.75) 100%);
+  height: 35%;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 36, 29, 0.65) 100%);
   pointer-events: none;
 }
 
@@ -1129,7 +1019,7 @@ body.owner-authenticated li.owner-only-element {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 6px 13px;
   border-radius: var(--radius-pill);
   background: rgba(18, 61, 50, 0.92);
   backdrop-filter: blur(16px);
@@ -1157,74 +1047,159 @@ body.owner-authenticated li.owner-only-element {
   left: 12px;
 }
 
-.showcase-angle-controls {
-  margin-top: 14px;
+.hero-car-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 6px 4px;
+  gap: 12px;
 }
 
-.angle-switch-label {
-  display: block;
+.hero-car-caption-tag {
   font-size: 0.76rem;
-  font-weight: 600;
-  color: #94a3b8;
+  font-weight: 700;
+  color: #C5A46D;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 8px;
+  white-space: nowrap;
 }
 
-.showcase-angle-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-
-.angle-tab {
-  background: #FFFFFF;
-  border: 1.5px solid rgba(18, 61, 50, 0.15);
-  border-radius: 12px;
-  padding: 8px 6px;
+.hero-car-caption-name {
+  font-size: 0.88rem;
+  font-weight: 700;
   color: #123D32;
-  font-size: 0.75rem;
-  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+/* Fluid Animated Scroll Down Indicator (Phone & PC) */
+.hero-scroll-prompt {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  margin-top: 36px;
+  text-decoration: none;
+  color: #123D32;
   cursor: pointer;
-  transition: all 0.25s ease;
-  outline: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  z-index: 5;
+  padding: 8px 18px;
+  animation: fluidFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
 }
 
-.angle-tab i {
-  width: 16px;
-  height: 16px;
+.hero-scroll-prompt:hover {
+  transform: translateY(4px);
+  opacity: 0.85;
+}
+
+.scroll-prompt-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: #123D32;
-  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.angle-tab:hover {
-  background: #FAF8F5;
-  border-color: #C5A46D;
-  color: #123D32;
-  transform: translateY(-1px);
+.scroll-prompt-mouse {
+  width: 22px;
+  height: 34px;
+  border: 2px solid rgba(18, 61, 50, 0.45);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  box-shadow: 0 4px 12px rgba(18, 61, 50, 0.08);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
 }
 
-.angle-tab:hover i {
+.scroll-prompt-wheel {
+  width: 3px;
+  height: 7px;
+  background: #123D32;
+  border-radius: 2px;
+  animation: fluidWheelScroll 1.6s infinite ease-in-out;
+}
+
+.scroll-prompt-arrow {
+  width: 18px;
+  height: 18px;
   color: #C5A46D;
+  animation: fluidScrollBounce 2s infinite ease-in-out;
 }
 
-.angle-tab.active {
-  background: linear-gradient(135deg, #0A241D 0%, #123D32 50%, #184F41 100%) !important;
-  border-color: #C5A46D !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(18, 61, 50, 0.35);
+/* Fluid Keyframe Animations */
+@keyframes fluidFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.angle-tab.active i {
-  color: #C5A46D !important;
+@keyframes fluidFadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }
 
-.showcase-footer-action {
-  margin-top: 12px;
+@keyframes fluidCarFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.35deg);
+  }
+}
+
+@keyframes fluidScrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(6px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes fluidWheelScroll {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* Fluid Scroll-Reveal Classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* --------------------------------------------------------------------------
@@ -3118,104 +3093,114 @@ footer, .site-footer, .footer {
     display: none;
   }
 
-  /* Luxury Liquid Glass Hero Banner Responsive Overrides */
+  /* Luxury Front Hero Banner Mobile Responsive Framing */
   .hero-banner-section {
-    padding: 18px 0 28px;
-    min-height: auto;
+    min-height: calc(100svh - 60px);
+    min-height: calc(100vh - 60px);
+    padding: 20px 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 
   .hero-banner-container {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 0 14px;
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .hero-banner-left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-glass-pill {
+    align-self: center;
+    padding: 5px 13px;
+    font-size: 0.76rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-banner-title {
+    margin-bottom: 8px;
   }
 
   .hero-banner-title .title-sub {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    letter-spacing: 0.06em;
   }
 
   .hero-banner-title .title-main {
-    font-size: 1.65rem;
-    line-height: 1.2;
+    font-size: clamp(1.65rem, 6.2vw, 2.15rem);
+    line-height: 1.18;
   }
 
   .hero-banner-desc {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     line-height: 1.5;
-    margin-bottom: 16px;
-  }
-
-  .hero-deal-card {
-    padding: 14px 16px;
-    border-radius: 16px;
-    margin-bottom: 18px;
-  }
-
-  .deal-car-name {
-    font-size: 1.08rem;
-  }
-
-  .deal-pricing-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .deal-pricing-row .price-val {
-    font-size: 1.3rem;
-  }
-
-  .deal-pricing-row .btn-sm-glass {
-    width: 100%;
-    justify-content: center;
+    margin-bottom: 14px;
+    max-width: 95%;
   }
 
   .hero-cta-cluster {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
+    margin-bottom: 14px;
   }
 
   .btn-hero-cta {
     width: 100%;
     justify-content: center;
-    padding: 13px 18px;
+    padding: 12px 18px;
+    font-size: 0.92rem;
   }
 
   .hero-trust-bullets {
+    justify-content: center;
     gap: 12px;
-    font-size: 0.8rem;
+    padding-top: 10px;
+    font-size: 0.78rem;
   }
 
   .hero-showcase-glass-card {
     max-width: 100%;
-    padding: 12px;
-    border-radius: 20px;
+    padding: 10px;
+    border-radius: 18px;
   }
 
   .showcase-image-viewport {
-    aspect-ratio: 16 / 10.5;
-    border-radius: 14px;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
   }
 
   .floating-glass-badge {
-    padding: 4px 10px;
+    padding: 4px 9px;
+    font-size: 0.7rem;
+  }
+
+  .hero-car-caption {
+    padding: 8px 4px 2px;
+  }
+
+  .hero-car-caption-name {
+    font-size: 0.78rem;
+  }
+
+  .hero-scroll-prompt {
+    margin-top: 12px;
+    margin-bottom: 4px;
+    padding: 6px 14px;
+  }
+
+  .scroll-prompt-text {
     font-size: 0.72rem;
   }
 
-  .showcase-angle-tabs {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-  }
-
-  .angle-tab {
-    padding: 7px 4px;
-    font-size: 0.72rem;
-  }
-
-  .showcase-footer-action .btn {
-    font-size: 0.84rem;
-    padding: 12px 14px;
+  .scroll-prompt-mouse {
+    width: 18px;
+    height: 28px;
   }
 
   /* Trust Banner */
@@ -3466,7 +3451,6 @@ footer, .site-footer, .footer {
 /* ==========================================================================
    PERFORMANCE & 120 FPS BUTTERY SMOOTH SCROLL ACCELERATION
    ========================================================================== */
-.navbar,
 .mobile-bottom-dock,
 .floating-contact-fabs,
 .hero-showcase-glass-card {

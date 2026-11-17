@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=3.2" />
+  <link rel="stylesheet" href="css/style.css?v=3.3" />
 
   <!-- Lucide Icons (Async Defer) -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -155,89 +155,56 @@
     </div>
   </header>
 
-  <!-- ================= LUXURY LIQUID GLASS HERO BANNER ================= -->
+  <!-- ================= LUXURY FRONT HERO BANNER ================= -->
   <section class="hero-banner-section" id="virtual-showroom">
-    <div class="hero-banner-ambient-glow"></div>
     <div class="container hero-banner-container">
       
-      <!-- Left Column: Compelling Luxury Pitch & Featured Deal -->
+      <!-- Left Column: Compelling Luxury Pitch -->
       <div class="hero-banner-left">
         <!-- Live Verified Badge -->
         <div class="hero-glass-pill">
           <span class="pulsing-live-dot"></span>
-          <span data-i18n="hero_pill_tag">Certified Luxury Cars • Sector 14 Old Delhi Road, Gurugram</span>
+          <span data-i18n="hero_pill_tag">Certified Luxury Cars • Sector 14, Gurugram</span>
         </div>
 
         <!-- Main Banner Title -->
         <h1 class="hero-banner-title">
           <span class="title-sub" data-i18n="hero_title_sub">Sadguru Motors Gurugram</span>
-          <span class="title-main" data-i18n="hero_title_main">Certified Pre-Owned Luxury & Sedan Cars with 100% Trust</span>
+          <span class="title-main" data-i18n="hero_title_main">Certified Pre-Owned Luxury Cars with 100% Trust</span>
         </h1>
 
-        <!-- Banner Subtitle / Description -->
-        <p class="hero-banner-desc" data-i18n="hero_banner_desc">Gurugram's most trusted certified pre-owned car showroom for 15+ years. Every car backed by comprehensive quality inspection, 100% non-accidental guarantee, and 1-Year Comprehensive Warranty.</p>
-
-        <!-- Featured Deal of the Week (Liquid Glass Card) -->
-        <div class="hero-deal-card">
-          <div class="deal-card-glow"></div>
-          <div class="deal-header">
-            <span class="deal-tag" data-i18n="deal_tag_week">⭐ Featured Deal of the Week</span>
-            <span class="deal-status" data-i18n="deal_in_stock">✓ In Stock at Showroom</span>
-          </div>
-
-          <div class="deal-car-info">
-            <h3 class="deal-car-name" data-i18n="hero_car_title">2022 Hyundai Verna 1.5 CRDi AT SX (Sport Edition)</h3>
-            <div class="deal-specs-pills">
-              <span><i data-lucide="shield-check"></i> 1st Single Owner</span>
-              <span><i data-lucide="gauge"></i> 67,861 KM Verified</span>
-              <span><i data-lucide="sun"></i> Electric Sunroof</span>
-            </div>
-          </div>
-
-          <div class="deal-pricing-row">
-            <div class="price-box">
-              <span class="price-lbl">Special Cash Price</span>
-              <span class="price-val">₹10,85,000</span>
-            </div>
-            <div class="deal-benefit-box" style="display: flex; flex-direction: column;">
-              <span class="price-lbl">RC Transfer</span>
-              <span class="price-val" style="font-size: 1.05rem; color: #4ade80;">100% Free Included</span>
-            </div>
-            <button class="btn btn-secondary btn-sm-glass" onclick="window.openVernaGalleryModal()" title="View Govt RC & All Photos">
-              <i data-lucide="eye"></i> <span data-i18n="btn_inspect_all_photos">View All 19 Photos & RC</span>
-            </button>
-          </div>
-        </div>
+        <!-- Crisp Subtitle (Less text, maximum elegance!) -->
+        <p class="hero-banner-desc" data-i18n="hero_banner_desc">Handpicked, rigorously certified pre-owned luxury sedans & SUVs in Sector 14 Gurugram. 100% non-accidental with 1-Year Comprehensive Warranty.</p>
 
         <!-- Hero CTAs Cluster -->
         <div class="hero-cta-cluster">
-          <a href="#inventory" class="btn btn-primary btn-hero-cta">
-            <i data-lucide="car"></i> <span data-i18n="cta_explore_cars">Explore Certified Collection</span>
+          <a href="#inventory" class="btn btn-primary btn-hero-cta btn-pulse-subtle">
+            <i data-lucide="car"></i> <span data-i18n="cta_explore_cars">Explore Certified Cars ↓</span>
           </a>
           <button class="btn btn-secondary btn-hero-cta" onclick="window.openTestDriveModal('verna-hr26-sport')">
             <i data-lucide="calendar"></i> <span data-i18n="cta_testdrive">Book Free Test Drive</span>
           </button>
           <a href="https://wa.me/919911922050?text=Hello Sadguru Motors, I am interested in exploring certified cars." target="_blank" class="btn btn-whatsapp btn-hero-cta" title="Chat on WhatsApp">
-            <i data-lucide="message-circle"></i> <span>WhatsApp Chat</span>
+            <i data-lucide="message-circle"></i> <span>WhatsApp Us</span>
           </a>
         </div>
 
-        <!-- Trust Badges Strip (Ultra-Clean Luxury) -->
+        <!-- Trust Badges Strip -->
         <div class="hero-trust-bullets">
-          <span><i data-lucide="shield-check"></i> <span data-i18n="trust_bullet_2">100% Non-Accidental</span></span>
-          <span><i data-lucide="file-check"></i> <span data-i18n="trust_bullet_3">Free RC Transfer</span></span>
-          <span><i data-lucide="award"></i> <span data-i18n="trust_bullet_4">1-Year Comprehensive Warranty</span></span>
+          <span><i data-lucide="shield-check"></i> <span data-i18n="trust_bullet_1">100% Non-Accidental</span></span>
+          <span><i data-lucide="file-check"></i> <span data-i18n="trust_bullet_2">Free RC Transfer</span></span>
+          <span><i data-lucide="award"></i> <span data-i18n="trust_bullet_3">1-Year Warranty</span></span>
         </div>
       </div>
 
-      <!-- Right Column: Interactive Real HD Liquid Glass Showcase Stage -->
+      <!-- Right Column: Floating Luxury Hero Car Showcase Stage -->
       <div class="hero-banner-right">
-        <div class="hero-showcase-glass-card">
+        <div class="hero-showcase-glass-card hero-car-floating-stage">
           <div class="showcase-card-reflection"></div>
           
           <!-- Image Stage -->
           <div class="showcase-image-viewport">
-            <img id="hero-banner-car-img" src="assets/car-photos/verna-hero-34.jpg" alt="2022 Hyundai Verna 1.5 CRDi AT SX Sport" class="showcase-car-img" fetchpriority="high" decoding="async" />
+            <img id="hero-banner-car-img" src="assets/car-photos/verna-hero-34.jpg" alt="Certified Luxury Sedan - Sadguru Motors Gurugram" class="showcase-car-img" fetchpriority="high" decoding="async" />
             <div class="showcase-stage-gradient"></div>
 
             <!-- Floating Translucent Badges on Image -->
@@ -252,35 +219,23 @@
             </div>
           </div>
 
-          <!-- Quick Angle Selectors -->
-          <div class="showcase-angle-controls">
-            <span class="angle-switch-label">Switch Real Photo Angles:</span>
-            <div class="showcase-angle-tabs">
-              <button class="angle-tab active" onclick="window.switchHeroBannerAngle(0, 'assets/car-photos/verna-hero-34.jpg', this)">
-                <i data-lucide="camera"></i> <span>Front 3/4</span>
-              </button>
-              <button class="angle-tab" onclick="window.switchHeroBannerAngle(1, 'assets/car-photos/verna-side.jpg', this)">
-                <i data-lucide="move-horizontal"></i> <span>Side View</span>
-              </button>
-              <button class="angle-tab" onclick="window.switchHeroBannerAngle(2, 'assets/car-photos/verna-interior-sunroof.jpg', this)">
-                <i data-lucide="sun"></i> <span>Sunroof & Cabin</span>
-              </button>
-              <button class="angle-tab" onclick="window.switchHeroBannerAngle(3, 'assets/car-photos/verna-rear-gt.jpg', this)">
-                <i data-lucide="flag"></i> <span>Rear GT Wing</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Bottom Stage Action -->
-          <div class="showcase-footer-action">
-            <button class="btn btn-primary" onclick="window.openVernaGalleryModal()" style="width: 100%; justify-content: center;">
-              <i data-lucide="images"></i> <span>View All 19 Photos & Govt RC Copy</span>
-            </button>
+          <div class="hero-car-caption">
+            <span class="hero-car-caption-tag">⭐ Featured Showcase</span>
+            <span class="hero-car-caption-name">2022 Hyundai Verna 1.5 CRDi AT SX (Sport Edition)</span>
           </div>
         </div>
       </div>
 
     </div>
+
+    <!-- Fluid Animated Scroll Down Indicator (Phone & PC) -->
+    <a href="#inventory" class="hero-scroll-prompt" aria-label="Scroll to explore certified cars">
+      <span class="scroll-prompt-text">Scroll to Explore Certified Cars</span>
+      <div class="scroll-prompt-mouse">
+        <div class="scroll-prompt-wheel"></div>
+      </div>
+      <i data-lucide="chevron-down" class="scroll-prompt-arrow"></i>
+    </a>
   </section>
 
   <!-- ================= TRUST STATS BANNER ================= -->
@@ -1015,10 +970,10 @@
   </nav>
 
   <!-- Client-side Scripts -->
-  <script src="js/translations.js"></script>
+  <script src="js/translations.js?v=3.3"></script>
   <script src="js/supabase-client.js"></script>
-  <script src="js/auth.js?v=3.2"></script>
-  <script src="js/inventory.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/auth.js?v=3.3"></script>
+  <script src="js/inventory.js?v=3.3"></script>
+  <script src="js/app.js?v=3.3"></script>
 </body>
 </html>

@@ -7,6 +7,18 @@
 // Website language is fixed to English
 window.currentAppLang = 'en';
 
+// Disable automatic mobile browser scroll restoration to prevent landing mid-page
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+// Ensure fresh visits always open cleanly at the top hero banner
+window.addEventListener('load', () => {
+  if (!window.location.hash || window.location.hash === '#' || window.location.hash === '#virtual-showroom') {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize 3D Showroom & Sound Engine
   if (typeof THREE !== 'undefined' && document.getElementById('canvas-container') && typeof CarShowroom3D !== 'undefined') {
@@ -66,15 +78,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 11. Initialize Mobile Liquid Glass Dock
   initMobileLiquidDock();
+
+  // 12. Initialize Fluid Scroll Reveal Animations
+  initFluidScrollReveal();
 });
+
+// Fluid Scroll Reveal Observer System
+function initFluidScrollReveal() {
+  const attachReveal = () => {
+    const targets = document.querySelectorAll('.trust-card, .car-card, .promise-card, .emi-card-layout, .testimonial-card, .location-card, .inventory-filters-wrap');
+    if (!targets || targets.length === 0) return;
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.08
+      });
+
+      targets.forEach(el => {
+        if (!el.classList.contains('reveal-on-scroll')) {
+          el.classList.add('reveal-on-scroll');
+        }
+        if (!el.classList.contains('revealed')) {
+          revealObserver.observe(el);
+        }
+      });
+    } else {
+      targets.forEach(el => el.classList.add('revealed'));
+    }
+  };
+
+  attachReveal();
+  window.reobserveScrollReveal = attachReveal;
+}
 
 function initMobileLiquidDock() {
   const dockItems = document.querySelectorAll('.mobile-bottom-dock .dock-item');
   if (!dockItems || dockItems.length === 0) return;
 
   dockItems.forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', (e) => {
+      const dockType = item.getAttribute('data-dock');
       const href = item.getAttribute('href');
+
+      if (dockType === 'showroom' || href === '#virtual-showroom') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        dockItems.forEach(d => d.classList.remove('active'));
+        item.classList.add('active');
+        if (history.pushState) history.pushState(null, null, '#virtual-showroom');
+        return;
+      }
+
       if (href && href.startsWith('#')) {
         dockItems.forEach(d => d.classList.remove('active'));
         item.classList.add('active');

@@ -916,6 +916,7 @@ class InventoryManager {
     }).join('');
 
     if (window.lucide) lucide.createIcons();
+    if (window.reobserveScrollReveal) window.reobserveScrollReveal();
   }
 
   setupFilterEvents() {
